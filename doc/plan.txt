@@ -2,6 +2,8 @@ fix mobile menu transparency issue
 
 remember to add tabindex to make site accessible
 
+remember to fix responsiveness issues
+
 remember to test touch sensibility for mobile version
 
 revisit the naming conventions of my classes and decide on a consitent one

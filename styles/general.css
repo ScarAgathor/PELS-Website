@@ -142,16 +142,18 @@ footer {
     background-color: #1e1e1e;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     color: #f8f8f8;
     padding: 28px 0;
 }
 
 .footerContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
     gap: 72px;
+    padding: 60px;
     padding-top: 52px;
     padding-bottom: 50px;
 }
@@ -231,9 +233,40 @@ footer {
     .navbar {
         display: flex;
     }
-    .footerContent {
-        flex-direction: row;
 
-        /* work on spacing issues */
+    .footerContent {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        gap: clamp(200px, 10.5vw, 380px);
+    }
+
+    .footerContent__desc {
+        gap: clamp(10px, 0.6vw, 27px);
+        width: clamp(230px, 15vw, 375px);
+    }
+    
+    .footerContent__desc img {
+        width: clamp(48px, 3vw, 88px);
+        height: clamp(53px, 3.3vw, 98px);
+    }
+    
+    .footerContent__desc p {
+        font-size: clamp(12px, 0.8vw, 16px);
+    }
+
+    .footerContent__socials .icon {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+
+    }
+
+    .footerContent__contact {
+        gap: 5px;
+        font-size: clamp(12px, 1vw, 16px);
+    }
+
+    .copyright {
+        font-size: 14px;
     }
 } 
