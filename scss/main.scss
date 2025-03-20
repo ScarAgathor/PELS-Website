@@ -1,0 +1,109 @@
+@import 'base/config';
+@import 'base/variables';
+@import 'base/mixin';
+@import 'components/header';
+@import 'components/footer';
+@import 'pages/offciers';
+@import 'pages/joinus';
+
+
+body {
+    background-color: $primary-bg;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    @include align-flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: PoppinsBold;
+    font-size: clamp(40px, 2.1vw, 64px);
+    line-height: 130%;
+    text-align: center;
+}
+
+h2 {
+    font-family: PoppinsSemiBold;
+    font-size: 36px;
+    line-height: 130%;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    font-family: PoppinsMedium;
+    color: $text-dark;
+    line-height: 130%;
+}
+
+.button--red {
+    background-color: $pels--red;
+    color: $text-white;
+    padding: 22px 60px;
+    border: none;
+    border-radius: 999px;
+    font-size: clamp(20px, 2vw, 24px);
+    font-family: PoppinsSemiBold;
+    letter-spacing: 13%;
+    cursor: pointer;
+
+    a {
+        text-decoration: none;
+        color: $text-white;
+        outline: none;
+    }
+
+    &:active, &:focus, &:hover {
+        background-color: darken($pels--red, 10%);      
+        outline: none;
+    }
+}
+
+.officer--card {
+    @include vertical-gap(15px);
+    background-color: $officer-bg;
+    width: 260px;
+    height: 263px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 6px 4px 3px lighten(#000000, 75%);
+    border-radius: 12px;
+
+    img{
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .name {
+        font-size: 18px;
+        font-family: PoppinsSemiBold;
+        color: $text-dark;
+    }
+
+    .position {
+        color: $officer-red;
+        font-size: 14px;
+        font-family: PoppinsMedium;
+    }
+
+    @media (min-width:$breakpoint-desktop) {
+        width: 300px;
+        height: 326px;
+
+        img {
+            @include WandH(150px, 150px)
+        }
+
+        .name {
+            font-size: 20px;
+        }
+
+        .position {
+            font-size: 16px;
+        }
+    }
+}

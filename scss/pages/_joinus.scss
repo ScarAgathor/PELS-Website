@@ -1,0 +1,56 @@
+.join{
+    margin: 60px;
+    gap: clamp(50px, 5vw, 115px);
+
+    .hero {
+        @include vertical-gap(15px);
+    
+        p {
+            font-size: clamp(20px, 3vw, 24px);
+            width: clamp(490px, 40vw, 800px);
+            text-align: center;
+            color: $text-dark;
+        }
+
+        .button--red {
+            margin-top: 10px;
+        }
+
+    }
+
+    .why {
+        align-self: start;
+        margin-left: clamp(0px, 10vw, 200px);
+
+        h2 {
+            text-align: start;
+        }
+
+        ul {
+            font-size: clamp(20px, 3vw, 24px);
+            font-family: PoppinsMedium;
+            color: $text-dark;
+            margin-top: 30px;
+        }
+
+    }
+
+    .how {
+        p {
+            font-size: clamp(16px, 2vw, 22px);
+            margin-top: 15px;
+
+            a {
+                font-family: poppinsSemiBold;
+                text-decoration: none;
+                color: $pels--red;
+                cursor: pointer;
+
+                &:hover {
+                    color: darken($pels--red, 10%);
+                }
+            }
+        }
+    }
+    
+}

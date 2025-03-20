@@ -1,0 +1,133 @@
+footer {
+    background-color: $theme-bg;
+    @include align-flex;
+    flex-direction: column;
+
+    padding: 28px 0;
+
+    .footerContent {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 72px;
+        padding: 60px;
+        padding-top: 52px;
+        padding-bottom: 50px;
+
+        .footerContent__desc {
+            @include align-flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 450px;
+
+            img {
+                width: 120px;
+                height: 134px;
+            }
+
+            p {
+                font: 20px PoppinsMedium;
+                text-align: center;
+                color: $text-white;
+            }
+        }
+
+        .footerContent__socials {
+            @include align-flex;
+            gap: 20px;
+
+            .icon {
+                width: 50px;
+                height: 50px;
+                border: 1px solid #f8f8f8;
+                border-radius: 50%;
+                padding: 8px;
+                cursor: pointer;
+
+                svg{
+                    width: 100%;
+                    height: 100%;
+                }
+
+                &:hover {
+                    border-color: #b71933;
+                }
+
+                &:hover path{
+                    fill: #b71933;
+                }
+            }
+
+            #groupme:hover path:nth-child(2), #groupme:hover path:nth-child(3) {
+                fill: #1e1e1e;
+            }
+        }
+
+        .footerContent__contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            p{
+                color: $text-white;
+            }
+
+        }
+         
+    }
+
+    .copyright {
+        color: #f8f8f8;
+        font: 16px PoppinsRegular;
+    }
+
+
+    @media (min-width:$breakpoint-tablet) {
+        .footerContent {
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            gap: clamp(150px, 10.5vw, 380px);
+
+            .footerContent__desc {
+                gap: clamp(10px, 0.6vw, 27px);
+                width: clamp(230px, 17vw, 400px);
+
+                img {
+                    width: clamp(48px, 3vw, 88px);
+                    height: clamp(53px, 3.3vw, 98px);
+                }
+
+                p {
+                    font-size: clamp(12px, 1vw, 20px);
+                }
+            }
+
+            .icon {
+                width: 40px;
+                height: 40px;
+                padding: 6px;
+        
+            }
+
+            .footerContent__contact {
+
+                gap: clamp(10px, 0.6vw, 27px);
+                p{
+                    font-size: clamp(12px, 1vw, 20px);
+                }
+                
+            }
+
+        }
+
+        .copyright {
+            font-size: 14px;
+        }     
+    }
+}
+
+
+
+
+

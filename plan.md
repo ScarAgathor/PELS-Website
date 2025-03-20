@@ -2,7 +2,11 @@ fix mobile menu transparency issue
 
 remember to add tabindex to make site accessible
 
+find a way to differentiate between officers and memebers on the site and everywhere else
+
 remember to fix responsiveness issues
+
+consider using variable in the css
 
 remember to test touch sensibility for mobile version
 
@@ -32,3 +36,17 @@ Card hover should have a slight size increase
 
 Do more research on light and dark themes
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-light: #121212;
+    --text-light: #f5f5f5;
+  }
+}
+
+remember to add an identifier for the active html page
+
+remember to add an alt for all the image tags
+
+remember to cache json file on the web page
+
+in officer images, during js code, alts should be the position in the json

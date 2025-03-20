@@ -1,3 +1,4 @@
+//hamburger and mobile menu
 let hamburger = document.querySelector('.hamburger');
 let mobileMenu = document.querySelector('.mobileMenu');
 
@@ -6,3 +7,5 @@ hamburger.addEventListener("click", () => {
     mobileMenu.classList.toggle('active')
 })
 
+
+//officer cards
