@@ -45,7 +45,7 @@
         }
     }
 
-    &__junior {
+    &__member {
         @include vertical-gap(40px);
 
         @media (min-width:$breakpoint-tablet) {

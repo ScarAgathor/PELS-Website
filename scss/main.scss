@@ -3,6 +3,7 @@
 @import 'base/mixin';
 @import 'components/header';
 @import 'components/footer';
+@import 'pages/program';
 @import 'pages/offciers';
 @import 'pages/joinus';
 
@@ -49,16 +50,177 @@ p {
     font-family: PoppinsSemiBold;
     letter-spacing: 13%;
     cursor: pointer;
-
-    a {
-        text-decoration: none;
-        color: $text-white;
-        outline: none;
-    }
+    text-decoration: none;
+    // outline: none;
 
     &:active, &:focus, &:hover {
         background-color: darken($pels--red, 10%);      
-        outline: none;
+        // outline: none;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    @include WandH(100vw, 100vh);
+    background-color: #000000;
+    opacity: 70%;
+    visibility: hidden;
+}
+
+.program--card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-left: 1px solid $pels--red;
+    box-shadow: 4px 4px 3px lighten(#000000, 75%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 330px;
+    display: none;
+
+    .status {
+        color: $upcoming;
+        font-size: 14px;
+        font-family: PoppinsSemiBold;
+        letter-spacing: 10%;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    img {
+        @include WandH(180px, 120px);
+        border-radius: 10px;
+        object-fit: cover;
+        background-color: lighten(#000000, 75%);
+        margin-bottom: 30px;
+    }
+
+    .title {
+        font-size: 20px;
+        font-family: PoppinsBold;
+        margin-bottom: 10px;
+    }
+
+    .organizer {
+        font-size: 16px;
+        font-family: PoppinsRegular;
+        margin-bottom: 5px;
+    }
+
+    .meta {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 27px;
+        
+        p {
+            font-size: 16px;
+            font-family: PoppinsRegular;
+        }
+
+        path {
+            fill: #000000;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    }
+
+    .time {
+        font-size: 16px;
+        font-family: PoppinsRegular;
+        margin-bottom: 33px
+    }
+}
+
+.program--modal {
+    display: none;
+    margin: 100px;
+    max-width: 505px;
+    max-height: 740px;
+
+    article {
+        overflow: auto;
+        @include WandH(100%, 100%);
+        background-color: #ffffff;
+        border-radius: 8px;
+
+        border-left: 2px solid $event-purple;
+        padding: 25px 54px;
+
+        .head {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 27px;
+
+            .organizer {
+                font-size: 20px;
+                font-family: PoppinsBold;
+                letter-spacing: 5%;
+            }
+        }
+
+        img {
+            @include WandH(100%, 250px);
+            border-radius: 18px;
+            object-fit: cover;
+            background-color: lighten(#000000, 75%);
+            margin-bottom: 25px;
+        }
+
+        .first {
+            display: flex;
+            align-items: center;
+            gap: 116px;
+            margin-bottom: 34px;;
+
+            .title {
+                font-size: 22px;
+                font-family: PoppinsBold;
+                color: $event-purple;
+            }
+
+            .status{
+                font-size: 16px;
+                font-family: PoppinsRegular;
+                color: $completed;
+            }
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            margin-bottom: 38px;
+
+            p {
+                font-size: 16px;
+                font-family: PoppinsMedium;
+            }
+
+            path {
+                color: $event-purple;
+            }
+    
+            .location {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+        }
+
+        .desc {
+			max-height: 220px;
+			font-size: 16px; 
+            font-family: PoppinsRegular;
+            line-height: 160%;
+            margin-bottom: 19px;
+        }
     }
 }
 
@@ -107,3 +269,4 @@ p {
         }
     }
 }
+

@@ -25,7 +25,7 @@ header {
             letter-spacing: 5%;
             cursor: pointer;
 
-            &:hover {
+            &:hover, &:active, &:focus {
                 color: $pels--red;
             }
         }

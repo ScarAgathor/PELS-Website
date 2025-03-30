@@ -1,7 +1,102 @@
 [
     {
-        "image": "",
-        "name": "",
-        "position": ""
+        "name": "Jennifer Dominguez",
+        "position": "President",
+        "image": "assets/images/officers/jennnifer.jpg"
+    },
+    {
+        "name": "Alisa Bustos",
+        "position": "External Vice President",
+        "image": "assets/images/officers/alisa.jpg"
+    },
+    {
+        "name": "Christian Garcia",
+        "position": "Internal Vice President",
+        "image": "assets/images/officers/christian.jpg"
+    },
+    {
+        "name": "Natalia Lopez",
+        "position": "Senior Advisor",
+        "image": "assets/images/officers/natalia.jpg"
+    },
+    {
+        "name": "Gladvin George",
+        "position": "Senior Advisor",
+        "image": "assets/images/officers/gladvin.jpg"
+    },
+    {
+        "name": "Amilcar Sanores",
+        "position": "Senior Advisor",
+        "image": "assets/images/officers/amilcar.jpg"
+    },
+    {
+        "name": "Caleb Gamboa",
+        "position": "Treasurer",
+        "image": "assets/images/officers/caleb.jpg"
+    },
+    {
+        "name": "Allan Aanonsen",
+        "position": "Senior Advisor",
+        "image": "assets/images/officers/allan.jpg"
+    },
+    {
+        "name": "Edidiong Ekong",
+        "position": "Secretary",
+        "image": "assets/images/officers/edidiong.jpg"
+    },
+    {
+        "name": "Alejandro Villanueva",
+        "position": "Outreach Director",
+        "image": "assets/images/officers/alejandro.jpg"
+    },
+    {
+        "name": "Tyler Huling",
+        "position": "Senior Advisor",
+        "image": "assets/images/officers/tyler.jpg"
+    },
+    {
+        "name": "Ethan Aguire",
+        "position": "Media Director",
+        "image": "assets/images/officers/ethan.jpg"
+    },
+    {
+        "name": "Emilio Valencia",
+        "position": "Junior Officer",
+        "image" : "assets/images/officers/emilio.jpg"
+    },
+    {
+        "name": "Noah Mendoza",
+        "position": "Junior Officer",
+        "image" : "assets/images/officers/noah.jpg"
+    },
+    {
+        "name": "Kateri Parker",
+        "position": "Junior Officer",
+        "image" : "assets/images/officers/kateri.jpg"
+    },
+    {
+        "name": "Luis Alvarado",
+        "position": "Junior Officer",
+        "image" : "assets/images/officers/luis.jpg"
+    },
+    {
+        "name": "Kade Hoverson",
+        "position": "Junior Officer",
+        "image" : "assets/images/officers/jennnifer.jpg"
+    },
+    {
+        "name": "Aidan Tijerina",
+        "position": "Junior Officer",
+        "image" : "assets/images/officers/aiden.jpg"
+    },
+    {
+        "name": "Roua Mohamed",
+        "position": "Junior Officer",
+        "image" : "assets/images/officers/roua.jpg"
+    },
+    {
+        "name": "Sandra Sreejith",
+        "position": "Junior Officer",
+        "image" : "assets/images/officers/sandra.jpg"
     }
 ]

@@ -61,7 +61,7 @@ header nav li a {
   letter-spacing: 5%;
   cursor: pointer;
 }
-header nav li a:hover {
+header nav li a:hover, header nav li a:active, header nav li a:focus {
   color: #b71933;
 }
 header .navbar {
@@ -311,7 +311,7 @@ footer .copyright {
     gap: 80px;
   }
 }
-.officers__junior {
+.officers__member {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -319,13 +319,13 @@ footer .copyright {
   gap: 40px;
 }
 @media (min-width: 768px) {
-  .officers__junior {
+  .officers__member {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (min-width: 1024px) {
-  .officers__junior {
+  .officers__member {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 80px;
@@ -334,7 +334,7 @@ footer .copyright {
 
 .join {
   margin: 60px;
-  gap: clamp(50px, 5vw, 115px);
+  gap: clamp(50px, 4vw, 80px);
 }
 .join .hero {
   display: flex;
@@ -348,6 +348,7 @@ footer .copyright {
   width: clamp(490px, 40vw, 800px);
   text-align: center;
   color: #333333;
+  margin-bottom: 10px;
 }
 .join .hero .button--red {
   margin-top: 10px;
@@ -375,7 +376,7 @@ footer .copyright {
   color: #b71933;
   cursor: pointer;
 }
-.join .how p a:hover {
+.join .how p a:active, .join .how p a:focus, .join .how p a:hover {
   color: #8a1326;
 }
 
@@ -423,15 +424,157 @@ p {
   font-family: PoppinsSemiBold;
   letter-spacing: 13%;
   cursor: pointer;
-}
-.button--red a {
   text-decoration: none;
-  color: #ffffff;
-  outline: none;
 }
 .button--red:active, .button--red:focus, .button--red:hover {
   background-color: #8a1326;
-  outline: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  opacity: 70%;
+  visibility: hidden;
+}
+
+.program--card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border-left: 1px solid #b71933;
+  box-shadow: 4px 4px 3px #bfbfbf;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 330px;
+  display: none;
+}
+.program--card .status {
+  color: #ffa500;
+  font-size: 14px;
+  font-family: PoppinsSemiBold;
+  letter-spacing: 10%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.program--card img {
+  width: 180px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  background-color: #bfbfbf;
+  margin-bottom: 30px;
+}
+.program--card .title {
+  font-size: 20px;
+  font-family: PoppinsBold;
+  margin-bottom: 10px;
+}
+.program--card .organizer {
+  font-size: 16px;
+  font-family: PoppinsRegular;
+  margin-bottom: 5px;
+}
+.program--card .meta {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 27px;
+}
+.program--card .meta p {
+  font-size: 16px;
+  font-family: PoppinsRegular;
+}
+.program--card .meta path {
+  fill: #000000;
+}
+.program--card .meta .location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.program--card .time {
+  font-size: 16px;
+  font-family: PoppinsRegular;
+  margin-bottom: 33px;
+}
+
+.program--modal {
+  display: none;
+  margin: 100px;
+  max-width: 505px;
+  max-height: 740px;
+}
+.program--modal article {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border-left: 2px solid #6a0dad;
+  padding: 25px 54px;
+}
+.program--modal article .head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 27px;
+}
+.program--modal article .head .organizer {
+  font-size: 20px;
+  font-family: PoppinsBold;
+  letter-spacing: 5%;
+}
+.program--modal article img {
+  width: 100%;
+  height: 250px;
+  border-radius: 18px;
+  object-fit: cover;
+  background-color: #bfbfbf;
+  margin-bottom: 25px;
+}
+.program--modal article .first {
+  display: flex;
+  align-items: center;
+  gap: 116px;
+  margin-bottom: 34px;
+}
+.program--modal article .first .title {
+  font-size: 22px;
+  font-family: PoppinsBold;
+  color: #6a0dad;
+}
+.program--modal article .first .status {
+  font-size: 16px;
+  font-family: PoppinsRegular;
+  color: #6c757d;
+}
+.program--modal article .meta {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 38px;
+}
+.program--modal article .meta p {
+  font-size: 16px;
+  font-family: PoppinsMedium;
+}
+.program--modal article .meta path {
+  color: #6a0dad;
+}
+.program--modal article .meta .location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.program--modal article .desc {
+  max-height: 220px;
+  font-size: 16px;
+  font-family: PoppinsRegular;
+  line-height: 160%;
+  margin-bottom: 19px;
 }
 
 .officer--card {

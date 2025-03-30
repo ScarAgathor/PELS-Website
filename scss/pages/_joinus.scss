@@ -1,6 +1,6 @@
 .join{
     margin: 60px;
-    gap: clamp(50px, 5vw, 115px);
+    gap: clamp(50px, 4vw, 80px);
 
     .hero {
         @include vertical-gap(15px);
@@ -10,6 +10,7 @@
             width: clamp(490px, 40vw, 800px);
             text-align: center;
             color: $text-dark;
+            margin-bottom: 10px;
         }
 
         .button--red {
@@ -46,8 +47,9 @@
                 color: $pels--red;
                 cursor: pointer;
 
-                &:hover {
-                    color: darken($pels--red, 10%);
+                &:active, &:focus, &:hover {
+                    color: darken($pels--red, 10%);      
+                    // outline: none;
                 }
             }
         }
