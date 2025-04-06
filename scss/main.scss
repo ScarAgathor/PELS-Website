@@ -21,7 +21,7 @@ main {
 
 h1 {
     font-family: PoppinsBold;
-    font-size: clamp(40px, 2.1vw, 64px);
+    font-size: clamp(40px, 1.8vw, 64px);
     line-height: 130%;
     text-align: center;
 }
@@ -63,30 +63,43 @@ p {
     position: fixed;
     top: 0;
     right: 0;
-    @include WandH(100vw, 100vh);
+    @include WandH(100%, 100%);
     background-color: #000000;
     opacity: 70%;
     visibility: hidden;
+    pointer-events: all;
+}
+
+.overlay--active {
+    visibility: visible;
 }
 
 .program--card {
     background-color: #ffffff;
     border-radius: 12px;
-    border-left: 1px solid $pels--red;
     box-shadow: 4px 4px 3px lighten(#000000, 75%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 330px;
-    display: none;
+    width: 330px;
+    cursor: pointer;
+    // padding: 0 44px;
+    // display: none;
 
     .status {
-        color: $upcoming;
         font-size: 14px;
         font-family: PoppinsSemiBold;
         letter-spacing: 10%;
         margin-top: 30px;
         margin-bottom: 20px;
+    }
+
+    .upcoming {
+        color: $upcoming;
+    }
+
+    .completed {
+        color: $interactive-dark;
     }
 
     img {
@@ -97,7 +110,7 @@ p {
         margin-bottom: 30px;
     }
 
-    .title {
+    .card__title {
         font-size: 20px;
         font-family: PoppinsBold;
         margin-bottom: 10px;
@@ -138,20 +151,37 @@ p {
     }
 }
 
+.hidden-card {
+    display: none;
+}
+
+.program--card__workshops {
+    border-left: 1px solid $pels--red;
+}
+
+.program--card__events {
+    border-left: 1px solid $event-purple;
+}
+
 .program--modal {
     display: none;
-    margin: 100px;
-    max-width: 505px;
+    width: clamp(505px, 50vw, 700px);
+    height: auto;
     max-height: 740px;
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
 
     article {
         overflow: auto;
         @include WandH(100%, 100%);
         background-color: #ffffff;
         border-radius: 8px;
-
-        border-left: 2px solid $event-purple;
-        padding: 25px 54px;
+        padding: 25px clamp(54px, 5vw, 75px);
 
         .head {
             display: flex;
@@ -179,16 +209,22 @@ p {
             gap: 116px;
             margin-bottom: 34px;;
 
-            .title {
-                font-size: 22px;
+            .modal__title {
+                font-size: clamp(22px, 4vw, 24px);
                 font-family: PoppinsBold;
-                color: $event-purple;
             }
 
             .status{
                 font-size: 16px;
                 font-family: PoppinsRegular;
-                color: $completed;
+            }
+
+            .upcoming {
+                color: $upcoming;
+            }
+        
+            .completed {
+                color: $interactive-dark;
             }
         }
 
@@ -222,6 +258,18 @@ p {
             margin-bottom: 19px;
         }
     }
+
+    .article__workshops {
+        border-left: 2px solid $pels--red;
+    }
+    
+    .article__events {
+        border-left: 2px solid $event-purple;
+    }
+}
+
+.program--modal__active {
+    display: block;
 }
 
 .officer--card {

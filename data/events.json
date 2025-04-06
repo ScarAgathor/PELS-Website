@@ -1,6 +1,13 @@
 [
     {
-        "organizers": "",
-        "title"
+        "status": "completed",
+        "img-card": "",
+        "img-modal": "",
+        "title": "555 Timer",
+        "organizer": "PELS",
+        "date": "March 25, 2025",
+        "location": "Eb 2.04.06A",
+        "time": "4:30PM",
+        "description": "Lorem"
     }
 ]

@@ -1,0 +1,114 @@
+.program {
+
+
+    .title {
+        margin-top: 60px;
+        margin-bottom: 38px;
+        p {
+            font-size: clamp(18px, 1.5vw, 22px);
+            margin-top: 24px;
+            width: 458px;
+            text-align: center;
+        }
+    }
+
+    .tabs {
+        width: 100%;
+        border-bottom: 2px solid #d9d9d9;
+        margin-bottom: 75px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        button {
+            width: 300px;
+            height: 110px;
+            background: none;
+            border: none;
+            outline: none;
+            color: $interactive-dark;
+            font-size: clamp(24px, 3vw, 44px);
+            font-family: PoppinsBold;
+            letter-spacing: 16%;
+            cursor: pointer;
+
+            @media (min-width:$breakpoint-tablet) {
+                width: 400px;
+                height: 146px;
+            }
+
+            @media (min-width:$breakpoint-desktop) {
+                width: 600px;
+            }
+        }
+
+        .workshops:hover {
+            border-bottom: 4px solid $pels--red;
+            color: $pels--red;
+        }
+
+        .events:hover {
+            border-bottom: 4px solid $event-purple;
+            color: $event-purple;
+        }
+
+        .workshops--active {
+            border-bottom: 4px solid $pels--red;
+            color: $pels--red;
+        }
+
+        .events--active {
+            border-bottom: 4px solid $event-purple;
+            color: $event-purple;
+        }
+    }
+
+    .programs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 64px;
+        margin-bottom: 78px;
+
+        h2 {
+            font-size: clamp(32px, 4vw, 48px);
+
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(30px, 5vw, 70px);
+
+            @media (min-width:$breakpoint-tablet) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 60px;
+            }
+
+            @media (min-width:$breakpoint-desktop) {
+                grid-template-columns: repeat(4, 1fr);
+                gap: clamp(30px, 3vw, 70px);
+            }
+        }
+
+        .see-more-button {
+            font-size: clamp(20px, 3vw, 24px);
+            font-family: PoppinsSemiBold;
+            letter-spacing: 13%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            // display: flex; this is set in index.js
+            align-items: center;
+            gap: 8px;
+        }
+
+        .see-more-button__workshops {
+            color: $pels--red;
+        }
+
+        .see-more-button__events {
+            color: $event-purple;
+        }
+    }
+}

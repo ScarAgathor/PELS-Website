@@ -1,5 +1,7 @@
 # 🧠 PELS Website Dev Plan (Raw Checklist)
 
+- [ ] organize this list, into groups and actually important non redundant ones
+- [ ] note down all the things you need
 - [ ] make a list of all the extrnal site this site depends on (w3schools)
 - [ ] fix mobile menu transparency issue  
 - [ ] workshops and events page is going to contain a lot of js
@@ -43,11 +45,26 @@
 - [ ] all buttons shold be accessible, might make hamburger a button
 - [ ] all modals should be scrollable
 - [ ] might make modal contain multiple images or an image slider
-Update off8cer page
-     Group officers into the different boards,
-     Officer board
-     Senior advisor
-     Junior officer
+- [ ] review classes using good conventions and figure out which ones are useless
+- [ ] make css more streamlined and easier to follow and update
+- [ ] make program card into button and add size increase on hover
+- [ ] figure out how to save which programs are active in workshops & events page
+- [ ] remember to add see more buttons in program page
+- [ ] plan for a better way to store upcoming and completed programs
+- [ ] consider how to improve all card loading performance to prevent page from slowing down
+  - [ ] consider using fragments or defer rendering
+- [ ] use clamp for fonts, paddings, margins, widths, heights
+- [ ] use media quaries for layout
+- [ ] Audit your SCSS with a linter like stylelint
+- [ ] Use BEM or a simple naming system you can maintain
+- [ ] Group variables logically in variables.scss (e.g., color, spacing, typography)
+- [ ] have more standard styles, sizes, fonts, etc, this should go into the variables as well, for the different screen sizes
+- [ ] Comment tricky styles or sections other people might work on
+- [ ] Figure out how to get an actual copyright
+- [ ] document website proeprly in readme. i.e have an actual readme.md, proper
+- [ ] make layout responsiveness smoother
+- [ ] make sure see more button remembers state. remember to add a state check so it preserves when page treloads, and allows user to close extras
+
 
 ```css
 @media (prefers-color-scheme: dark) {

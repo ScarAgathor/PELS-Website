@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-   <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.css">
     <script src="src/index.js" defer></script>
 </head>
 <body>
@@ -33,23 +33,127 @@
         </nav>
     </header>
 
-    <main>
+    <main class="home">
         <section class="hero">
-            <h1></h1>
-            <P>
-                <span>
-
-                </span>
-            </P>
-            <P>
-                <span>
-
-                </span>
-            </P>
+            <h1>IEEE Power & Electronics Society.</h1>
+            <p>About us! <span>PELS is dedicated to the design, evaluation, and creation of circuits for the efficient conversion, control and conditioning of electrical power.</span></p>
+            <p>Our Mission!<span>We offer hands-on learning, collaborative projects, and networking with industry professionals, all while inspiring students about electrical and computer engineering.</span></p>
             <button>Join PELS Today</button>
         </section>
-        <section></section>
-        <section></section>
+
+        <section>
+            <h2>Learn and Build: Upcoming Workshops & Events</h2>
+            <p>Join our latest hands-on workshops and exciting events</p>
+
+            <div>
+                <div>
+                    <h3>Workshops</h3>
+                    <div>
+                        <!-- fpor the program cards, write a script so that always the first two upcoming and events are upcoming -->
+                        <div class="program--card program--card__workshops">
+                            <p class="status upcoming">upcoming</p>
+                            <img src="${img}" alt="">
+                            <h3 class="card__title">555 Timer</h3>
+                            <p class="organizer">PELS</p>
+                            <div class="meta">
+                                <p class="date">March 25, 2025</p>
+                                <p class="location">
+                                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
+                                        </svg>
+                                    <span>EB 2.04.06A</span>
+                                </p>
+                            </div>
+                            <p class="time">${time}</p>
+                            <p style="display: none;">${desc}</p>
+                        </div>
+                        <div class="program--card program--card__workshops">
+                            <p class="status upcoming">upcoming</p>
+                            <img src="${img}" alt="">
+                            <h3 class="card__title">555 Timer</h3>
+                            <p class="organizer">PELS</p>
+                            <div class="meta">
+                                <p class="date">March 25, 2025</p>
+                                <p class="location">
+                                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
+                                        </svg>
+                                    <span>EB 2.04.06A</span>
+                                </p>
+                            </div>
+                            <p class="time">${time}</p>
+                            <p style="display: none;">${desc}</p>
+                        </div>
+                        
+
+                    </div>
+                    <button>View All Workshops</button>
+                </div>
+                <div>
+                    <h3>Events</h3>
+                    <div>
+                        <div class="program--card program--card__workshops">
+                            <p class="status upcoming">upcoming</p>
+                            <img src="${img}" alt="">
+                            <h3 class="card__title">555 Timer</h3>
+                            <p class="organizer">PELS</p>
+                            <div class="meta">
+                                <p class="date">March 25, 2025</p>
+                                <p class="location">
+                                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
+                                        </svg>
+                                    <span>EB 2.04.06A</span>
+                                </p>
+                            </div>
+                            <p class="time">${time}</p>
+                            <p style="display: none;">${desc}</p>
+                        </div>
+                        <div class="program--card program--card__workshops">
+                            <p class="status upcoming">upcoming</p>
+                            <img src="${img}" alt="">
+                            <h3 class="card__title">555 Timer</h3>
+                            <p class="organizer">PELS</p>
+                            <div class="meta">
+                                <p class="date">March 25, 2025</p>
+                                <p class="location">
+                                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
+                                        </svg>
+                                    <span>EB 2.04.06A</span>
+                                </p>
+                            </div>
+                            <p class="time">${time}</p>
+                            <p style="display: none;">${desc}</p>
+                        </div>
+                    </div>
+                    <button>View All Events</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Meet Our Officers</h2>
+            <p>Leading the way at IEEE PELS—meet our top officers, along with a dedicated team behind them.</p>
+            <div>
+                <div class="officer--card">
+                    <img src="assets/images/officers/jennnifer.jpg" alt="president">
+                    <p class="name">Jennifer Dominguez</p>
+                    <p class="position">President</p>
+                </div>
+                <div class="officer--card">
+                    <img src="assets/images/officers/alisa.jpg" alt="external Vice President">
+                    <p class="name">Alisa Bustos</p>
+                    <p class="position">External Vice President</p>
+                </div>
+                <div class="officer--card">
+                    <img src="assets/images/officers/christian.jpg" alt="internal Vice President">
+                    <p class="name">Christian Garcia</p>
+                    <p class="position">Internal Vice President</p>
+                </div>
+            </div>
+            <button>See All Officers</button>
+
+        </section>
     </main>
     <footer>
         <div class="footerContent">
