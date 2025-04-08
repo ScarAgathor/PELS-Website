@@ -1,5 +1,155 @@
 .home {
-    h3 {
+
+    h2 {
+        text-align: center;
+    }
+
+    p{
+        text-align: center;
+        font-size: clamp(20px, 2vw, 24px);
+    }
+
+    .hero {
+        background-color: black;
+        width: 100%;
+        height: 80vh; //make this work smoothly
+        @include vertical-gap(0px);
+        padding: 40px 0;
+
+        h1 {
+            color: white;
+            margin-bottom: 20px
+
+        }
+
+        p {
+            @include vertical-gap(5px);
+            font-size: clamp(22px, 2vw, 28px);
+            font-family: PoppinsSemiBold;
+            width: clamp(400px, 45vw, 950px);
+            text-align: center;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+
+            span {
+                font-size: clamp(18px, 2vw, 24px);
+                font-family: PoppinsRegular;
+            }
+        }
+    }
+
+
+
+    .programs {
+        padding: 40px 0;
+
+        .programs__topdiv {
+            margin-top: 60px;
+            @include vertical-gap(30px);
+
+            @media (min-width:$breakpoint-tablet) {
+                gap: 60px;
+            }
+
+            @media (min-width:$breakpoint-desktop) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 100px;
+            }
+        }
+
+        .home--program_container {
+            @include vertical-gap(40px);
+        }
+
+        .home--program_title {
+            font-size: clamp(28px, 3vw, 32px);
+            font-family: poppinsBold;
+        }
+
+        .home--program_title_workshops {
+            color: $pels--red
+        }
+
+        .home--program_title_events {
+            color: $event-purple
+        }
+
+        .home--program_content {
+            @include vertical-gap(40px);
+
+            @media (min-width:$breakpoint-tablet) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .button--red_purple {
+            background-color: $event-purple;
+
+            &:active, &:focus, &:hover {
+                background-color: darken($event-purple, 10%);      
+                // outline: none;
+            }
+        }
+
+    }
+
+    .officers {
+        @include vertical-gap(0);
+
+        .officers_section--title {
+            margin-bottom: 20px;
+        }
+
+        .officers_section--desc {
+            margin-bottom: 30px;
+        }
+        .officers__container {
+            
+            display: grid;
+            gap: 35px;
+            margin-top: 100px;
+            margin-bottom: 30px;
+
+
+            @media (min-width:$breakpoint-tablet) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 70px;
+
+                grid-template-areas:
+                "p p"
+                "e i";
+                place-items: center;
+
+
+                .officer--card.P {
+                    grid-area: p;
+                }
+                
+                .officer--card.E {
+                    grid-area: e;
+                }
+                
+                .officer--card.I {
+                    grid-area: i;
+                }
+
+            }
+
+            @media (min-width: $breakpoint-desktop) {
+                gap: 90px;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-areas: "e p i";
+                align-items: end; /* so we can offset P */
+             
+                .officer--card.P {
+                    transform: translateY(-90px); /* raise center card */
+                }
+            }
+        }
+
         
     }
+
 }

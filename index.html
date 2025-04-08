@@ -38,18 +38,18 @@
             <h1>IEEE Power & Electronics Society.</h1>
             <p>About us! <span>PELS is dedicated to the design, evaluation, and creation of circuits for the efficient conversion, control and conditioning of electrical power.</span></p>
             <p>Our Mission!<span>We offer hands-on learning, collaborative projects, and networking with industry professionals, all while inspiring students about electrical and computer engineering.</span></p>
-            <button>Join PELS Today</button>
+            <a class="button--red" href="joinus.html" target="_self">Join PELS Today</a>
         </section>
 
-        <section>
+        <section class="programs">
             <h2>Learn and Build: Upcoming Workshops & Events</h2>
             <p>Join our latest hands-on workshops and exciting events</p>
 
-            <div>
-                <div>
-                    <h3>Workshops</h3>
-                    <div>
-                        <!-- fpor the program cards, write a script so that always the first two upcoming and events are upcoming -->
+            <div class="programs__topdiv">
+                <div class="home--program_container">
+                    <h3 class="home--program_title home--program_title_workshops">Workshops</h3>
+                    <div class="home--program_content">
+                        <!-- fpor the program cards, write a script so that always the first two upcoming workshops and events are displayed this should be dynamic, then delete these ones-->
                         <div class="program--card program--card__workshops">
                             <p class="status upcoming">upcoming</p>
                             <img src="${img}" alt="">
@@ -87,12 +87,13 @@
                         
 
                     </div>
-                    <button>View All Workshops</button>
+                    <a class="button--red" href="workshops&events.html#workshops">View All Workshops</a>
                 </div>
-                <div>
-                    <h3>Events</h3>
-                    <div>
-                        <div class="program--card program--card__workshops">
+
+                <div class="home--program_container">
+                    <h3 class="home--program_title home--program_title_events">Events</h3>
+                    <div class="home--program_content">
+                        <div class="program--card program--card__events">
                             <p class="status upcoming">upcoming</p>
                             <img src="${img}" alt="">
                             <h3 class="card__title">555 Timer</h3>
@@ -127,31 +128,34 @@
                             <p style="display: none;">${desc}</p>
                         </div>
                     </div>
-                    <button>View All Events</button>
+                    <a class="button--red button--red_purple" href="workshops&events.html#events" target="_self">View All Events</a> 
+                    <!-- clicking should take you to the other page. do it by saving the clicked program in the local storage, switch to programs page, then call this intoloadPrograms function -->
                 </div>
             </div>
+
         </section>
-        <section>
-            <h2>Meet Our Officers</h2>
-            <p>Leading the way at IEEE PELS—meet our top officers, along with a dedicated team behind them.</p>
-            <div>
-                <div class="officer--card">
+
+        <section class="officers">
+            <h2 class="officers_section--title">Meet Our Officers</h2>
+            <p class="officers_section--desc">Leading the way at IEEE PELS—meet our top officers, along with a dedicated team behind them.</p>
+            <div class="officers__container">
+                <div class="officer--card P">
                     <img src="assets/images/officers/jennnifer.jpg" alt="president">
                     <p class="name">Jennifer Dominguez</p>
                     <p class="position">President</p>
                 </div>
-                <div class="officer--card">
+                <div class="officer--card E">
                     <img src="assets/images/officers/alisa.jpg" alt="external Vice President">
                     <p class="name">Alisa Bustos</p>
                     <p class="position">External Vice President</p>
                 </div>
-                <div class="officer--card">
+                <div class="officer--card I">
                     <img src="assets/images/officers/christian.jpg" alt="internal Vice President">
                     <p class="name">Christian Garcia</p>
                     <p class="position">Internal Vice President</p>
                 </div>
             </div>
-            <button>See All Officers</button>
+            <a class="button--red" href="officers.html" target="_self">See All Officers</a>
 
         </section>
     </main>

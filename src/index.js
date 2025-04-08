@@ -95,12 +95,21 @@ const modal_close = document.getElementById('modal__close')
 //from the home page it should be able to to set active a workshop or event depending on what was clicked
 document.addEventListener('DOMContentLoaded', () => {
     
+    const hash = window.location.hash;
     if (programPage) {
-      switchTabs('workshops');
-      loadPrograms('workshops')
+        if(hash === '#workshops') {
+            switchTabs('workshops');
+            loadPrograms('workshops')
+        } else if(hash === '#events') {
+            switchTabs('events');
+            loadPrograms('events')
+        } else {
+            switchTabs('workshops');
+            loadPrograms('workshops')
+        }
+    
     }
 
-    
 });
 
 //workshop tab
@@ -150,18 +159,22 @@ const loadPrograms = async (programType) => {
         let upcomingProgramCount = 0;
         let completedProgramCount = 0;
 
+        let expanded = false;
+
         //create program cards
         programs.forEach(program => {
             let card = createProgramCard(program.status, program.img_card, program.title, program.organizer, program.date, program.location, program.time, program.description, programType);
             if(program.status == 'upcoming') {
                 if (upcomingProgramCount >= 4) {
                     card.classList.add('hidden-card');
+                    card.classList.add('hideable') //consider using dataset or a better state storer
                 } 
                 upcomingContainer.appendChild(card);
                 upcomingProgramCount++;
             } else if (program.status == 'completed') {
                 if (completedProgramCount >= 4) {
                     card.classList.add('hidden-card');
+                    card.classList.add('hideable')
                 }
                 completedContainer.appendChild(card);
                 completedProgramCount++;
@@ -169,13 +182,18 @@ const loadPrograms = async (programType) => {
         });
 
         //toggle see more visibility and see more logic
+        
         if (upcomingProgramCount > 4) {
             seeMoreUpcomingBtn.style.display = 'flex';
             seeMoreUpcomingBtn.onclick = () => {
-                document.querySelectorAll('#upcoming .hidden-card').forEach(card => {
-                    card.classList.remove('hidden-card');
+                document.querySelectorAll('#upcoming .hideable').forEach(card => {
+                    if(expanded == true) {
+                        card.classList.remove('hidden-card');
+                    } else if(expanded == false) {
+                        card.classList.add('hidden-card');
+                    }
                 });
-                seeMoreUpcomingBtn.style.display = 'none';
+                seeMoreUpcomingBtn.textContent = expanded ? 'See Less' : 'See More';
             };
         } else {
             seeMoreUpcomingBtn.style.display = 'none';
@@ -184,10 +202,18 @@ const loadPrograms = async (programType) => {
         if (completedProgramCount > 4) {
             seeMoreCompletedBtn.style.display = 'flex';
             seeMoreCompletedBtn.onclick = () => {
-                document.querySelectorAll('#completed .hidden-card').forEach(card => {
-                    card.classList.remove('hidden-card');
+                expanded = !expanded
+                document.querySelectorAll('#completed .hideable').forEach(card => {
+                    if(expanded == true) {
+                        card.classList.remove('hidden-card');
+                    } else if(expanded == false) {
+                        card.classList.add('hidden-card');
+                    }
+
+                    // the issue is that because I remove the hidden card, the program doesn't know which cards are hidden meant to be hidden anymore so it can't find them
+                    
                 });
-                seeMoreCompletedBtn.style.display = 'none';
+                seeMoreCompletedBtn.textContent = expanded ? 'See Less' : 'See More';
             };
         } else {
             seeMoreCompletedBtn.style.display = 'none';
@@ -208,6 +234,8 @@ const loadPrograms = async (programType) => {
                 createProgramModal(status, img, title, organizer, date, location, time, desc, programType);
             })
         })
+
+        
 
     }catch (error) {
         console.error('Failed to load workshop data:', error);
@@ -273,5 +301,4 @@ const createProgramModal = (status, img, title, organizer, date, location, time,
    modal_date.textContent = `${date} @ ${time}`
    modal_location.textContent = location
    modal_desc.textContent = desc
-
 }
