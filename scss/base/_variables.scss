@@ -1,16 +1,65 @@
+@use 'config' as config;
+
+
+//Colors
 $pels--red: #b71933;
-$link-white: #ffffff;
-$text-white: #ffffff;
-$text-dark: #333333;
-$button-white: #ffffff;
-$primary-bg: #f8f8f8;
-$theme-bg: #1e1e1e;
-$mobile-bg: #222222;
-$officer-bg: #fafafa;
-$officer-red: #e63946;
-$event-purple: #6a0dad;
-$upcoming: #ffa500;
-$interactive-dark: #6c757d;
-$completed: #6c757d;
+$pels--purple: #6a0dad;
+$pels--white: #f8f8f8;
+$pels--dark: #333333;
+$pels--gray: #6c757d;
+$pels--yellow: #ffa500;
+
+$h1--dark: #000000;
+$h1--white: #ffffff;
+$h2--dark: #000000;
+$p--dark: #333333;
+$p--light: #e0e0e0;
+
+$navbar-bg: #1e1e1e;
+$footer-bg: #1e1e1e;
+$mobilemenu-bg: #222222;
+
+$button-bg--red: #b71933;
+$button-bg--purple: #6a0dad;
+$button-bg--red-active: #a6172e ;
+$button-bg--purple-active: #5a0a98 ;
+$button-text: #ffffff;
+
+$navlink-text: #ffffff;
+$navlink-text-active: #b71933;
+
+$link-text: #b71933;
+$link-text-active: #a6172e;
+
+$officer-card-bg: #fafafa;
+$officer-card-text--red: #e63946;
+
+$body-bg: #f8f8f8;
+
+//fonts
+$h1-text-size: clamp(2.5rem, 1.8vw, 4rem);
+$h1-text-family: poppinsBold;
+$h2-text-size: clamp(1.75rem, 3vw, 2.25rem);
+$h2-text-family: poppinsSemiBold;
+$p-text-size: clamp(1.25rem, 1.2vw, 1.5rem);
+$p-text-family: PoppinsMedium;
+$button-text-size: clamp(1.25rem, 2vw, 1.5rem);;
+$button-text-family: poppinsSemiBold;
+
+$text-line-height: 1.3;
+
+//widths
+
+
+
+//breakpoints
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
+
+
+//fonts
+
+$poppinsBold: poppinsBold;
+$poppinsSemiBold: poppinsSemiBold;
+$poppinsMedium: poppinsMedium;
+$poppinsRegular: poppinsRegular;

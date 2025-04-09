@@ -1,76 +1,102 @@
-footer {
-    background-color: $theme-bg;
-    @include align-flex;
-    flex-direction: column;
+@use '../base' as base;
 
-    padding: 28px 0;
+footer {
+    @include base.centerDiv();
+    background-color: base.$footer-bg;
+    flex-direction: column;
+    padding: 1.75rem 1.875rem;
 
     .footerContent {
         display: grid;
         grid-template-columns: 1fr;
         justify-items: center;
-        gap: 72px;
-        padding: 60px;
-        padding-top: 52px;
-        padding-bottom: 50px;
+        gap: 4.5rem;
+        padding: 3.25rem 3.75rem 3.125rem 3.75rem;
 
-        .footerContent__desc {
-            @include align-flex;
+        &__desc {
+            @include base.centerDiv();
             flex-direction: column;
-            gap: 40px;
-            width: 450px;
+            gap: 2.5rem;
+            width: 28.125rem;
 
             img {
-                width: 120px;
-                height: 134px;
+                width: 7.5rem;
+                height: 8.375rem;
             }
 
             p {
-                font: 20px PoppinsMedium;
+                color: base.$p--light;
+                font-size: 1.25rem;
+                font-family: base.$poppinsMedium;
                 text-align: center;
-                color: $text-white;
             }
         }
 
-        .footerContent__socials {
-            @include align-flex;
-            gap: 20px;
+        &__socials {
+            @include base.centerDiv();
+            gap: 1.25rem;
 
             .icon {
-                width: 50px;
-                height: 50px;
-                border: 1px solid #f8f8f8;
+                width: 3.125rem;
+                height: 3.125rem;
                 border-radius: 50%;
-                padding: 8px;
                 cursor: pointer;
-
-                svg{
+                a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
                     width: 100%;
                     height: 100%;
-                }
+                    padding: 0.5rem;
+                    border: 1px solid base.$pels--white;
+                    border-radius: 50%;
+                    transition: border-color 0.3s;
 
-                &:hover {
-                    border-color: #b71933;
-                }
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        border: 2px solid base.$pels--red;
+                        outline: none;
+                        outline: 1px solid #b71933;
+                        outline-offset: 2px;
+                    }
 
-                &:hover path{
-                    fill: #b71933;
-                }
+                    &:hover path, &:focus path{
+                        fill: base.$pels--red;
+                    }
+
+                    svg{
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    &#groupme:hover path:nth-child(2),
+                    &#groupme:hover path:nth-child(3),
+                    &#groupme:focus path:nth-child(2),
+                    &#groupme:focus path:nth-child(3) {
+                        fill: #1e1e1e;
+                    }
+
+                    // &#groupme:focus svg path:nth-child(2),
+                    // &#groupme:focus svg path:nth-child(3) {
+                    //     fill: #1e1e1e;
+                    // }
+                }   
             }
 
-            #groupme:hover path:nth-child(2), #groupme:hover path:nth-child(3) {
-                fill: #1e1e1e;
-            }
+            
         }
 
-        .footerContent__contact {
+        &__contact {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 0.625rem;
 
             p{
-                color: $text-white;
+                font-size: 1.25rem;
+                font-family: base.$poppinsMedium;
+                color: base.$p--light;
             }
 
         }
@@ -79,51 +105,55 @@ footer {
 
     .copyright {
         color: #f8f8f8;
-        font: 16px PoppinsRegular;
+        font-size: 1rem;
+        font-family: base.$poppinsRegular;
     }
 
+    .visually-hidden {
+        display: none;
+    }
 
-    @media (min-width:$breakpoint-tablet) {
+    @media (min-width: base.$breakpoint-tablet) {
         .footerContent {
             grid-template-columns: repeat(3, 1fr);
             align-items: center;
-            gap: clamp(150px, 10.5vw, 380px);
-
-            .footerContent__desc {
-                gap: clamp(10px, 0.6vw, 27px);
-                width: clamp(230px, 17vw, 400px);
-
-                img {
-                    width: clamp(48px, 3vw, 88px);
-                    height: clamp(53px, 3.3vw, 98px);
-                }
-
-                p {
-                    font-size: clamp(12px, 1vw, 20px);
-                }
+            gap: clamp(3.4375rem, 10.5vw, 23.75rem); // 55px–380px
+          
+            &__desc {
+              gap: clamp(0.625rem, 0.6vw, 1.6875rem); // 10px–27px
+              width: clamp(14.375rem, 17vw, 25rem);   // 230px–400px
+          
+              img {
+                width: clamp(3rem, 3vw, 5.5rem);      // 48px–88px
+                height: clamp(3rem, 3.3vw, 6.125rem); // 53px–98px
+              }
+          
+              p {
+                font-size: clamp(0.75rem, 1vw, 1.25rem); // 12px–20px
+              }
             }
-
-            .icon {
-                width: 40px;
-                height: 40px;
-                padding: 6px;
-        
-            }
-
-            .footerContent__contact {
-
-                gap: clamp(10px, 0.6vw, 27px);
-                p{
-                    font-size: clamp(12px, 1vw, 20px);
-                }
+          
+            &__socials {
+              .icon {
+                width: 2.8rem;
+                height: 2.8rem;
                 
+              }
             }
-
-        }
-
-        .copyright {
-            font-size: 14px;
-        }     
+          
+            &__contact {
+              gap: clamp(0.625rem, 0.6vw, 1.6875rem); // 10px–27px
+          
+              p {
+                font-size: clamp(0.75rem, 1vw, 1.25rem); // 12px–20px
+              }
+            }
+          }
+          
+          .copyright {
+            font-size: 0.875rem; // 14px
+          }
+             
     }
 }
 

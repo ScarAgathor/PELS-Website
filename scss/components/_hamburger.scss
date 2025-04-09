@@ -1,0 +1,55 @@
+@use '../base/' as base;
+
+.hamburger {
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    cursor: pointer;
+    justify-self: end;
+    background: none;
+    border: none;
+
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 0.25rem;
+        width: 100%;
+        background-color: #ffffff;
+        transition: .2s ease-in-out;
+        transform: translate(-50%, -50%);
+
+        &:nth-child(1) {
+            top: 25%;
+        }
+
+        &:nth-child(3) {
+            top: 75%;
+        }
+
+    }
+
+
+    &.active{
+        span:nth-child(1) {
+        top: 50%;
+        transform:  translate(-50%, -50%) rotate(45deg);
+        }
+    
+        span:nth-child(2) {
+            opacity: 0;
+        }
+    
+        span:nth-child(3) {
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+
+    @media (min-width: base.$breakpoint-tablet) {
+        display: none;
+    }
+
+    
+}
+

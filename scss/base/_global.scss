@@ -1,0 +1,13 @@
+@use '../base/variables' as vars;
+
+body {
+    background-color: vars.$body-bg;
+}
+
+h1, h2, p {
+    line-height: vars.$text-line-height;
+}
+
+p {
+    
+}

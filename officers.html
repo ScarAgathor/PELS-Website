@@ -7,31 +7,32 @@
     <link rel="stylesheet" href="styles/main.css">
     <script src="src/index.js" defer></script>
 </head>
-<body>
-    <header id="officerPage">
+<body id="officerPage">
+    <header>
         <img src="assets/images/pels_logo.webp" alt="Power And Electronics Society logo" class="logo">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Main navigation">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="workshops&events.html">Workshops & Events</a></li>
-                <li><a href="officer.html">Officers</a></li>
-                <li><a href="joinus.html">Join us</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav class="mobileMenu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="workshops&events.html">Workshops & Events</a></li>
-                <li><a href="officers.html">Officers</a></li>
+                <li><a href="officers.html" aria-current="page">Officers</a></li>
                 <li><a href="joinus.html">Join us</a></li>
             </ul>
         </nav>
 
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="mobileMenu" aria-label="Main navigation" id="mobileMenu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="workshops&events.html">Workshops & Events</a></li>
+                <li><a href="officers.html" aria-current="page">Officers</a></li>
+                <li><a href="joinus.html">Join us</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- make js code to make cards automatic -->
@@ -55,7 +56,8 @@
         </section>
     </main>
 
-    <footer>
+    <footer aria-label="Site Footer"> 
+        <h2 class="visually-hidden">Site Footer</h2>
         <div class="footerContent">
             <div class="footerContent__desc">
                 <img src="assets/images/pels_logo.webp" alt="Power And Electronics Society logo">
@@ -64,14 +66,14 @@
 
             <div class="footerContent__socials">
                 <div class="icon" name="discord">
-                    <a href="https://discord.gg/dUWEVdyU" target="_blank">
+                    <a href="https://discord.gg/dUWEVdyU" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.59 5.88997C17.36 5.31997 16.05 4.89997 14.67 4.65997C14.5 4.95997 14.3 5.36997 14.17 5.69997C12.71 5.47997 11.26 5.47997 9.83001 5.69997C9.69001 5.36997 9.49001 4.95997 9.32001 4.65997C7.94001 4.89997 6.63001 5.31997 5.40001 5.88997C2.92001 9.62997 2.25001 13.28 2.58001 16.87C4.23001 18.1 5.82001 18.84 7.39001 19.33C7.78001 18.8 8.12001 18.23 8.42001 17.64C7.85001 17.43 7.31001 17.16 6.80001 16.85C6.94001 16.75 7.07001 16.64 7.20001 16.54C10.33 18 13.72 18 16.81 16.54C16.94 16.65 17.07 16.75 17.21 16.85C16.7 17.16 16.15 17.42 15.59 17.64C15.89 18.23 16.23 18.8 16.62 19.33C18.19 18.84 19.79 18.1 21.43 16.87C21.82 12.7 20.76 9.08997 18.61 5.88997H18.59ZM8.84001 14.67C7.90001 14.67 7.13001 13.8 7.13001 12.73C7.13001 11.66 7.88001 10.79 8.84001 10.79C9.80001 10.79 10.56 11.66 10.55 12.73C10.55 13.79 9.80001 14.67 8.84001 14.67ZM15.15 14.67C14.21 14.67 13.44 13.8 13.44 12.73C13.44 11.66 14.19 10.79 15.15 10.79C16.11 10.79 16.87 11.66 16.86 12.73C16.86 13.79 16.11 14.67 15.15 14.67Z" fill="#f8f8f8"/>
                         </svg>
                     </a>
                 </div>
                 <div class="icon" name="instagram">
-                    <a href="https://www.instagram.com/utsapels?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                    <a href="https://www.instagram.com/utsapels?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Join our Instagram">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#f8f8f8"/>
                             <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="#f8f8f8"/>
@@ -79,9 +81,9 @@
                         </svg>        
                     </a>
                 </div>
-                <div class="icon" name="groupme" id="groupme">
-                    <a href="https://groupme.com/join_group/105513844/lg7igTCO" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" id="groupme">
+                <div class="icon" name="groupme">
+                    <a href="https://groupme.com/join_group/105513844/lg7igTCO" target="_blank" rel="noopener noreferrer" aria-label="Join our Groupme" id="groupme">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path fill="#f8f8f8" d="M5 1.25C3.48122 1.25 2.25 2.48122 2.25 4V16C2.25 17.5188 3.48122 18.75 5 18.75H9.17536L11.3569 22.3859C11.4924 22.6118 11.7366 22.75 12 22.75C12.2634 22.75 12.5076 22.6118 12.6431 22.3859L14.8246 18.75H19C20.5188 18.75 21.75 17.5188 21.75 16V4C21.75 2.48122 20.5188 1.25 19 1.25H5Z"></path>
                             <path fill="#1e1e1e" fill-rule="evenodd" d="M10.5 3.25C10.9142 3.25 11.25 3.58579 11.25 4V11C11.25 11.4142 10.9142 11.75 10.5 11.75 10.0858 11.75 9.75 11.4142 9.75 11V4C9.75 3.58579 10.0858 3.25 10.5 3.25zM13.5 3.25C13.9142 3.25 14.25 3.58579 14.25 4V11C14.25 11.4142 13.9142 11.75 13.5 11.75 13.0858 11.75 12.75 11.4142 12.75 11V4C12.75 3.58579 13.0858 3.25 13.5 3.25z" clip-rule="evenodd"></path>
                             <path fill="#1e1e1e" fill-rule="evenodd" d="M4.90557 11.5427C5.15812 11.2144 5.629 11.153 5.95732 11.4055L7.57963 12.6534C10.1857 14.6581 13.8144 14.6581 16.4204 12.6534L18.0428 11.4055C18.3711 11.153 18.842 11.2144 19.0945 11.5427 19.3471 11.871 19.2856 12.3419 18.9573 12.5944L17.335 13.8424C14.1898 16.2618 9.81027 16.2618 6.66507 13.8424L5.04275 12.5944C4.71444 12.3419 4.65302 11.871 4.90557 11.5427zM7.75 6C7.75 5.58579 8.08579 5.25 8.5 5.25H15.5C15.9142 5.25 16.25 5.58579 16.25 6 16.25 6.41421 15.9142 6.75 15.5 6.75L8.5 6.75C8.08579 6.75 7.75 6.41421 7.75 6zM7.75 9C7.75 8.58579 8.08579 8.25 8.5 8.25H15.5C15.9142 8.25 16.25 8.58579 16.25 9 16.25 9.41421 15.9142 9.75 15.5 9.75H8.5C8.08579 9.75 7.75 9.41421 7.75 9z" clip-rule="evenodd"></path>
@@ -89,7 +91,7 @@
                     </a>
                 </div>
                 <div class="icon" name="linkedin">
-                    <a href="https://www.linkedin.com/in/utsa-pels-342426348?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BxgK07%2B8PTIyRJ9V8LxJ80A%3D%3D" target="_blank">
+                    <a href="https://www.linkedin.com/in/utsa-pels-342426348?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BxgK07%2B8PTIyRJ9V8LxJ80A%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Connect our Linkedin">
                         <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z" fill="#f8f8f8"/>
                             <path d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z" fill="#f8f8f8"/>
@@ -108,6 +110,6 @@
         </div>
         
         <p class="copyright">&#0169 2025 IEEE Power & Electronics Society. All rights Reserved</p>
-    </footer>
+    </footer> 
 </body>
 </html>

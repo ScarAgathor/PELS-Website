@@ -1,10 +1,11 @@
 //hamburger and mobile menu
 const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobileMenu');
+const mobileMenu = document.getElementById('mobileMenu');
 
 hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle('active')
-    mobileMenu.classList.toggle('active')
+    const isActive = hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isActive);
 })
 
 
