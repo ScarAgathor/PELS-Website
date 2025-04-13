@@ -32,11 +32,15 @@ $link-text: #b71933;
 $link-text-active: #a6172e;
 
 $officer-card-bg: #fafafa;
+$officer-card-text--black: #000000;
 $officer-card-text--red: #e63946;
+
+$program-card-bg: #ffffff;
+$program-modal-bg: #ffffff;
 
 $body-bg: #f8f8f8;
 
-//fonts
+//font features
 $h1-text-size: clamp(2.5rem, 1.8vw, 4rem);
 $h1-text-family: poppinsBold;
 $h2-text-size: clamp(1.75rem, 3vw, 2.25rem);
@@ -46,19 +50,12 @@ $p-text-family: PoppinsMedium;
 $button-text-size: clamp(1.25rem, 2vw, 1.5rem);;
 $button-text-family: poppinsSemiBold;
 
-$text-line-height: 1.3;
-
-//widths
-
-
-
 //breakpoints
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
 
 //fonts
-
 $poppinsBold: poppinsBold;
 $poppinsSemiBold: poppinsSemiBold;
 $poppinsMedium: poppinsMedium;

@@ -5,7 +5,7 @@
         "img-modal": "",
         "title": "555 Timer",
         "organizer": "PELSxPES",
-        "date": "March 25, 2025",
+        "date": "2025-04-17",
         "location": "Eb 2.04.06A",
         "time": "4:30PM",
         "description": "Lorem"
@@ -16,75 +16,9 @@
         "img_modal": "",
         "title": "Heart PCB",
         "organizer": "PELSxSWE",
-        "date": "February 14, 2026",
+        "date": "2025-05-14",
         "location": "Eb 2.04.06A",
         "time": "4:30PM",
         "description": "Lorem, ipsueligendi vitae molestiae iure maiores. Ipsum omnis consequuntur vero fugi"
-    },
-    {
-        "status": "completed",
-        "img-card": "",
-        "img-modal": "",
-        "title": "555 Timer",
-        "organizer": "PELS",
-        "date": "March 25, 2025",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem"
-    },
-    {
-        "status": "completed",
-        "img-card": "",
-        "img-modal": "",
-        "title": "555 Timer",
-        "organizer": "PELS",
-        "date": "March 25, 2025",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem"
-    },
-    {
-        "status": "completed",
-        "img-card": "",
-        "img-modal": "",
-        "title": "555 Timer",
-        "organizer": "PELS",
-        "date": "March 25, 2025",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem"
-    },
-    {
-        "status": "completed",
-        "img-card": "",
-        "img-modal": "",
-        "title": "555 Timer",
-        "organizer": "PELS",
-        "date": "March 25, 2025",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem"
-    },
-    {
-        "status": "completed",
-        "img-card": "",
-        "img-modal": "",
-        "title": "555 Timer",
-        "organizer": "PELS",
-        "date": "March 25, 2025",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem"
-    },
-    {
-        "status": "completed",
-        "img-card": "",
-        "img-modal": "",
-        "title": "555 Timer",
-        "organizer": "PELS",
-        "date": "March 25, 2025",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem"
     }
 ]

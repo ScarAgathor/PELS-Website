@@ -10,6 +10,7 @@
 
 @use 'base';
 @use 'components';
+@use 'pages';
 
 
 // @import 'base/config';
@@ -22,59 +23,6 @@
 // @import 'pages/offciers';
 // @import 'pages/joinus';
 
-
-// body {
-//     background-color: $primary-bg;
-//     display: flex;
-//     flex-direction: column;
-// }
-
-// main {
-//     @include align-flex;
-//     flex-direction: column;
-// }
-
-// h1, h2, p{
-//     line-height: $text-line-height;
-//     text-align: center;
-// }
-
-// h1 {
-//     font-family: PoppinsBold;
-//     font-size: clamp(40px, 1.8vw, 64px);
-
-// }
-
-// h2 {
-//     font-family: PoppinsSemiBold;
-//     font-size: clamp(28px, 3vw, 36px);
-// }
-
-// p {
-//     font-size: 20px;
-//     font-family: PoppinsMedium;
-//     color: $text-dark;
-
-// }
-
-// .button--red {
-//     background-color: $pels--red;
-//     color: $text-white;
-//     padding: 22px 60px;
-//     border: none;
-//     border-radius: 999px;
-//     font-size: clamp(1.25rem, 2vw, 1.5rem);
-//     font-family: PoppinsSemiBold;
-//     letter-spacing: 13%;
-//     cursor: pointer;
-//     text-decoration: none;
-//     // outline: none;
-
-//     &:active, &:focus, &:hover {
-//         background-color: darken($pels--red, 10%);      
-//         // outline: none;
-//     }
-// }
 
 // .overlay {
 //     position: fixed;

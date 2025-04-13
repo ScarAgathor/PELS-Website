@@ -4,13 +4,11 @@
     align-items: center;
 }
 
-// @mixin vertical-gap($gap) {
-//     @include align-flex;
-//     flex-direction: column;
-//     gap: $gap;
-// }
+@mixin verticalGap($gap) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: $gap;
+}
 
-// @mixin WandH($width, $height) {
-//     width: $width;
-//     height: $height;
-// }

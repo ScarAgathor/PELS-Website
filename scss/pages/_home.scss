@@ -1,121 +1,114 @@
-.home {
+@use '../base/' as base;
 
-    h2 {
-        text-align: center;
-    }
-
-    p{
-        text-align: center;
-        font-size: clamp(20px, 2vw, 24px);
-    }
-
+.main__home {
+    
     .hero {
-        background-color: black;
-        width: 100%;
-        height: 80vh; //make this work smoothly
-        @include vertical-gap(0px);
-        padding: 40px 0;
+        position: relative;
+        background-image: url('../../assets/images/background-img.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow: hidden;
+        height: 100vh;
+        padding: 2.5rem 0;
 
-        h1 {
-            color: white;
-            margin-bottom: 20px
-
+        &__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(#000000, .5);
+            z-index: 1;
         }
 
-        p {
-            @include vertical-gap(5px);
-            font-size: clamp(22px, 2vw, 28px);
-            font-family: PoppinsSemiBold;
-            width: clamp(400px, 45vw, 950px);
-            text-align: center;
-            margin-bottom: 40px;
-            color: #e0e0e0;
+        &__content {
+            @include base.verticalGap(0rem);
+            position: relative;
+            z-index: 2;
 
-            span {
-                font-size: clamp(18px, 2vw, 24px);
-                font-family: PoppinsRegular;
+            h1 {
+                color: base.$h1--white;
+                margin-bottom: 1.25rem;
             }
+
+            p {
+                @include base.verticalGap(0.31rem);
+                color: base.$p--light;
+                font-size: clamp(1.375rem, 2vw, 1.75rem);
+                font-family: base.$poppinsSemiBold;
+                width: clamp(25rem, 45vw, 59.375rem);
+                margin-bottom: 2.5rem;
+
+                span {
+                    font-size: clamp(1.125rem, 2vw, 1.5rem);
+                    font-family: base.$poppinsRegular;
+                }
+            }
+
         }
     }
-
-
 
     .programs {
-        padding: 40px 0;
-
         .programs__topdiv {
-            margin-top: 60px;
-            @include vertical-gap(30px);
+            margin-top: clamp(1.875rem, 2.5vw, 3.75rem);
+            @include base.verticalGap(clamp(1.875rem, 2.5vw, 6.25rem));
 
-            @media (min-width:$breakpoint-tablet) {
-                gap: 60px;
-            }
-
-            @media (min-width:$breakpoint-desktop) {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 100px;
-            }
-        }
-
-        .home--program_container {
-            @include vertical-gap(40px);
-        }
-
-        .home--program_title {
-            font-size: clamp(28px, 3vw, 32px);
-            font-family: poppinsBold;
-        }
-
-        .home--program_title_workshops {
-            color: $pels--red
-        }
-
-        .home--program_title_events {
-            color: $event-purple
-        }
-
-        .home--program_content {
-            @include vertical-gap(40px);
-
-            @media (min-width:$breakpoint-tablet) {
+            @media (min-width: base.$breakpoint-desktop) {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        .button--red_purple {
-            background-color: $event-purple;
+        .programs__container {
+            @include base.verticalGap(2.5rem);
+        }
+        
+        .programs__title {
+            font-size: clamp(1.75rem, 3vw, 2rem);
+            font-family: base.$poppinsBold;
+        }
 
-            &:active, &:focus, &:hover {
-                background-color: darken($event-purple, 10%);      
-                // outline: none;
+        .programs__title--workshops {
+            color: base.$pels--red
+        }
+
+        .programs__title--events {
+            color: base.$pels--purple
+        }
+
+        .programs__content {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            gap: 2.5rem;
+        
+            @media (min-width: base.$breakpoint-tablet) {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
     }
 
     .officers {
-        @include vertical-gap(0);
+        margin-bottom: clamp(1.875rem, 5vw, 6.25rem);;
+        @include base.verticalGap(0);
 
-        .officers_section--title {
-            margin-bottom: 20px;
+        .officers__title {
+            margin-bottom: 1.25rem;
         }
 
-        .officers_section--desc {
-            margin-bottom: 30px;
+        .officers__desc {
+            margin-bottom: 1.875rem;
         }
         .officers__container {
-            
             display: grid;
-            gap: 35px;
-            margin-top: 100px;
-            margin-bottom: 30px;
+            gap: 2.1875rem;
+            margin: 6.25rem 0 1.875rem 0;
 
-
-            @media (min-width:$breakpoint-tablet) {
+            @media (min-width: base.$breakpoint-tablet) {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 70px;
+                gap: 4.375rem;
 
                 grid-template-areas:
                 "p p"
@@ -123,28 +116,28 @@
                 place-items: center;
 
 
-                .officer--card.P {
+                .officer__card.P {
                     grid-area: p;
                 }
                 
-                .officer--card.E {
+                .officer__card.E {
                     grid-area: e;
                 }
                 
-                .officer--card.I {
+                .officer__card.I {
                     grid-area: i;
                 }
 
             }
 
-            @media (min-width: $breakpoint-desktop) {
+            @media (min-width: base.$breakpoint-desktop) {
                 gap: 90px;
                 grid-template-columns: repeat(3, 1fr);
                 grid-template-areas: "e p i";
                 align-items: end; /* so we can offset P */
              
-                .officer--card.P {
-                    transform: translateY(-90px); /* raise center card */
+                .officer__card.P {
+                    transform: translateY(-5.625rem); /* raise center card */
                 }
             }
         }

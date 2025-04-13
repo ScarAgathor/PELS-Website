@@ -1,0 +1,111 @@
+@use '../base/' as base;
+
+.program__modal {
+    display: none;
+    width: clamp(31.563rem, 50vw, 43.75rem);
+    height: auto;
+    max-height: 46.25rem;
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    article {
+        overflow: auto;
+        width: 100%;
+        height: 100%;
+        background-color: base.$program-modal-bg;
+        border-radius: 0.5rem;
+        padding: 1.5625rem clamp(3.375rem, 5vw, 4.6875rem); 
+
+        .modal__header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.6875rem;
+
+            .modal__organizer {
+                font-size: 1.25rem; // 20px
+                font-family: base.$poppinsBold;
+                letter-spacing: 0.05em; // 5%
+            }
+        }
+
+        .modal__image {
+            width: 100%;
+            height: 15.625rem;
+            border-radius: 1.125rem;
+            object-fit: cover;
+            background-color: green;
+            margin-bottom: 1.5625rem
+        }
+
+        .modal__hero {
+            display: flex;
+            align-items: center;
+            gap: 7.25rem; 
+            margin-bottom: 2.125rem;
+
+            .modal__title {
+                font-size: clamp(1.375rem, 4vw, 1.5rem);
+                font-family: base.$poppinsBold;
+            }
+
+            .modal__status {
+                font-size: 1rem; // 16px
+                font-family: base.$poppinsRegular;
+            }
+
+            .upcoming {
+                color: base.$pels--yellow;
+            }
+
+            .completed {
+                color: base.$pels--gray;
+            }
+        }
+
+        .modal__meta {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 2.375rem;
+
+            p {
+                font-size: 1rem; // 16px
+                font-family: base.$poppinsMedium;
+            }
+
+            .modal__location__container {
+                display: flex;
+                align-items: center;
+                gap: 0.3125rem;
+
+                path {
+                    color: base.$pels--purple;
+                }
+            }
+        }
+
+        .modal__desc {
+            max-height: 13.75rem;
+            font-size: 1rem; 
+            font-family: base.$poppinsRegular;
+            line-height: 1.6;
+            margin-bottom: 1.1875rem; 
+            text-align: start;
+        }
+    }
+
+    .modal__workshops {
+        border-left: 0.125rem solid base.$pels--red; 
+    }
+
+    .modal__events {
+        border-left: 0.125rem solid base.$pels--purple;
+    }
+}
+
+.program__modal--active {
+    display: block;
+}

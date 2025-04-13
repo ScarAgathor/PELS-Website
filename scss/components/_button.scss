@@ -1,0 +1,29 @@
+@use '../base/' as base;
+
+.button {
+    color: base.$button-text;
+    padding: 1.375rem 3.75rem; //make responsive
+    border: none;
+    border-radius: 999px;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-family: base.$poppinsSemiBold;
+    letter-spacing: .13em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button--red {
+    background-color: base.$button-bg--red;
+
+    &:active, &:focus, &:hover {
+        background-color: base.$button-bg--red-active;
+    }
+}
+
+.button--purple {
+    background-color: base.$button-bg--purple;
+
+    &:active, &:focus, &:hover {
+        background-color: base.$button-bg--purple-active;
+    }
+}

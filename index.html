@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <script src="src/index.js" defer></script>
 </head>
-<body id="homePage">
+<body id="home__page">
     <header>
         <img src="assets/images/pels_logo.webp" alt="Power And Electronics Society logo" class="logo">
         <nav class="navbar" aria-label="Main navigation">
@@ -19,7 +19,7 @@
             </ul>
         </nav>
 
-        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
@@ -35,12 +35,16 @@
         </nav>
     </header>
 
-    <main class="homeMain">
-      <!--   <section class="hero">
-            <h1>IEEE Power & Electronics Society.</h1>
-            <p>About us! <span>PELS is dedicated to the design, evaluation, and creation of circuits for the efficient conversion, control and conditioning of electrical power.</span></p>
-            <p>Our Mission!<span>We offer hands-on learning, collaborative projects, and networking with industry professionals, all while inspiring students about electrical and computer engineering.</span></p>
-            <a class="button--red" href="joinus.html" target="_self">Join PELS Today</a>
+    <main class="main__home">
+        <section class="hero">
+            <div class="hero__overlay"></div>
+            <div class="hero__content">
+                <h1>IEEE Power & Electronics Society.</h1>
+                <p>About us! <span>PELS is dedicated to the design, evaluation, and creation of circuits for the efficient conversion, control and conditioning of electrical power.</span></p>
+                <p>Our Mission!<span>We offer hands-on learning, collaborative projects, and networking with industry professionals, all while inspiring students about electrical and computer engineering.</span></p>
+                <a class="button button--red" href="joinus.html" target="_self">Join PELS Today</a>
+            </div>
+            
         </section>
 
         <section class="programs">
@@ -48,119 +52,75 @@
             <p>Join our latest hands-on workshops and exciting events</p>
 
             <div class="programs__topdiv">
-                <div class="home--program_container">
-                    <h3 class="home--program_title home--program_title_workshops">Workshops</h3>
-                    <div class="home--program_content">
-                        fpor the program cards, write a script so that always the first two upcoming workshops and events are displayed this should be dynamic, then delete these ones
-                        <div class="program--card program--card__workshops">
-                            <p class="status upcoming">upcoming</p>
-                            <img src="${img}" alt="">
-                            <h3 class="card__title">555 Timer</h3>
-                            <p class="organizer">PELS</p>
-                            <div class="meta">
-                                <p class="date">March 25, 2025</p>
-                                <p class="location">
-                                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
-                                        </svg>
-                                    <span>EB 2.04.06A</span>
-                                </p>
-                            </div>
-                            <p class="time">${time}</p>
-                            <p style="display: none;">${desc}</p>
-                        </div>
-                        <div class="program--card program--card__workshops">
-                            <p class="status upcoming">upcoming</p>
-                            <img src="${img}" alt="">
-                            <h3 class="card__title">555 Timer</h3>
-                            <p class="organizer">PELS</p>
-                            <div class="meta">
-                                <p class="date">March 25, 2025</p>
-                                <p class="location">
-                                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
-                                        </svg>
-                                    <span>EB 2.04.06A</span>
-                                </p>
-                            </div>
-                            <p class="time">${time}</p>
-                            <p style="display: none;">${desc}</p>
-                        </div>
-                        
-
+                <div class="programs__container">
+                    <h3 class="programs__title programs__title--workshops">Workshops</h3>
+                    <div class="programs__content programs__content--workshops">
+    
                     </div>
-                    <a class="button--red" href="workshops&events.html#workshops">View All Workshops</a>
+                    <a class="button button--red" href="workshops&events.html#workshops">View All Workshops</a>
                 </div>
 
-                <div class="home--program_container">
-                    <h3 class="home--program_title home--program_title_events">Events</h3>
-                    <div class="home--program_content">
-                        <div class="program--card program--card__events">
-                            <p class="status upcoming">upcoming</p>
-                            <img src="${img}" alt="">
-                            <h3 class="card__title">555 Timer</h3>
-                            <p class="organizer">PELS</p>
-                            <div class="meta">
-                                <p class="date">March 25, 2025</p>
-                                <p class="location">
-                                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
-                                        </svg>
-                                    <span>EB 2.04.06A</span>
-                                </p>
-                            </div>
-                            <p class="time">${time}</p>
-                            <p style="display: none;">${desc}</p>
-                        </div>
-                        <div class="program--card program--card__workshops">
-                            <p class="status upcoming">upcoming</p>
-                            <img src="${img}" alt="">
-                            <h3 class="card__title">555 Timer</h3>
-                            <p class="organizer">PELS</p>
-                            <div class="meta">
-                                <p class="date">March 25, 2025</p>
-                                <p class="location">
-                                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
-                                        </svg>
-                                    <span>EB 2.04.06A</span>
-                                </p>
-                            </div>
-                            <p class="time">${time}</p>
-                            <p style="display: none;">${desc}</p>
-                        </div>
+                <div class="programs__container">
+                    <h3 class="programs__title programs__title--events">Events</h3>
+                    <div class="programs__content programs__content--events">
+
                     </div>
-                    <a class="button--red button--red_purple" href="workshops&events.html#events" target="_self">View All Events</a> 
-                     clicking should take you to the other page. do it by saving the clicked program in the local storage, switch to programs page, then call this intoloadPrograms function 
+                    <a class="button button--purple" href="workshops&events.html#events" target="_self">View All Events</a> 
+                     <!-- this takes you to the workshops and events page and calls the correct tab function. although it makes it so the same tab is called even if the user swthces tabs and reloads the page. fix later  -->
                 </div>
             </div>
-
         </section>
 
         <section class="officers">
-            <h2 class="officers_section--title">Meet Our Officers</h2>
-            <p class="officers_section--desc">Leading the way at IEEE PELS—meet our top officers, along with a dedicated team behind them.</p>
+            <h2 class="officers__title">Meet Our Officers</h2>
+            <p class="officers__desc">Leading the way at IEEE PELS—meet our top officers, along with a dedicated team behind them.</p>
             <div class="officers__container">
-                <div class="officer--card P">
-                    <img src="assets/images/officers/jennnifer.jpg" alt="president">
-                    <p class="name">Jennifer Dominguez</p>
-                    <p class="position">President</p>
+                <div class="officer__card P">
+                    <img src="assets/images/officers/jennnifer.jpg" alt="president" class="officer__image">
+                    <p class="officer__name">Jennifer Dominguez</p>
+                    <p class="officer__position">President</p>
                 </div>
-                <div class="officer--card E">
-                    <img src="assets/images/officers/alisa.jpg" alt="external Vice President">
-                    <p class="name">Alisa Bustos</p>
-                    <p class="position">External Vice President</p>
+                <div class="officer__card E">
+                    <img src="assets/images/officers/alisa.jpg" alt="external Vice President" class="officer__image">
+                    <p class="officer__name">Alisa Bustos</p>
+                    <p class="officer__position">External Vice President</p>
                 </div>
-                <div class="officer--card I">
-                    <img src="assets/images/officers/christian.jpg" alt="internal Vice President">
-                    <p class="name">Christian Garcia</p>
-                    <p class="position">Internal Vice President</p>
+                <div class="officer__card I">
+                    <img src="assets/images/officers/christian.jpg" alt="internal Vice President" class="officer__image">
+                    <p class="officer__name">Christian Garcia</p>
+                    <p class="officer__position">Internal Vice President</p>
                 </div>
             </div>
-            <a class="button--red" href="officers.html" target="_self">See All Officers</a>
-
-        </section>-->
+            <a class="button button--red" href="officers.html" target="_self">See All Officers</a>
+        </section>
     </main> 
+
+    <div class="overlay"></div>
+    <div class="program__modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal__title" aria-describedby="modal__desc" aria-hidden="true">
+        <article tabindex="-1">
+            <div class="modal__header">
+                <p class="modal__organizer"></p>
+                <button class="modal__close" id="modal__close" aria-label="Close program modal">close</button>
+            </div>
+
+            <img src="" alt="" class="modal__image">
+
+            <div class="modal__hero">
+                <h3 class="modal__title"></h3>
+                <p class="modal__status"></p>
+            </div>
+            <div class="modal__meta">
+                <p class="modal__date"></p>
+                <p class="modal__location__container">
+                    <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="modal__location__svg" aria-hidden="true">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
+                        </svg>
+                    <span class="modal__location__text"></span>
+                </p>
+            </div>
+            <p class="modal__desc" id="modal__desc"></p>
+        </article>
+    </div>
     <footer aria-label="Site Footer"> 
         <h2 class="visually-hidden">Site Footer</h2>
         <div class="footerContent">
