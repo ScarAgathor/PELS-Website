@@ -1,114 +1,103 @@
-.program {
+@use "../base/" as base;
 
-
-    .title {
-        margin-top: 60px;
-        margin-bottom: 38px;
-        p {
-            font-size: clamp(18px, 1.5vw, 22px);
-            margin-top: 24px;
-            width: 458px;
-            text-align: center;
-        }
+.main__program {
+    .hero {
+        margin: 3.75rem 0 2.375rem 0;
     }
 
     .tabs {
         width: 100%;
-        border-bottom: 2px solid #d9d9d9;
-        margin-bottom: 75px;
+        border-bottom: 0.125rem solid #d9d9d9; 
+        margin-bottom: 4.688rem; 
         display: flex;
         justify-content: center;
-        gap: 10px;
-
-        button {
-            width: 300px;
-            height: 110px;
+        gap: 0.625rem; 
+    
+        &__button {
+            width: clamp(18.75rem, 30vw, 37.5rem); // flexible width
+            padding: clamp(1rem, 2.5vh, 2.25rem) 0;
+            min-height: 6.875rem; 
             background: none;
             border: none;
             outline: none;
-            color: $interactive-dark;
-            font-size: clamp(24px, 3vw, 44px);
-            font-family: PoppinsBold;
-            letter-spacing: 16%;
+            color: base.$pels--gray;
+            font-size: clamp(1.5rem, 3vw, 2.75rem); 
+            font-family: base.$poppinsBold;
+            letter-spacing: 0.16em;
             cursor: pointer;
-
-            @media (min-width:$breakpoint-tablet) {
-                width: 400px;
-                height: 146px;
-            }
-
-            @media (min-width:$breakpoint-desktop) {
-                width: 600px;
-            }
         }
-
-        .workshops:hover {
-            border-bottom: 4px solid $pels--red;
-            color: $pels--red;
+    
+        &__workshops:hover {
+            border-bottom: 0.25rem solid base.$pels--red;
+            color: base.$pels--red;
         }
-
-        .events:hover {
-            border-bottom: 4px solid $event-purple;
-            color: $event-purple;
+    
+        &__events:hover {
+            border-bottom: 0.25rem solid base.$pels--purple;
+            color: base.$pels--purple;
         }
-
-        .workshops--active {
-            border-bottom: 4px solid $pels--red;
-            color: $pels--red;
+    
+        &__workshops--active {
+            border-bottom: 0.25rem solid base.$pels--red;
+            color: base.$pels--red;
         }
-
-        .events--active {
-            border-bottom: 4px solid $event-purple;
-            color: $event-purple;
+    
+        &__events--active {
+            border-bottom: 0.25rem solid base.$pels--purple;
+            color: base.$pels--purple;
         }
     }
+    
 
-    .programs {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 64px;
-        margin-bottom: 78px;
-
+    .programs__container {
+        @include base.verticalGap(4rem); 
+        margin-bottom: 4.875rem; 
+    
         h2 {
-            font-size: clamp(32px, 4vw, 48px);
-
+            font-size: clamp(2rem, 4vw, 3rem);
         }
-
-        .content {
+    
+        .programs__content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: clamp(30px, 5vw, 70px);
-
-            @media (min-width:$breakpoint-tablet) {
+            gap: clamp(1.875rem, 5vw, 4.375rem); 
+    
+            @media (min-width: base.$breakpoint-tablet) {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 60px;
+                // gap: 3.75rem; // 60px
             }
-
-            @media (min-width:$breakpoint-desktop) {
+    
+            @media (min-width: base.$breakpoint-desktop) {
                 grid-template-columns: repeat(4, 1fr);
-                gap: clamp(30px, 3vw, 70px);
+                gap: clamp(1.875rem, 3vw, 4.375rem); 
             }
         }
-
-        .see-more-button {
-            font-size: clamp(20px, 3vw, 24px);
-            font-family: PoppinsSemiBold;
-            letter-spacing: 13%;
+    
+        .seemorebutton {
+            font-size: clamp(1.25rem, 3vw, 1.5rem); 
+            font-family: base.$poppinsSemiBold;
+            letter-spacing: 0.13em; // 13%
             background: none;
             border: none;
             cursor: pointer;
-            // display: flex; this is set in index.js
+            // display: flex; //this is set in index.js
             align-items: center;
-            gap: 8px;
+            gap: 0.5rem; 
+        }
+    
+        .seemorebutton--workshops {
+            color: base.$pels--red;
+        }
+    
+        .seemorebutton--events {
+            color: base.$pels--purple;
         }
 
-        .see-more-button__workshops {
-            color: $pels--red;
-        }
-
-        .see-more-button__events {
-            color: $event-purple;
+        .hidden-card {
+            display: none !important;
         }
     }
+
+    
+    
 }

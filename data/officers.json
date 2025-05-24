@@ -2,82 +2,82 @@
     {
         "name": "Jennifer Dominguez",
         "position": "President",
-        "image": "assets/images/officers/jennnifer.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/jennnifer_u2jvxw.jpg"
     },
     {
         "name": "Alisa Bustos",
         "position": "External Vice President",
-        "image": "assets/images/officers/alisa.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/alisa_m8fsqh.jpg"
     },
     {
         "name": "Christian Garcia",
         "position": "Internal Vice President",
-        "image": "assets/images/officers/christian.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/christian_rf7shy.jpg"
     },
     {
         "name": "Natalia Lopez",
         "position": "Senior Advisor",
-        "image": "assets/images/officers/natalia.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/natalia_l86tx5.jpg"
     },
     {
         "name": "Gladvin George",
         "position": "Senior Advisor",
-        "image": "assets/images/officers/gladvin.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/gladvin_s9qmoh.jpg"
     },
     {
         "name": "Amilcar Sanores",
         "position": "Senior Advisor",
-        "image": "assets/images/officers/amilcar.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/amilcar_db8fro.png"
     },
     {
         "name": "Caleb Gamboa",
         "position": "Treasurer",
-        "image": "assets/images/officers/caleb.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/caleb_vjrvqc.webp"
     },
     {
         "name": "Allan Aanonsen",
         "position": "Senior Advisor",
-        "image": "assets/images/officers/allan.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/allan_i9szlx.webp"
     },
     {
         "name": "Edidiong Ekong",
         "position": "Secretary",
-        "image": "assets/images/officers/edidiong.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/edidiong_vvqrup.png"
     },
     {
         "name": "Alejandro Villanueva",
         "position": "Outreach Director",
-        "image": "assets/images/officers/alejandro.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/alejandro_f7vybi.webp"
     },
     {
         "name": "Tyler Huling",
         "position": "Senior Advisor",
-        "image": "assets/images/officers/tyler.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/tyler_zao4hb.jpg"
     },
     {
         "name": "Ethan Aguire",
         "position": "Media Director",
-        "image": "assets/images/officers/ethan.jpg"
+        "image": "https://res.cloudinary.com/dvcpaters/image/upload/ethan_x6n7px.jpg"
     },
     {
         "name": "Emilio Valencia",
         "position": "Junior Officer",
-        "image" : "assets/images/officers/emilio.jpg"
+        "image" : "https://res.cloudinary.com/dvcpaters/image/upload/emilio_jmn3om.png"
     },
     {
         "name": "Noah Mendoza",
         "position": "Junior Officer",
-        "image" : "assets/images/officers/noah.jpg"
+        "image" : "https://res.cloudinary.com/dvcpaters/image/upload/noah_mxhvlk.png"
     },
     {
         "name": "Kateri Parker",
         "position": "Junior Officer",
-        "image" : "assets/images/officers/kateri.jpg"
+        "image" : "https://res.cloudinary.com/dvcpaters/image/upload/kateri_jx7jce.webp"
     },
     {
         "name": "Luis Alvarado",
         "position": "Junior Officer",
-        "image" : "assets/images/officers/luis.jpg"
+        "image" : "https://res.cloudinary.com/dvcpaters/image/upload/luis_tcjgl6.png"
     },
     {
         "name": "Kade Hoverson",
@@ -87,16 +87,16 @@
     {
         "name": "Aidan Tijerina",
         "position": "Junior Officer",
-        "image" : "assets/images/officers/aiden.jpg"
+        "image" : "https://res.cloudinary.com/dvcpaters/image/upload/aiden_p2ngjr.png"
     },
     {
         "name": "Roua Mohamed",
         "position": "Junior Officer",
-        "image" : "assets/images/officers/roua.jpg"
+        "image" : "https://res.cloudinary.com/dvcpaters/image/upload/roua_vmethj.png"
     },
     {
         "name": "Sandra Sreejith",
         "position": "Junior Officer",
-        "image" : "assets/images/officers/sandra.jpg"
+        "image" : "https://res.cloudinary.com/dvcpaters/image/upload/sandra_s9kvuu.webp"
     }
 ]

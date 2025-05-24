@@ -4,14 +4,13 @@
     
     .hero {
         position: relative;
-        background-image: url('https://res.cloudinary.com/dvcpaters/image/upload/background-img_tkofwa.jpg');
+        background-image: url('../../assets/images/background-img.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         overflow: hidden;
         height: 100vh;
-        // padding: 2.5rem 0;
-        @include base.centerDiv();
+        padding: 2.5rem 0;
 
         &__overlay {
             position: absolute;
@@ -102,6 +101,7 @@
         &__desc {
             margin-bottom: 1.875rem;
         }
+        
         &__container {
             display: grid;
             gap: 2.1875rem;

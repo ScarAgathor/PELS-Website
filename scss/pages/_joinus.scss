@@ -1,20 +1,31 @@
+@use "../base/" as base;
+
 .join{
     margin: 60px;
     gap: clamp(50px, 4vw, 80px);
 
     .hero {
-        @include vertical-gap(15px);
+        @include base.verticalGap(15px);
     
         p {
             font-size: clamp(20px, 3vw, 24px);
             width: clamp(490px, 40vw, 800px);
             text-align: center;
-            color: $text-dark;
+            color: base.$p--dark;
             margin-bottom: 10px;
         }
 
-        .button--red {
+        .member__link {
             margin-top: 10px;
+            color: base.$pels--red;
+            text-decoration: none;
+            font-family: base.$poppinsSemiBold;
+            font-size: clamp(16px, 2vw, 22px);
+
+            &:active, &:focus, &:hover {
+                color: darken(base.$pels--red, 10%);      
+                // outline: none;
+            }
         }
 
     }
@@ -29,8 +40,8 @@
 
         ul {
             font-size: clamp(20px, 3vw, 24px);
-            font-family: PoppinsMedium;
-            color: $text-dark;
+            font-family: base.$poppinsMedium;
+            color: base.$p--dark;
             margin-top: 30px;
         }
 
@@ -42,13 +53,13 @@
             margin-top: 15px;
 
             a {
-                font-family: poppinsSemiBold;
+                font-family: base.$poppinsSemiBold;
                 text-decoration: none;
-                color: $pels--red;
+                color: base.$pels--red;
                 cursor: pointer;
 
                 &:active, &:focus, &:hover {
-                    color: darken($pels--red, 10%);      
+                    color: darken(base.$pels--red, 10%);      
                     // outline: none;
                 }
             }

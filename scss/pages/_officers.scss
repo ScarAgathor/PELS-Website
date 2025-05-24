@@ -1,0 +1,64 @@
+@use "../base/" as base;
+
+@mixin vertical-gap($gap) {
+    @include base.centerDiv();
+    flex-direction: column;
+    gap: $gap;
+}
+
+.officers {
+    margin: 3.75rem;
+    gap: 6.25rem;
+
+    &__section {
+        @include vertical-gap(5rem);
+    }
+
+    &__senior {
+        @include vertical-gap(2.5rem);
+
+        @media (min-width: base.$breakpoint-desktop) {
+            gap: 5rem;
+        }
+
+        &--vice {
+            @include vertical-gap(2.5rem);
+
+            @media (min-width: base.$breakpoint-tablet) {
+                flex-direction: row;
+            }
+
+            @media (min-width: base.$breakpoint-desktop) {
+                gap: 5rem;
+            }
+        }
+
+        &--board {
+            @include vertical-gap(2.5rem);
+
+            @media (min-width: base.$breakpoint-tablet) {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media (min-width: base.$breakpoint-desktop) {
+                gap: 5rem;
+            }
+        }
+    }
+
+    &__member {
+        @include vertical-gap(2.5rem);
+
+        @media (min-width: base.$breakpoint-tablet) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: base.$breakpoint-desktop) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5rem;
+        }
+    }
+}

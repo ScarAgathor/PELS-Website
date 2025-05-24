@@ -1,23 +1,50 @@
+const home_page = document.getElementById('home__page');
+const program_page = document.getElementById('program__page');
+const officer_page = document.getElementById('officer__page');
 const hamburger = document.getElementById('hamburger');
 const mobile_menu = document.getElementById('mobileMenu');
 const overlay = document.querySelector('.overlay')
 const modal = document.getElementById('modal')
-const modal_status = modal.querySelector('.modal__status')
-const modal_title = modal.querySelector('.modal__title')
-const modal_img = modal.querySelector('.modal__image')
-const modal_organizer = modal.querySelector('.modal__organizer')
-const modal_date = modal.querySelector('.modal__date')
-const modal_location = modal.querySelector('.modal__location__container').lastElementChild
-const modal_desc = modal.querySelector('.modal__desc')
+const modal_status = modal?.querySelector('.modal__status')
+const modal_title = modal?.querySelector('.modal__title')
+const modal_img = modal?.querySelector('.modal__image')
+const modal_organizer = modal?.querySelector('.modal__organizer')
+const modal_date = modal?.querySelector('.modal__date')
+const modal_location = modal?.querySelector('.modal__location__container').lastElementChild
+const modal_desc = modal?.querySelector('.modal__desc')
 const modal_close = document.getElementById('modal__close')
-const home_page = document.getElementById('home__page');
+const tabs = document.querySelector('.tabs'); 
+const workshop_tab = tabs?.querySelector('#tab-workshops');
+const event_tab = tabs?.querySelector('#tab-events');
+const upcomingTitle = document.getElementById('upcoming__title');
+const completedTitle = document.getElementById('completed__title');
 
 let lastFocusedElement = null;
+let programType = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     if(home_page) {
         loadHomePrograms();
-    }    
+    } 
+    if(program_page) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tabParam = urlParams.get('tab');
+        const storedTab = localStorage.getItem('selectedTab');
+
+        if (tabParam === 'events' || tabParam === 'workshops') {
+            programType = tabParam;
+        } else if (storedTab === 'events' || storedTab === 'workshops') {
+            programType = storedTab;
+        } else {
+            programType = 'workshops'; // fallback
+        }
+
+        switchTabs(programType);
+        loadPrograms(programType);
+    }  
+    if(officer_page) {
+        loadOfficers();
+    }
 })
 
 document.addEventListener('keydown', (e) => {
@@ -27,20 +54,28 @@ document.addEventListener('keydown', (e) => {
 });
 
 //hamburger and mobile menu
-hamburger.addEventListener("click", () => {
+if(hamburger) {
+    hamburger.addEventListener("click", () => {
     const isActive = hamburger.classList.toggle('active');
     mobile_menu.classList.toggle('active');
     hamburger.setAttribute('aria-expanded', isActive);
 })
+}
+
 
 // programs Home Page
-overlay.addEventListener('click', () => {
-    resetModal();
-})
+if(overlay) {
+    overlay.addEventListener('click', () => {
+        resetModal();
+    })
+}
 
-modal_close.addEventListener('click', () => {
-    resetModal();
-})
+if(modal_close) {
+    modal_close.addEventListener('click', () => {
+        resetModal();
+    })
+}
+
 
 const loadHomePrograms = async () => {
     const program_types = ['workshops', 'events'];
@@ -182,246 +217,133 @@ const initializeModal = () => {
     lastFocusedElement = document.activeElement;
 }
 
+const loadPrograms = async (programType = 'workshops') => {
+    try {
+        const response = await fetch(`../data/${programType}.json`);
+        const programs = await response.json();
 
+        const upcomingContainer = document.getElementById(`upcoming-container`);
+        const completedContainer = document.getElementById(`completed-container`);
 
-// //officer page
-// document.addEventListener('DOMContentLoaded', () => {
-//     const officerPage = document.getElementById('officerPage');
-    
-//     if (officerPage) {
-//       loadOfficers();
-//     }
+        upcomingContainer.innerHTML = '';
+        completedContainer.innerHTML = '';
 
-    
-// });
+        programs.forEach(program => {
+            const card = createProgramCard(
+                program.status,
+                program.img_card,
+                program.title,
+                program.organizer,
+                program.date,
+                program.location,
+                program.time,
+                program.description,
+                programType
+            );
+
+            const container = program.status === 'upcoming' ? upcomingContainer : completedContainer;
+            container.appendChild(card);
+
+            card.addEventListener('click', () => {
+                createProgramModal(
+                    program.status,
+                    program.img_card,
+                    program.title,
+                    program.organizer,
+                    formatDate(program.date),
+                    program.location,
+                    program.time,
+                    program.description,
+                    programType
+                );
+                initializeModal();
+            });
+        });
+
+    } catch (err) {
+        console.error(`Failed to load ${programType}:`, err);
+    }
+};
+
+if (workshop_tab && event_tab) {
+    workshop_tab.addEventListener("click", () => {
+        programType = 'workshops';
+        localStorage.setItem('selectedTab', programType);
+        switchTabs(programType);
+        loadPrograms(programType);
+    });
+
+    event_tab.addEventListener("click", () => {
+        programType = 'events';
+        localStorage.setItem('selectedTab', programType);
+        switchTabs(programType);
+        loadPrograms(programType);
+    });
+}
+
+//switch program tabs
+const switchTabs = (activePrograms) => {
+    if(activePrograms == 'workshops') {
+        workshop_tab.classList.add('tabs__workshops--active');
+        event_tab.classList.remove('tabs__events--active');
+        upcomingTitle.textContent = `Upcoming Workshops`
+        completedTitle.textContent = `Completed Workshops`
+    } else if(activePrograms == 'events') {
+        event_tab.classList.add('tabs__events--active');
+        workshop_tab.classList.remove('tabs__workshops--active');
+        upcomingTitle.textContent = `Upcoming Events`
+        completedTitle.textContent = `Completed Events`
+    }
+}
 
 // //load officers
-// const  loadOfficers = async () => {
-//     try {
-//         const response = await fetch('../data/officers.json');
-//         const officers = await response.json();
+const  loadOfficers = async () => {
+    try {
+        const response = await fetch('../data/officers.json');
+        const officers = await response.json();
 
-//         const presidentContainer = document.getElementById('presidentCont');
-//         const vicePresidentContainer = document.getElementById('viceCont');
-//         const officerBoardContainer = document.getElementById('boardCont');
-//         const juniorOfficerContainer = document.getElementById('juniorCont');
-//         const advisorOfficerContainer = document.getElementById('advisorCont');
+        const presidentContainer = document.getElementById('presidentCont');
+        const vicePresidentContainer = document.getElementById('viceCont');
+        const officerBoardContainer = document.getElementById('boardCont');
+        const juniorOfficerContainer = document.getElementById('juniorCont');
+        const advisorOfficerContainer = document.getElementById('advisorCont');
 
-//         officers.forEach(officer => {
-//             let card = createOfficerCard(officer.image, officer.name, officer.position);
+        officers.forEach(officer => {
+            let card = createOfficerCard(officer.image, officer.name, officer.position);
             
-//             if (officer.position.toLowerCase() === 'president') {
-//                 presidentContainer.appendChild(card);
-//                 console.log(`${officer.name}, ${officer.position}`)
-//             } else if (officer.position.toLowerCase().includes('vice')) {
-//                 vicePresidentContainer.appendChild(card);
-//                 console.log(`${officer.name}, ${officer.position}`)
-//             } else if(officer.position.toLowerCase().includes('junior')) {
-//                 juniorOfficerContainer.appendChild(card);
-//                 console.log(`${officer.name}, ${officer.position}`)
-//             } else if(officer.position.toLowerCase().includes('advisor')) {
-//                 advisorOfficerContainer.appendChild(card);
-//                 console.log(`${officer.name}, ${officer.position}`)
-//             } else {
-//                 officerBoardContainer.appendChild(card);
-//                 console.log(`${officer.name}, ${officer.position}`)
-//             }
-//         });
+            if (officer.position.toLowerCase() === 'president') {
+                presidentContainer.appendChild(card);
+                console.log(`${officer.name}, ${officer.position}`)
+            } else if (officer.position.toLowerCase().includes('vice')) {
+                vicePresidentContainer.appendChild(card);
+                console.log(`${officer.name}, ${officer.position}`)
+            } else if(officer.position.toLowerCase().includes('junior')) {
+                juniorOfficerContainer.appendChild(card);
+                console.log(`${officer.name}, ${officer.position}`)
+            } else if(officer.position.toLowerCase().includes('advisor')) {
+                advisorOfficerContainer.appendChild(card);
+                console.log(`${officer.name}, ${officer.position}`)
+            } else {
+                officerBoardContainer.appendChild(card);
+                console.log(`${officer.name}, ${officer.position}`)
+            }
+        });
 
-//         console.table(officers)
+        console.table(officers)
 
-//     }catch (error) {
-//         console.error('Failed to load officer data:', error);
-//     }
-// }
+    }catch (error) {
+        console.error('Failed to load officer data:', error);
+    }
+}
 
-
-// //officer card
-// const createOfficerCard = (img, name, position) => {
-//     let officerCard = document.createElement('div');
-//     officerCard.classList.add('officer--card');
-//     officerCard.innerHTML = `
-//         <img src="${img }" alt="${position}">
-//         <p class="name">${name}</p>
-//         <p class="position">${position}</p>
-//     `  
-//     return officerCard
-// }
-
-
-// //program tabs
-// // const tabs = document.querySelector('.tabs') 
-// // const workshop_tab = tabs.querySelector('.workshops');
-// // // const event_tab = tabs.querySelector('.events');
-// // const upcomingTitle = document.querySelector('.upcoming-header')
-// // const completedTitle = document.querySelector('.completed-header')
-// // const programPage = document.getElementById('programPage');
-// // // const overlay = document.querySelector('.overlay')
-// // // const modal = document.querySelector('.program--modal')
-// // // const modal_status = modal.querySelector('.status')
-// // // const modal_title = modal.querySelector('.modal__title')
-// // // const modal_img = modal.querySelector('.modal__img')
-// // // const modal_organizer = modal.querySelector('.organizer')
-// // // const modal_date = modal.querySelector('.date')
-// // // const modal_location = modal.querySelector('.location').lastElementChild
-// // // const modal_desc = modal.querySelector('.desc')
-// // // const modal_close = document.getElementById('modal__close')
-// // const home_page = document.getElementById('home__page');
-
-// //program page load
-// //from the home page it should be able to to set active a workshop or event depending on what was clicked
-// document.addEventListener('DOMContentLoaded', () => {
-
-//     if(home_page) {
-//         loadHomePrograms()
-//     }
-    
-    
-//     if (programPage) {
-//         const hash = window.location.hash;
-//         if(hash === '#workshops') {
-//             switchTabs('workshops');
-//             loadPrograms('workshops')
-//         } else if(hash === '#events') {
-//             switchTabs('events');
-//             loadPrograms('events')
-//         } else {
-//             switchTabs('workshops');
-//             loadPrograms('workshops')
-//         }
-    
-//     }
-
-// });
-
-// //workshop tab
-// // workshop_tab.addEventListener("click", () => {
-// //     let program = 'workshops';
-// //     switchTabs(program)
-// //     loadPrograms(program);
-// // })
-
-// // //event tab
-// // event_tab.addEventListener("click", () => {
-// //     let program = 'events'
-// //     switchTabs(program);
-// //     loadPrograms(program);
-// // })
-
-// //switch program tabs
-// const switchTabs = (active) => {
-//     if(active == 'workshops') {
-//         workshop_tab.classList.add('workshops--active');
-//         event_tab.classList.remove('events--active');
-//         upcomingTitle.textContent = `Upcoming Workshops`
-//         completedTitle.textContent = `Completed Workshops`
-//     } else if(active == 'events') {
-//         event_tab.classList.add('events--active');
-//         workshop_tab.classList.remove('workshops--active');
-//         upcomingTitle.textContent = `Upcoming Events`
-//         completedTitle.textContent = `Completed Events`
-//     }
-// }
-
-// // load programs
-// const loadPrograms = async (programType) => {
-//     try {
-//         const response = await fetch(`../data/${programType}.json`);
-//         const programs = await response.json();
-
-//         const upcomingContainer = document.getElementById('upcoming');
-//         const completedContainer = document.getElementById('completed');
-
-//         const seeMoreUpcomingBtn = document.getElementById('see-more-upcoming');
-//         const seeMoreCompletedBtn = document.getElementById('see-more-completed');
-
-//         upcomingContainer.innerHTML = ``;
-//         completedContainer.innerHTML = ``;
-
-//         let upcomingProgramCount = 0;
-//         let completedProgramCount = 0;
-
-//         let expanded = false;
-
-//         //create program cards
-//         programs.forEach(program => {
-//             let card = createProgramCard(program.status, program.img_card, program.title, program.organizer, program.date, program.location, program.time, program.description, programType);
-//             if(program.status == 'upcoming') {
-//                 if (upcomingProgramCount >= 4) {
-//                     card.classList.add('hidden-card');
-//                     card.classList.add('hideable') //consider using dataset or a better state storer
-//                 } 
-//                 upcomingContainer.appendChild(card);
-//                 upcomingProgramCount++;
-//             } else if (program.status == 'completed') {
-//                 if (completedProgramCount >= 4) {
-//                     card.classList.add('hidden-card');
-//                     card.classList.add('hideable')
-//                 }
-//                 completedContainer.appendChild(card);
-//                 completedProgramCount++;
-//             }
-//         });
-
-//         //toggle see more visibility and see more logic
-        
-//         if (upcomingProgramCount > 4) {
-//             seeMoreUpcomingBtn.style.display = 'flex';
-//             seeMoreUpcomingBtn.onclick = () => {
-//                 document.querySelectorAll('#upcoming .hideable').forEach(card => {
-//                     if(expanded == true) {
-//                         card.classList.remove('hidden-card');
-//                     } else if(expanded == false) {
-//                         card.classList.add('hidden-card');
-//                     }
-//                 });
-//                 seeMoreUpcomingBtn.textContent = expanded ? 'See Less' : 'See More';
-//             };
-//         } else {
-//             seeMoreUpcomingBtn.style.display = 'none';
-//         }
-
-//         if (completedProgramCount > 4) {
-//             seeMoreCompletedBtn.style.display = 'flex';
-//             seeMoreCompletedBtn.onclick = () => {
-//                 expanded = !expanded
-//                 document.querySelectorAll('#completed .hideable').forEach(card => {
-//                     if(expanded == true) {
-//                         card.classList.remove('hidden-card');
-//                     } else if(expanded == false) {
-//                         card.classList.add('hidden-card');
-//                     }
-
-//                     // the issue is that because I remove the hidden card, the program doesn't know which cards are hidden meant to be hidden anymore so it can't find them
-                    
-//                 });
-//                 seeMoreCompletedBtn.textContent = expanded ? 'See Less' : 'See More';
-//             };
-//         } else {
-//             seeMoreCompletedBtn.style.display = 'none';
-//         }
-
-//         //create program modal
-//         let program_cards = document.querySelectorAll('.program--card');
-//         program_cards.forEach(card => {
-//             card.addEventListener('click', () => {
-//                 let status = card.children[0].textContent
-//                 let img = card.children[1].getAttribute('src')
-//                 let title = card.children[2].textContent
-//                 let organizer = card.children[3].textContent
-//                 let date = card.children[4].children[0].textContent
-//                 let location = card.children[4].children[1].lastElementChild.textContent
-//                 let time = card.children[5].textContent
-//                 let desc = card.children[6].textContent
-//                 createProgramModal(status, img, title, organizer, date, location, time, desc, programType);
-//             })
-//         })
-
-        
-
-//     }catch (error) {
-//         console.error('Failed to load workshop data:', error);
-//     }
-
-
-// }
+//officer card
+const createOfficerCard = (img, name, position) => {
+    let officerCard = document.createElement('div');
+    officerCard.classList.add('officer__card');
+    officerCard.innerHTML = `
+        <img src="${img }" alt="${position}" class="officer__image">
+        <p class="officer__name">${name}</p>
+        <p class="officer__position">${position}</p>
+    `  
+    return officerCard
+}
