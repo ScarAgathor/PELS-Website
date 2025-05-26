@@ -177,12 +177,12 @@ const createProgramModal = (status, img, title, organizer, date, location, time,
    modal_organizer.textContent = organizer;
    modal_date.textContent = `${date} @ ${time}`
    modal_location.textContent = location
-   modal_desc.textContent = desc
+   modal_desc.innerHTML = `<div class="modal__desc__scroll" tabindex="0">${desc}</div>`;
 
    trapFocus(modal)
 }
 
-const trapFocus = (element) => { //focus trapping for the modal. I don't fully understand it
+const trapFocus = (element) => { //focus trapping for the modal. I got it online, I don't fully understand it
     const focusableSelectors = [
         'a[href]', 'button:not([disabled])', 'textarea', 'input[type="text"]',
         'input[type="radio"]', 'input[type="checkbox"]', 'select', '[tabindex]:not([tabindex="-1"])'

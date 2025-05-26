@@ -3,7 +3,7 @@
 .mobileMenu {
     background-color: vars.$mobilemenu-bg;
     width: 100%;
-    padding: 3.125rem; // 50px
+    padding: 3.125rem 0; // 50px
     border-top: 0.0625rem solid #e0e0e0; // 1px
     top: 100%; // -450px
     left: 0;
@@ -20,8 +20,8 @@
     ul {
         flex-direction: column;
         align-items: center;
-        gap: 1.875rem; // 30px
-        font-size: 1.5rem;
+        gap: clamp(1.2rem, 0.8vw, 1.875rem); // 30px
+        font-size: 1rem;
     }
 
     &.active {

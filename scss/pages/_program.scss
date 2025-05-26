@@ -8,20 +8,18 @@
     .tabs {
         width: 100%;
         border-bottom: 0.125rem solid #d9d9d9; 
-        margin-bottom: 4.688rem; 
+        margin-bottom: clamp(3rem, 4.5vw, 4.688rem); 
         display: flex;
         justify-content: center;
         gap: 0.625rem; 
     
         &__button {
-            width: clamp(18.75rem, 30vw, 37.5rem); // flexible width
-            padding: clamp(1rem, 2.5vh, 2.25rem) 0;
-            min-height: 6.875rem; 
+            width: clamp(18.75rem, 30vw, 37.5rem);
+            padding: clamp(2rem, 3vw, 6.875rem) 0;
             background: none;
             border: none;
-            outline: none;
             color: base.$pels--gray;
-            font-size: clamp(1.5rem, 3vw, 2.75rem); 
+            font-size: clamp(1.2rem, 3vw, 2.75rem); 
             font-family: base.$poppinsBold;
             letter-spacing: 0.16em;
             cursor: pointer;
@@ -50,7 +48,7 @@
     
 
     .programs__container {
-        @include base.verticalGap(4rem); 
+        @include base.verticalGap(clamp(3rem, 3vw, 4rem)); 
         margin-bottom: 4.875rem; 
     
         h2 {

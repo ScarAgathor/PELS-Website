@@ -4,6 +4,11 @@
     margin: 0;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     line-height: calc(1em + 0.5rem);
     -webkit-font-smoothing: antialiased;
@@ -19,22 +24,28 @@ input, button, textarea, select {
 }
 
 p, h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }/*# sourceMappingURL=reset.css.map */
 
 @font-face {
     font-family: PoppinsBold;
-    src: url(../../assets/fonts/Poppins-Bold.ttf);
+    src: url(../../fonts/Poppins-Bold.ttf);
 }
 @font-face {
     font-family: PoppinsSemiBold;
-    src: url(../assets/fonts/Poppins-SemiBold.ttf);
+    src: url(../fonts/Poppins-SemiBold.ttf);
 }
 @font-face {
     font-family: PoppinsMedium;
-    src: url(../assets/fonts/Poppins-Medium.ttf);
+    src: url(../fonts/Poppins-Medium.ttf);
 }
 @font-face {
     font-family: PoppinsRegular;
-    src: url(../assets/fonts/Poppins-Regular.ttf);
+    src: url(../fonts/Poppins-Regular.ttf);
+}
+
+body {
+    outline: 3px solid red;
+    overflow-x: hidden; // optionally prevent horizontal scroll
 }
