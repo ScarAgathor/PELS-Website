@@ -1,6 +1,7 @@
 const home_page = document.getElementById('home__page');
 const program_page = document.getElementById('program__page');
 const officer_page = document.getElementById('officer__page');
+const join_page = document.getElementById('joinus__page');
 const hamburger = document.getElementById('hamburger');
 const mobile_menu = document.getElementById('mobileMenu');
 const overlay = document.querySelector('.overlay')
@@ -30,15 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const tabParam = urlParams.get('tab');
         const storedTab = localStorage.getItem('selectedTab');
+        const isValidTab = (tab) => tab === 'events' || tab === 'workshops';
 
-        if (tabParam === 'events' || tabParam === 'workshops') {
+        if (isValidTab(tabParam)) {
             programType = tabParam;
+            clearTabParam();
         } else if (storedTab === 'events' || storedTab === 'workshops') {
             programType = storedTab;
         } else {
-            programType = 'workshops'; // fallback
+            programType = 'workshops';
         }
-
         switchTabs(programType);
         loadPrograms(programType);
     }  
@@ -46,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         loadOfficers();
     }
 })
+
+const clearTabParam = () => {
+    if (window.history.replaceState) {
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+}
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('program__modal--active')) {
@@ -217,7 +226,7 @@ const initializeModal = () => {
     lastFocusedElement = document.activeElement;
 }
 
-const loadPrograms = async (programType = 'workshops') => {
+const loadPrograms = async (programType='workshops') => {
     try {
         const response = await fetch(`../data/${programType}.json`);
         const programs = await response.json();
@@ -244,7 +253,8 @@ const loadPrograms = async (programType = 'workshops') => {
             const container = program.status === 'upcoming' ? upcomingContainer : completedContainer;
             container.appendChild(card);
 
-            card.addEventListener('click', () => {
+            // Click to open modal
+            const openModal = () => {
                 createProgramModal(
                     program.status,
                     program.img_card,
@@ -257,6 +267,16 @@ const loadPrograms = async (programType = 'workshops') => {
                     programType
                 );
                 initializeModal();
+            };
+
+            card.addEventListener('click', openModal);
+
+            // Keyboard accessibility (Enter, Space)
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal();
+                }
             });
         });
 
@@ -264,6 +284,7 @@ const loadPrograms = async (programType = 'workshops') => {
         console.error(`Failed to load ${programType}:`, err);
     }
 };
+
 
 if (workshop_tab && event_tab) {
     workshop_tab.addEventListener("click", () => {
@@ -283,12 +304,12 @@ if (workshop_tab && event_tab) {
 
 //switch program tabs
 const switchTabs = (activePrograms) => {
-    if(activePrograms == 'workshops') {
+    if(activePrograms === 'workshops') {
         workshop_tab.classList.add('tabs__workshops--active');
         event_tab.classList.remove('tabs__events--active');
         upcomingTitle.textContent = `Upcoming Workshops`
         completedTitle.textContent = `Completed Workshops`
-    } else if(activePrograms == 'events') {
+    } else if(activePrograms === 'events') {
         event_tab.classList.add('tabs__events--active');
         workshop_tab.classList.remove('tabs__workshops--active');
         upcomingTitle.textContent = `Upcoming Events`
@@ -313,19 +334,14 @@ const  loadOfficers = async () => {
             
             if (officer.position.toLowerCase() === 'president') {
                 presidentContainer.appendChild(card);
-                console.log(`${officer.name}, ${officer.position}`)
             } else if (officer.position.toLowerCase().includes('vice')) {
                 vicePresidentContainer.appendChild(card);
-                console.log(`${officer.name}, ${officer.position}`)
             } else if(officer.position.toLowerCase().includes('junior')) {
                 juniorOfficerContainer.appendChild(card);
-                console.log(`${officer.name}, ${officer.position}`)
             } else if(officer.position.toLowerCase().includes('advisor')) {
                 advisorOfficerContainer.appendChild(card);
-                console.log(`${officer.name}, ${officer.position}`)
             } else {
                 officerBoardContainer.appendChild(card);
-                console.log(`${officer.name}, ${officer.position}`)
             }
         });
 
