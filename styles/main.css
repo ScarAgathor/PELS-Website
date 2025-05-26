@@ -568,7 +568,7 @@ footer .visually-hidden {
   visibility: visible;
 }
 
-.main__home .hero {
+.home .hero {
   position: relative;
   background-image: url("https://res.cloudinary.com/dvcpaters/image/upload/background-img_tkofwa.jpg");
   background-size: cover;
@@ -580,7 +580,7 @@ footer .visually-hidden {
   justify-content: center;
   align-items: center;
 }
-.main__home .hero__overlay {
+.home .hero__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -589,7 +589,7 @@ footer .visually-hidden {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
-.main__home .hero__content {
+.home .hero__content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -598,11 +598,11 @@ footer .visually-hidden {
   position: relative;
   z-index: 2;
 }
-.main__home .hero__content h1 {
+.home .hero__content h1 {
   color: #ffffff;
   margin-bottom: 1.25rem;
 }
-.main__home .hero__content p {
+.home .hero__content p {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -614,11 +614,11 @@ footer .visually-hidden {
   width: clamp(25rem, 45vw, 59.375rem);
   margin-bottom: 2.5rem;
 }
-.main__home .hero__content p span {
+.home .hero__content p span {
   font-size: clamp(1.125rem, 2vw, 1.5rem);
   font-family: poppinsRegular;
 }
-.main__home .programs__topdiv {
+.home .programs__topdiv {
   margin-top: clamp(1.875rem, 2.5vw, 3.75rem);
   display: flex;
   justify-content: center;
@@ -627,40 +627,40 @@ footer .visually-hidden {
   gap: clamp(1.875rem, 2.5vw, 6.25rem);
 }
 @media (min-width: 1024px) {
-  .main__home .programs__topdiv {
+  .home .programs__topdiv {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.main__home .programs__container {
+.home .programs__container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 2.5rem;
 }
-.main__home .programs__title {
+.home .programs__title {
   font-size: clamp(1.75rem, 3vw, 2rem);
   font-family: poppinsBold;
 }
-.main__home .programs__title--workshops {
+.home .programs__title--workshops {
   color: #b71933;
 }
-.main__home .programs__title--events {
+.home .programs__title--events {
   color: #6a0dad;
 }
-.main__home .programs__content {
+.home .programs__content {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   gap: 2.5rem;
 }
 @media (min-width: 768px) {
-  .main__home .programs__content {
+  .home .programs__content {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.main__home .officers {
+.home .officers {
   margin-bottom: clamp(1.875rem, 5vw, 6.25rem);
   display: flex;
   justify-content: center;
@@ -668,50 +668,50 @@ footer .visually-hidden {
   flex-direction: column;
   gap: 0;
 }
-.main__home .officers__title {
+.home .officers__title {
   margin-bottom: 1.25rem;
 }
-.main__home .officers__desc {
+.home .officers__desc {
   margin-bottom: 1.875rem;
 }
-.main__home .officers__container {
+.home .officers__container {
   display: grid;
   gap: 2.1875rem;
   margin: 6.25rem 0 1.875rem 0;
 }
 @media (min-width: 768px) {
-  .main__home .officers__container {
+  .home .officers__container {
     grid-template-columns: repeat(2, 1fr);
     gap: 4.375rem;
     grid-template-areas: "p p" "e i";
     place-items: center;
   }
-  .main__home .officers__container .officer__card.P {
+  .home .officers__container .officer__card.P {
     grid-area: p;
   }
-  .main__home .officers__container .officer__card.E {
+  .home .officers__container .officer__card.E {
     grid-area: e;
   }
-  .main__home .officers__container .officer__card.I {
+  .home .officers__container .officer__card.I {
     grid-area: i;
   }
 }
 @media (min-width: 1024px) {
-  .main__home .officers__container {
+  .home .officers__container {
     gap: 90px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "e p i";
     align-items: end; /* so we can offset P */
   }
-  .main__home .officers__container .officer__card.P {
+  .home .officers__container .officer__card.P {
     transform: translateY(-5.625rem); /* raise center card */
   }
 }
 
-.main__program .hero {
+.program .hero {
   margin: 3.75rem 0 2.375rem 0;
 }
-.main__program .tabs {
+.program .tabs {
   width: 100%;
   border-bottom: 0.125rem solid #d9d9d9;
   margin-bottom: 4.688rem;
@@ -719,7 +719,7 @@ footer .visually-hidden {
   justify-content: center;
   gap: 0.625rem;
 }
-.main__program .tabs__button {
+.program .tabs__button {
   width: clamp(18.75rem, 30vw, 37.5rem);
   padding: clamp(1rem, 2.5vh, 2.25rem) 0;
   min-height: 6.875rem;
@@ -732,23 +732,23 @@ footer .visually-hidden {
   letter-spacing: 0.16em;
   cursor: pointer;
 }
-.main__program .tabs__workshops:hover {
+.program .tabs__workshops:hover {
   border-bottom: 0.25rem solid #b71933;
   color: #b71933;
 }
-.main__program .tabs__events:hover {
+.program .tabs__events:hover {
   border-bottom: 0.25rem solid #6a0dad;
   color: #6a0dad;
 }
-.main__program .tabs__workshops--active {
+.program .tabs__workshops--active {
   border-bottom: 0.25rem solid #b71933;
   color: #b71933;
 }
-.main__program .tabs__events--active {
+.program .tabs__events--active {
   border-bottom: 0.25rem solid #6a0dad;
   color: #6a0dad;
 }
-.main__program .programs__container {
+.program .programs__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -756,26 +756,26 @@ footer .visually-hidden {
   gap: 4rem;
   margin-bottom: 4.875rem;
 }
-.main__program .programs__container h2 {
+.program .programs__container h2 {
   font-size: clamp(2rem, 4vw, 3rem);
 }
-.main__program .programs__container .programs__content {
+.program .programs__container .programs__content {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1.875rem, 5vw, 4.375rem);
 }
 @media (min-width: 768px) {
-  .main__program .programs__container .programs__content {
+  .program .programs__container .programs__content {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (min-width: 1024px) {
-  .main__program .programs__container .programs__content {
+  .program .programs__container .programs__content {
     grid-template-columns: repeat(4, 1fr);
     gap: clamp(1.875rem, 3vw, 4.375rem);
   }
 }
-.main__program .programs__container .seemorebutton {
+.program .programs__container .seemorebutton {
   font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-family: poppinsSemiBold;
   letter-spacing: 0.13em;
@@ -785,13 +785,13 @@ footer .visually-hidden {
   align-items: center;
   gap: 0.5rem;
 }
-.main__program .programs__container .seemorebutton--workshops {
+.program .programs__container .seemorebutton--workshops {
   color: #b71933;
 }
-.main__program .programs__container .seemorebutton--events {
+.program .programs__container .seemorebutton--events {
   color: #6a0dad;
 }
-.main__program .programs__container .hidden-card {
+.program .programs__container .hidden-card {
   display: none !important;
 }
 
@@ -875,56 +875,46 @@ footer .visually-hidden {
 }
 
 .join {
-  margin: 60px;
-  gap: clamp(50px, 4vw, 80px);
+  margin: 3.75rem;
+  gap: clamp(1.875rem, 3vw, 3.125rem);
 }
-.join .hero {
+.join h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+.join__member {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 15px;
+  gap: 0.9375rem;
 }
-.join .hero p {
-  font-size: clamp(20px, 3vw, 24px);
-  width: clamp(490px, 40vw, 800px);
+.join__member p {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  width: clamp(30.625rem, 40vw, 50rem);
   text-align: center;
   color: #333333;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
-.join .hero .member__link {
-  margin-top: 10px;
+.join__member .member__link {
+  margin-top: 0.625rem;
   color: #b71933;
   text-decoration: none;
   font-family: poppinsSemiBold;
-  font-size: clamp(16px, 2vw, 22px);
+  font-size: clamp(1rem, 2vw, 1.375rem);
 }
-.join .hero .member__link:active, .join .hero .member__link:focus, .join .hero .member__link:hover {
+.join__member .member__link:active, .join__member .member__link:focus, .join__member .member__link:hover {
   color: #8a1326;
 }
-.join .why {
-  align-self: start;
-  margin-left: clamp(0px, 10vw, 200px);
+.join__secondary p {
+  font-size: clamp(1rem, 2vw, 1.375rem);
+  margin-top: 0.9375rem;
 }
-.join .why h2 {
-  text-align: start;
-}
-.join .why ul {
-  font-size: clamp(20px, 3vw, 24px);
-  font-family: poppinsMedium;
-  color: #333333;
-  margin-top: 30px;
-}
-.join .how p {
-  font-size: clamp(16px, 2vw, 22px);
-  margin-top: 15px;
-}
-.join .how p a {
+.join__secondary p a {
   font-family: poppinsSemiBold;
   text-decoration: none;
   color: #b71933;
   cursor: pointer;
 }
-.join .how p a:active, .join .how p a:focus, .join .how p a:hover {
+.join__secondary p a:active, .join__secondary p a:focus, .join__secondary p a:hover {
   color: #8a1326;
 }/*# sourceMappingURL=main.css.map */

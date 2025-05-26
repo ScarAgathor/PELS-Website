@@ -1,56 +1,43 @@
 @use "../base/" as base;
 
-.join{
-    margin: 60px;
-    gap: clamp(50px, 4vw, 80px);
+.join {
+    margin: 3.75rem; 
+    gap: clamp(1.875rem, 3vw, 3.125rem); 
 
-    .hero {
-        @include base.verticalGap(15px);
-    
+    h2 {
+        font-size: clamp(1.5rem, 3vw, 2rem); 
+    }
+
+    &__member {
+        @include base.verticalGap(0.9375rem); 
+
         p {
-            font-size: clamp(20px, 3vw, 24px);
-            width: clamp(490px, 40vw, 800px);
+            font-size: clamp(1.25rem, 3vw, 1.5rem); 
+            width: clamp(30.625rem, 40vw, 50rem); 
             text-align: center;
             color: base.$p--dark;
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem; 
         }
 
         .member__link {
-            margin-top: 10px;
+            margin-top: 0.625rem; 
             color: base.$pels--red;
             text-decoration: none;
             font-family: base.$poppinsSemiBold;
-            font-size: clamp(16px, 2vw, 22px);
+            font-size: clamp(1rem, 2vw, 1.375rem); 
 
-            &:active, &:focus, &:hover {
-                color: darken(base.$pels--red, 10%);      
-                // outline: none;
+            &:active,
+            &:focus,
+            &:hover {
+                color: darken(base.$pels--red, 10%);
             }
         }
-
     }
 
-    .why {
-        align-self: start;
-        margin-left: clamp(0px, 10vw, 200px);
-
-        h2 {
-            text-align: start;
-        }
-
-        ul {
-            font-size: clamp(20px, 3vw, 24px);
-            font-family: base.$poppinsMedium;
-            color: base.$p--dark;
-            margin-top: 30px;
-        }
-
-    }
-
-    .how {
+    &__secondary {
         p {
-            font-size: clamp(16px, 2vw, 22px);
-            margin-top: 15px;
+            font-size: clamp(1rem, 2vw, 1.375rem);
+            margin-top: 0.9375rem; 
 
             a {
                 font-family: base.$poppinsSemiBold;
@@ -58,12 +45,12 @@
                 color: base.$pels--red;
                 cursor: pointer;
 
-                &:active, &:focus, &:hover {
-                    color: darken(base.$pels--red, 10%);      
-                    // outline: none;
+                &:active,
+                &:focus,
+                &:hover {
+                    color: darken(base.$pels--red, 10%);
                 }
             }
         }
     }
-    
 }

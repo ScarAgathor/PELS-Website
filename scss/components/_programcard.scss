@@ -10,8 +10,6 @@
     align-items: center;
     width: 20.625rem;
     cursor: pointer;
-    // padding: 0 2.75rem;
-    // display: none;
 
     .card__status {
         font-size: 0.875rem;
@@ -89,8 +87,3 @@
 .program__card--events {
     border-left: 1px solid base.$pels--purple;
 }
-
-
-// .hidden-card {
-//     display: none;
-// }

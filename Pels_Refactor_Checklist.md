@@ -1,6 +1,8 @@
 # 🧠 PELS Website Refactor & Final Polish Checklist
 
 ---
+make a readme
+fix workshops and events tab issue
 
 ## 🎯 Core Code & Structural Cleanup
 
