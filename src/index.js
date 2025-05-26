@@ -328,7 +328,7 @@ const  loadOfficers = async () => {
         const advisorOfficerContainer = document.getElementById('advisorCont');
 
         officers.forEach(officer => {
-            let card = createOfficerCard(officer.image, officer.name, officer.position);
+            let card = createOfficerCard(officer.image, officer.name, officer.position, officer.linkedin);
             
             if (officer.position.toLowerCase() === 'president') {
                 presidentContainer.appendChild(card);
@@ -351,13 +351,14 @@ const  loadOfficers = async () => {
 }
 
 //officer card
-const createOfficerCard = (img, name, position) => {
+const createOfficerCard = (img, name, position, linkedin) => {
     let officerCard = document.createElement('div');
     officerCard.classList.add('officer__card');
     officerCard.innerHTML = `
         <img src="${img }" alt="${position}" class="officer__image">
         <p class="officer__name">${name}</p>
         <p class="officer__position">${position}</p>
+        <a class="officer__linkedin" href="${linkedin}" target="_blank">Linkedin</a>
     `  
     return officerCard
 }

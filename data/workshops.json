@@ -1,24 +1,12 @@
 [
-    {
-        "status": "completed",
-        "img-card": "",
-        "img-modal": "",
-        "title": "555 Timer",
-        "organizer": "PELSxPES",
-        "date": "2025-04-17",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem"
-    },
-    {
-        "status": "upcoming",
-        "img_card": "",
-        "img_modal": "",
-        "title": "Heart PCB",
-        "organizer": "PELSxSWE",
-        "date": "2025-05-14",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem, ipsueligendi vitae molestiae iure maiores. Ipsum omnis consequuntur vero fugi"
-    }
+  {
+    "status": "upcoming",
+    "img_card": "https://res.cloudinary.com/dvcpaters/image/upload/heartpcb_b9jsgt.jpg",
+    "title": "Heart PCB",
+    "organizer": "PELS",
+    "date": "2025-06-15",
+    "location": "EB 2.04.06A",
+    "time": "4:30 PM",
+    "description": "Come make a Heart PCB with us and Celebrate Valentines."
+  }
 ]

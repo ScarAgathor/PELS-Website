@@ -10,6 +10,7 @@
     opacity: 70%;
     visibility: hidden;
     pointer-events: all;
+    z-index: 2;
 }
 
 .overlay--active {
