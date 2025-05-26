@@ -71,8 +71,7 @@ if(hamburger) {
 })
 }
 
-
-// programs Home Page
+//overlay and modal closing logic
 if(overlay) {
     overlay.addEventListener('click', () => {
         resetModal();
@@ -84,7 +83,6 @@ if(modal_close) {
         resetModal();
     })
 }
-
 
 const loadHomePrograms = async () => {
     const program_types = ['workshops', 'events'];

@@ -11,18 +11,7 @@
         "description": "Lorem"
     },
     {
-        "status": "upcoming",
-        "img-card": "",
-        "img-modal": "",
-        "title": "555 Timer",
-        "organizer": "PELS",
-        "date": "2025-04-25",
-        "location": "Eb 2.04.06A",
-        "time": "4:30PM",
-        "description": "Lorem"
-    },
-    {
-        "status": "upcoming",
+        "status": "completed",
         "img-card": "",
         "img-modal": "",
         "title": "555 Timer",
