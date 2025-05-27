@@ -7,12 +7,12 @@ header {
     grid-template-columns: auto 1fr auto;
     justify-content: space-between;
     align-items: center;
-    padding: 1.875rem clamp(3rem, 6vw, 8.125rem);
+    padding: 1.3rem clamp(3rem, 6vw, 8.125rem);
     position: relative;
 
     .logo {
-        width: clamp(4.375rem, 6vw, 4.875rem);
-        height: clamp(4.875rem, 6.1vw, 5.5rem);    
+        width: clamp(3.8rem, 5.8vw, 4.875rem);
+        height: clamp(4rem, 6.1vw, 5.5rem);    
     }
 
     nav{
