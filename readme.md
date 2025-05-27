@@ -39,9 +39,28 @@ The site showcases our workshops, events, officers, and opportunities to get inv
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/pels-utsa-website.git
-   cd pels-utsa-website
+   git clone https://github.com/ScarAgathor/PELS-Website
+   cd PELS-Website
 
+2. Install a static server (if you don’t already have one)
+
+    npm install -g serve
+
+3. Run the project
+
+    serve .
+
+4. Edit content files
+
+    Go to the /data folder.
+    Edit officers.json or programs.json as needed.
+    Make sure the format is correct JSON.
+
+5. Commit and push changes
+
+    git add data/officers.json
+    git commit -m "Update officers list"
+    git push
 
 
 ## Folder Structure
@@ -74,3 +93,17 @@ Edidiong Ekong
 UTSA Computer Engineering Student
 `https://github.com/ScarAgathor`
 `https://linkedin.com/in/edidiongdekong`
+
+
+## 🪶 How to Edit on GitHub
+Go to the repository on GitHub.
+Open the /data folder.
+Click on officers.json or programs.json.
+Click the ✏️ Edit button (top right of the file view).
+Make your changes in the editor.
+Scroll down to the Commit changes section:
+    Add a short description of what you changed.
+    Select "Commit directly to the main branch".
+Click Commit changes.
+
+The updated content will go live on the next Netlify deploy automatically.
