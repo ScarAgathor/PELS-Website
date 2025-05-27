@@ -43,21 +43,21 @@ The site showcases our workshops, events, officers, and opportunities to get inv
    cd PELS-Website
 
 2. Install a static server (if you don’t already have one)
-
+    ```bash
     npm install -g serve
 
 3. Run the project
-
+    ```bash
     serve .
 
 4. Edit content files
-
+    ```bash
     Go to the /data folder.
     Edit officers.json or programs.json as needed.
     Make sure the format is correct JSON.
 
 5. Commit and push changes
-
+    ```bash
     git add data/officers.json
     git commit -m "Update officers list"
     git push
@@ -96,14 +96,14 @@ UTSA Computer Engineering Student
 
 
 ## 🪶 How to Edit on GitHub
-Go to the repository on GitHub.
-Open the /data folder.
-Click on officers.json or programs.json.
-Click the ✏️ Edit button (top right of the file view).
-Make your changes in the editor.
-Scroll down to the Commit changes section:
-    Add a short description of what you changed.
-    Select "Commit directly to the main branch".
-Click Commit changes.
+- Go to the repository on GitHub.
+- Open the /data folder.
+- Click on officers.json or programs.json.
+- Click the ✏️ Edit button (top right of the file view).
+- Make your changes in the editor.
+- Scroll down to the Commit changes section:
+   - Add a short description of what you changed.
+   - Select "Commit directly to the main branch".
+- Click Commit changes.
 
 The updated content will go live on the next Netlify deploy automatically.
