@@ -362,14 +362,15 @@ footer .visually-hidden {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 clamp(2rem, 3vw, 3rem);
+  padding: 1.875rem clamp(2rem, 1.2vw, 2.5rem);
+  max-width: 330px;
   cursor: pointer;
 }
 .program__card .card__status {
   font-size: 0.875rem;
   font-family: poppinsSemiBold;
   letter-spacing: 0.1em;
-  margin: 1.875rem 0 1.25rem 0;
+  margin-bottom: 1.25rem;
 }
 .program__card .card__status.upcoming {
   color: #ffa500;
@@ -389,17 +390,19 @@ footer .visually-hidden {
   font-size: 1.25rem;
   font-family: poppinsBold;
   margin-bottom: 0.625rem;
+  text-align: center;
+  height: 48px;
 }
 .program__card .card__organizer {
   font-size: 1rem;
   font-family: poppinsRegular;
-  margin-bottom: 0.3125rem;
+  margin-bottom: 0.5rem;
 }
 .program__card .card__meta {
   display: flex;
   gap: 1.25rem;
   align-items: center;
-  margin-bottom: 1.6875rem;
+  margin-bottom: 1rem;
 }
 .program__card .card__meta p {
   font-size: 1rem;
@@ -416,7 +419,6 @@ footer .visually-hidden {
 .program__card .card__time {
   font-size: 16px;
   font-family: PoppinsRegular;
-  margin-bottom: 33px;
 }
 .program__card .card__description {
   display: none;
@@ -513,6 +515,9 @@ footer .visually-hidden {
   font-size: 1.25rem;
   font-family: poppinsBold;
   letter-spacing: 0.05em;
+}
+.program__modal article .modal__header .modal__close {
+  cursor: pointer;
 }
 .program__modal article .modal__image {
   width: 100%;

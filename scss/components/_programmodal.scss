@@ -29,6 +29,10 @@
                 font-family: base.$poppinsBold;
                 letter-spacing: 0.05em; 
             }
+
+            .modal__close {
+                cursor: pointer;
+            }
         }
 
         .modal__image {

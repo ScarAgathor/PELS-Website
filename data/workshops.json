@@ -1,3 +1,22 @@
 [
-
+  {
+    "status": "completed",
+    "img_card": "https://res.cloudinary.com/dvcpaters/image/upload/Heart_PCB_2025_clfptt.webp",
+    "title": "Heart PCB Soldering Workshop",
+    "organizer": "PELS / PES",
+    "date": "2025-02-12",
+    "location": "EB 2.04.06B",
+    "time": "3:00 PM",
+    "description": "Looking for a way to add some spark to your Valentine’s Day? Join Power Electronics Society & Power and Energy Society for a special Valentine’s event where we’ll be soldering heart-shaped PCBs and lighting them up with LEDs!"
+  },
+  {
+    "status": "completed",
+    "img_card": "https://res.cloudinary.com/dvcpaters/image/upload/Soldeirng_Chall_2025_S_bcxeye.webp",
+    "title": "Soldering Challenge",
+    "organizer": "PES / PELS",
+    "date": "2025-03-04",
+    "location": "EB 2.04.06B",
+    "time": "3:00 PM",
+    "description": "Whether you’re a beginner or experienced, this is a great chance to test your skills, work with circuits, and spark your creativity. Get ready to heat up the competition and learn something new!"
+  }
 ]
