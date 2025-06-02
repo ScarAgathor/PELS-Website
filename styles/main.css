@@ -435,7 +435,7 @@ footer .visually-hidden {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: clamp(0.625rem, 1.2vw, 1rem);
   background-color: #fafafa;
   width: 16.25rem;
   height: 16.4375rem;
@@ -460,9 +460,16 @@ footer .visually-hidden {
   font-family: poppinsMedium;
 }
 .officer__card .officer__linkedin {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
   color: #e63946;
   font-family: poppinsMedium;
   text-decoration: none;
+}
+.officer__card .officer__linkedin svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .officer__card .officer__linkedin:active, .officer__card .officer__linkedin:focus, .officer__card .officer__linkedin:hover {
   color: #8a1326;
@@ -470,7 +477,7 @@ footer .visually-hidden {
 @media (min-width: 1024px) {
   .officer__card {
     width: 18.75rem;
-    height: 20.375rem;
+    height: 19rem;
   }
   .officer__card img {
     width: 9.375rem;
@@ -616,7 +623,7 @@ footer .visually-hidden {
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
-  padding: clamp(2rem, 10vw, 10rem);
+  padding: clamp(2rem, 10vw, 5rem);
   display: flex;
   justify-content: center;
   align-items: center;

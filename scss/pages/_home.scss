@@ -9,7 +9,7 @@
         background-repeat: no-repeat;
         background-position: center;
         overflow: hidden;
-        padding: clamp(2rem, 10vw, 10rem);
+        padding: clamp(2rem, 10vw, 5rem);
         @include base.centerDiv();
 
         &__overlay {

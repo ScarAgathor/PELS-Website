@@ -1,7 +1,7 @@
 @use '../base/' as base;
 
 .officer__card {
-    @include base.verticalGap(0.625rem);
+    @include base.verticalGap(clamp(0.625rem, 1.2vw, 1rem));
     background-color: base.$officer-card-bg;
     width: 16.25rem; // 260px
     height: 16.4375rem; // 263px
@@ -29,9 +29,17 @@
     }
 
     .officer__linkedin {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
         color: base.$officer-card-text--red;
         font-family: base.$poppinsMedium;
         text-decoration: none;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
 
         &:active, &:focus, &:hover {
             color: darken(base.$pels--red, 10%);
@@ -40,7 +48,7 @@
 
     @media (min-width: base.$breakpoint-desktop) {
         width: 18.75rem; 
-        height: 20.375rem; 
+        height: 19rem; 
 
         img {
             width: 9.375rem;
