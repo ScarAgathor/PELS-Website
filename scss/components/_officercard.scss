@@ -6,7 +6,7 @@
     width: 16.25rem; // 260px
     height: 16.4375rem; // 263px
     border: 1px solid #e0e0e0;
-    box-shadow: 0.375rem 0.25rem 0.1875rem lighten(#000000, 75%);
+    box-shadow: 0.375rem 0.25rem 0.1875rem adjust(#000000, 75%);
     border-radius: 0.75rem;
 
     .officer__image {
@@ -42,7 +42,7 @@
         }
 
         &:active, &:focus, &:hover {
-            color: darken(base.$pels--red, 10%);
+            color: adjust(base.$pels--red, -10%);
         }
     }
 

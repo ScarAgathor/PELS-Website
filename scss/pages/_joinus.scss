@@ -27,7 +27,7 @@
             &:active,
             &:focus,
             &:hover {
-                color: darken(base.$pels--red, 10%);
+                color: adjust(base.$pels--red, -10%);
             }
         }
     }
@@ -44,7 +44,7 @@
                 &:active,
                 &:focus,
                 &:hover {
-                    color: darken(base.$pels--red, 10%);
+                    color: adjust(base.$pels--red, -10%);
                 }
             }
         }

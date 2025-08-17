@@ -1,0 +1,76 @@
+@use '../base/' as base;
+
+
+.login__form {
+    @include base.leftJustifyColumn();
+    // box-shadow: 4px 4px 3px adjust(#000000, 10%);
+    outline: 1px solid red;
+    border-radius: 0.3rem;
+    // width: clamp(18.75rem, 30vw, 25rem);
+    
+    // height: 400px;
+    gap: 15px;
+    padding: 30px clamp(1.2rem, 10vw, 1.875rem);
+
+    h3 {
+        font-size: 1.5rem;
+        font-family: base.$poppinsRegular;
+        letter-spacing: .05em;
+    }
+
+    .line {
+        height: 1px;
+        width: 100%;
+        background-color: scale(base.$pels--gray, 15%);
+    }
+
+    .form {
+        width: clamp(18.75rem, 30vw, 25rem);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &__field {
+            display: flex;
+            flex-direction: column;   
+            gap: 10px;
+        }
+
+        &__label {
+            font-family: base.$poppinsRegular;
+        }
+
+        &__input {
+            font-size: 14px;
+            font-family: base.$poppinsRegular;
+            letter-spacing: 0.08em;
+            padding: 5px 10px;
+            border: 1px solid base.$pels--gray;
+            border-radius: 5px;
+            background: none;
+            outline: none;
+        }
+
+        &__button {
+            margin-top: 20px;
+            color: base.$button-text;
+            background-color: base.$button-bg--red;
+            padding: clamp(0.5rem, 1.5vw, 0.7rem);
+            border: none;
+            border-radius: 15px;
+            font-size: clamp(0.5rem, 2vw, 1.1rem);
+            font-family: base.$poppinsSemiBold;
+            letter-spacing: .13em;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        &__button:hover { 
+            background-color: base.$button-bg--red-active;
+        }
+    }
+}
+
+//, &__button:focus, &__button:active
