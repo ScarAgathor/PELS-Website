@@ -10,24 +10,30 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   const password = document.getElementById("password").value;
 
   //attempt to sign in user
-
-  const { loginData, loginError  } = await supabase.auth.signInWithPassword({
+  const { data, error  } = await supabase.auth.signInWithPassword({
     email,
     password
   });
 
-  if (loginError) {
-    document.getElementById("message").textContent = "Login failed: " + loginError.message;
+  if (error) {
+    if (error.message === "Invalid login credentials") {
+      document.getElementById("message").style.display = "block"
+      document.getElementById("message").style.color = `#b71933`
+      document.getElementById("message").textContent = "Incorrect email or password. Please try again.";
+    } else {
+      document.getElementById("message").textContent = error.message;
+    }
   } else {
+    document.getElementById("message").style.display = "block"
+    document.getElementById("message").style.color = `#2b9015`
     document.getElementById("message").textContent = "Login successful!";
-    // redirect to admin dashboard
   }
 
   //get user info
   const { data: { user }, error: userError } = await supabase.auth.getUser();
 
   if (userError || !user) {
-    document.getElementById("message").textContent = "Error fetching user data";
+    console.log("Error fetching user data");
     return;
   }
 
@@ -50,7 +56,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     return;
   }
 
-  document.getElementById("message").textContent = "✅ Login successful!";
-  window.location.href = "/admin/index.html"; // admin dashboard page
+  // document.getElementById("message").textContent = "✅ Login successful!";
+  // window.location.href = "/admin/index.html"; // admin dashboard page
 
 });

@@ -636,7 +636,7 @@ footer .visually-hidden {
 .login__form .line {
   height: 1px;
   width: 100%;
-  background-color: rgb(229.517167382, 231.3519313305, 232.982832618);
+  background-color: rgb(215.8369098712, 218.6566523605, 221.1630901288);
 }
 .login__form .form {
   width: clamp(16.75rem, 30vw, 25rem);
@@ -663,8 +663,10 @@ footer .visually-hidden {
   background: none;
   outline: none;
 }
+.login__form .form__message {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
 .login__form .form__button {
-  margin-top: 20px;
   color: #ffffff;
   background-color: #b71933;
   padding: clamp(0.5rem, 1.5vw, 0.6rem);
@@ -678,7 +680,7 @@ footer .visually-hidden {
   text-align: center;
   white-space: nowrap;
 }
-.login__form .form__button:hover {
+.login__form .form__button:hover, .login__form .form__button:focus, .login__form .form__button:active {
   background-color: #a6172e;
 }
 .login__form .logo {

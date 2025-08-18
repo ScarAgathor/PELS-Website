@@ -18,7 +18,7 @@
     .line {
         height: 1px;
         width: 100%;
-        background-color: base.lighten(base.$pels--gray, 45%);
+        background-color: base.lighten(base.$pels--gray, 40%);
     }
 
     .form {
@@ -49,8 +49,11 @@
             outline: none;
         }
 
+        &__message {
+            font-size: clamp(0.875rem, 2vw, 1rem);
+        }
+
         &__button {
-            margin-top: 20px;
             color: base.$button-text;
             background-color: base.$button-bg--red;
             padding: clamp(0.5rem, 1.5vw, 0.6rem);
@@ -65,7 +68,7 @@
             white-space: nowrap;
         }
 
-        &__button:hover { 
+        &__button:hover, &__button:focus, &__button:active { 
             background-color: base.$button-bg--red-active;
         }
     }
@@ -76,5 +79,3 @@
         align-self: center;
     }
 }
-
-//, &__button:focus, &__button:active
