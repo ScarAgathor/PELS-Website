@@ -5,7 +5,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
-
+  document.getElementById("message").style.display = "none"
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
