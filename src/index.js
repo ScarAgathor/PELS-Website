@@ -2,6 +2,7 @@ const home_page = document.getElementById('home__page');
 const program_page = document.getElementById('program__page');
 const officer_page = document.getElementById('officer__page');
 const join_page = document.getElementById('joinus__page');
+// const admin_page = document.getElementById('admin_page');
 const hamburger = document.getElementById('hamburger');
 const mobile_menu = document.getElementById('mobileMenu');
 const overlay = document.querySelector('.overlay')
@@ -47,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if(officer_page) {
         loadOfficers();
     }
+    if(join_page) {
+        
+    }
+    // if(admin_page) {
+
+    // }
 })
 
 const clearTabParam = () => {
