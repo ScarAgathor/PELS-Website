@@ -56,7 +56,5 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     return;
   }
 
-  // document.getElementById("message").textContent = "✅ Login successful!";
-  // window.location.href = "/admin/index.html"; // admin dashboard page
-
+  window.location.href = "/admin/index.html"; // admin dashboard page
 });
