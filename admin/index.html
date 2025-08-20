@@ -7,20 +7,109 @@
     <link rel="icon" href="https://res.cloudinary.com/dvcpaters/image/upload/favicon_lco1zt.ico">
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dvcpaters/image/upload/favicon_wipcmm.png" sizes="32x32">
     <link rel="apple-touch-icon" href="https://res.cloudinary.com/dvcpaters/image/upload/favicon_wipcmm.png">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="../src/index.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="module" src="admin.js" defer></script>
 </head>
 <body id="admin_page">
-    <main>
-        <h1>PELS Admin Dashboard</h1>
-        <p class="note">⚠️ Only PELS admins should log in here. Unauthorized access is prohibited.</p>
+    <header>
+        <img src="https://res.cloudinary.com/dvcpaters/image/upload/pels_logo_wpjejc.webp" alt="Power And Electronics Society logo" class="logo">
+        <nav class="navbar" aria-label="Main navigation">
+            <ul>
+                <li><a href="../index.html" aria-current="page">Home</a></li>
+                <li><a href="../workshops&events.html">Workshops & Events</a></li>
+                <li><a href="../officers.html">Officers</a></li>
+                <li><a href="../joinus.html">Join us</a></li>
+            </ul>
+        </nav>
 
-        <div id="auth-message"></div>
-        <div id="admin-content" style="display:none;">
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="mobileMenu" aria-label="Main navigation" id="mobileMenu">
+            <ul>
+                <li><a href="../index.html" aria-current="page">Home</a></li>
+                <li><a href="../workshops&events.html">Workshops & Events</a></li>
+                <li><a href="../officers.html">Officers</a></li>
+                <li><a href="../joinus.html">Join us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="admin">
+        <!-- <h1>PELS Admin Dashboard</h1>
+        <p class="note">⚠️ Only PELS admins should log in here. Unauthorized access is prohibited.</p> -->
+
+        <!-- <div id="auth-message"></div> -->
+        <!-- <div id="admin-content" style="display:none;">
             <h2>Welcome, Admin!</h2>
             <p>You are logged in and can now manage the site.</p>
-        </div>
+        </div> -->
+<!-- 
+        <section class="hero">
+            <div class="container">
+                <h1>Welcome, Admin!</h1>
+                <p>Manage your site content from here.</p>
+            </div>
+        </section> -->
+
+        <section class="officers-admin">
+            <h2>Manage Officers</h2>
+            <button id="addOfficerBtn">➕ Add Officer</button>
+
+            <!-- <table class="officer-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="officersTable">
+                <tr>
+                        <td>John Doe</td>
+                        <td>President</td>
+                        <td> 
+                            <img src="https://via.placeholder.com/50" alt="John Doe">
+                            <input type="file" accept="image/*" class="image-input" style="display:none;">
+                        </td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </section>
     </main>
+
+    <div class="addOfficerModal" id="add_offcer_modal" role="dialog" aria-modal="true" aria-labelledby="modal__title" aria-describedby="modal__desc" aria-hidden="true">
+        <h2 id="modal__title">Add Officer</h2>
+        <p id="modal__desc">Fill in the details below to add a new officer.</p>
+        <form action="" method="post" enctype="multipart/form-data" id="addOfficerForm">
+            <div>
+                <label for="officerName">Name</label>
+                <input type="text" id="officerName" name="name" placeholder="Enter name" required>
+            </div>
+            <div>
+                <label for="officerPosition">Position</label>
+                <input type="text" id="officerPosition" name="position" placeholder="Enter position" required>
+            </div>
+            <div>
+                <label for="officerLinkedIn">LinkedIn</label>
+                <input type="url" id="officerLinkedIn" name="linkedin" placeholder="LinkedIn URL">
+            </div>
+            <div>
+                <label for="officerImage">Profile Image</label>
+                <input type="file" id="officerImage" name="image" accept="image/*">
+            </div>
+            <button type="submit">Add Officer</button>
+        </form>
+    </div>
+
 </body>
 </html>

@@ -1,10 +1,7 @@
 @use '../base/' as base;
 
-#login_page {
-    background-color: base.$body-bg;
-}
-
 .login {
     margin: clamp(4rem, 4vw, 8rem) clamp(2rem, 2vw, 3.75rem); 
-    @include base.centerDiv(); 
+    justify-content: center;
+    align-items: center;
 }

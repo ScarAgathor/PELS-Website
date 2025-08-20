@@ -43,7 +43,7 @@
             font-family: base.$poppinsRegular;
             letter-spacing: 0.08em;
             padding: 0.3125rem 0.625rem;
-            border: 1px solid base.$pels--gray;
+            border: 1px solid base.lighten(base.$pels--gray, 30%);
             border-radius: 5px;
             background: none;
             outline: none;

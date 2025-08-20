@@ -658,7 +658,7 @@ footer .visually-hidden {
   font-family: poppinsRegular;
   letter-spacing: 0.08em;
   padding: 0.3125rem 0.625rem;
-  border: 1px solid #6c757d;
+  border: 1px solid rgb(188.4763948498, 193.2660944206, 197.5236051502);
   border-radius: 5px;
   background: none;
   outline: none;
@@ -1045,13 +1045,12 @@ footer .visually-hidden {
   color: rgb(224.8317307692, 34.1682692308, 65.5432692308);
 }
 
-#login_page {
-  background-color: #f8f8f8;
+.admin {
+  height: 100vh;
 }
 
 .login {
   margin: clamp(4rem, 4vw, 8rem) clamp(2rem, 2vw, 3.75rem);
-  display: flex;
   justify-content: center;
   align-items: center;
 }/*# sourceMappingURL=main.css.map */
