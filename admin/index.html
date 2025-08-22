@@ -55,10 +55,12 @@
                 <p>Manage your site content from here.</p>
             </div>
         </section> -->
-
+<!-- 
         <section class="officers-admin">
             <h2>Manage Officers</h2>
-            <button id="addOfficerBtn">➕ Add Officer</button>
+            <button id="addOfficerBtn">➕ Add Officer</button> -->
+
+<!-- //for supabase egde functions remember to enable jwt during profduction -->
 
             <!-- <table class="officer-table">
                 <thead>
@@ -88,9 +90,9 @@
     </main>
 
     <div class="addOfficerModal" id="add_offcer_modal" role="dialog" aria-modal="true" aria-labelledby="modal__title" aria-describedby="modal__desc" aria-hidden="true">
-        <h2 id="modal__title">Add Officer</h2>
-        <p id="modal__desc">Fill in the details below to add a new officer.</p>
-        <form action="" method="post" enctype="multipart/form-data" id="addOfficerForm">
+        <!-- <h2 id="modal__title">Add Officer</h2>
+        <p id="modal__desc">Fill in the details below to add a new officer.</p> -->
+        <form action="" method="post" enctype="multipart/form-data" id="addOfficerForm" class="form">
             <div>
                 <label for="officerName">Name</label>
                 <input type="text" id="officerName" name="name" placeholder="Enter name" required>

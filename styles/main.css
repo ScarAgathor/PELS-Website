@@ -689,6 +689,69 @@ footer .visually-hidden {
   align-self: center;
 }
 
+.addOfficerModal {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  box-shadow: 4px 5px 4px rgb(191.25, 191.25, 191.25);
+  border: 1px solid rgb(191.25, 191.25, 191.25);
+  border-radius: 0.4rem;
+  gap: 0.75rem;
+  padding: 30px clamp(1.2rem, 10vw, 1.875rem);
+}
+.addOfficerModal .form {
+  width: clamp(16.75rem, 30vw, 25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  background-color: red;
+}
+.addOfficerModal .form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.addOfficerModal .form__label {
+  font-family: poppinsRegular;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+}
+.addOfficerModal .form__input {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-family: poppinsRegular;
+  letter-spacing: 0.08em;
+  padding: 0.3125rem 0.625rem;
+  border: 1px solid rgb(188.4763948498, 193.2660944206, 197.5236051502);
+  border-radius: 5px;
+  background: none;
+  outline: none;
+}
+.addOfficerModal .form__message {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+.addOfficerModal .form__button {
+  color: #ffffff;
+  background-color: #b71933;
+  padding: clamp(0.5rem, 1.5vw, 0.6rem);
+  border: none;
+  border-radius: 0.9375rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-family: poppinsSemiBold;
+  letter-spacing: 0.13em;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+}
+.addOfficerModal .form__button:hover, .addOfficerModal .form__button:focus, .addOfficerModal .form__button:active {
+  background-color: #a6172e;
+}
+.addOfficerModal .logo {
+  width: clamp(3.8rem, 5.8vw, 4.875rem);
+  height: clamp(4rem, 6.1vw, 5.5rem);
+  align-self: center;
+}
+
 .home {
   gap: clamp(1.875rem, 5vw, 6.25rem);
 }
@@ -1043,10 +1106,6 @@ footer .visually-hidden {
 }
 .join__secondary p a:active, .join__secondary p a:focus, .join__secondary p a:hover {
   color: rgb(224.8317307692, 34.1682692308, 65.5432692308);
-}
-
-.admin {
-  height: 100vh;
 }
 
 .login {

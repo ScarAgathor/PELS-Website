@@ -34,7 +34,7 @@ addOffcicerForm.addEventListener('submit', async (e) => {
         formData.append('upload_preset', 'officer_upload');
         formData.append('folder', 'PELS WEBSITE/officers');
 
-        const cloudName = 'dvcpaters'; // replace with your cloud name
+        const cloudName = 'dvcpaters'; 
         const cloudRes  = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
         method: 'POST',
         body: formData
@@ -45,7 +45,7 @@ addOffcicerForm.addEventListener('submit', async (e) => {
         // 3. Create officer object
         const officer = { name, position, linkedin, imageUrl };
 
-        const addOfficerRes = await fetch('http://127.0.0.1:54321/functions/v1/add-officer', {
+        const addOfficerRes = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/add-officer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(officer)
@@ -67,7 +67,7 @@ addOffcicerForm.addEventListener('submit', async (e) => {
 
 
 const checkAuth = async () => {
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); // rrmeber to remove this to a server fucntion
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {

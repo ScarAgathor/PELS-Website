@@ -325,8 +325,8 @@ const switchTabs = (activePrograms) => {
 // //load officers
 const  loadOfficers = async () => {
     try {
-        const response = await fetch('../data/officers.json');
-        const officers = await response.json();
+        const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-officers');
+        const data = await response.json();
 
         const presidentContainer = document.getElementById('presidentCont');
         const vicePresidentContainer = document.getElementById('viceCont');
@@ -334,8 +334,8 @@ const  loadOfficers = async () => {
         const juniorOfficerContainer = document.getElementById('juniorCont');
         const advisorOfficerContainer = document.getElementById('advisorCont');
 
-        officers.forEach(officer => {
-            let card = createOfficerCard(officer.image, officer.name, officer.position, officer.linkedin);
+        data.officers.forEach(officer => {
+            let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin);
             
             if (officer.position.toLowerCase() === 'president') {
                 presidentContainer.appendChild(card);
@@ -350,8 +350,6 @@ const  loadOfficers = async () => {
             }
         });
 
-        console.table(officers)
-
     }catch (error) {
         console.error('Failed to load officer data:', error);
     }
@@ -362,7 +360,7 @@ const createOfficerCard = (img, name, position, linkedin) => {
     let officerCard = document.createElement('div');
     officerCard.classList.add('officer__card');
     officerCard.innerHTML = `
-        <img src="${img }" alt="${position}" class="officer__image">
+        <img src="${img}" alt="${position}" class="officer__image">
         <p class="officer__name">${name}</p>
         <p class="officer__position">${position}</p>
         <a class="officer__linkedin" href="${linkedin}" target="_blank">

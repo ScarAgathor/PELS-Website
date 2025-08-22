@@ -1,0 +1,33 @@
+import "jsr:@supabase/functions-js/edge-runtime.d.ts"
+import { createClient } from "npm:@supabase/supabase-js@2.43.1";
+
+const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response(null, { status: 200, headers });
+  }
+
+  if (req.method !== "GET") {
+    return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 401, headers });
+  }
+
+  const { data: officers, error } = await supabase
+  .from("officers")
+  .select("*")
+
+  if (error) {
+    if (error) return new Response(JSON.stringify({ error: error.message }), { status: 400, headers });
+  }
+
+  return new Response(JSON.stringify({ officers }), { status: 200, headers });
+});
