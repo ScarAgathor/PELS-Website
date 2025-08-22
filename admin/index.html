@@ -93,23 +93,23 @@
         <!-- <h2 id="modal__title">Add Officer</h2>
         <p id="modal__desc">Fill in the details below to add a new officer.</p> -->
         <form action="" method="post" enctype="multipart/form-data" id="addOfficerForm" class="form">
-            <div>
-                <label for="officerName">Name</label>
-                <input type="text" id="officerName" name="name" placeholder="Enter name" required>
+            <div class="form__field">
+                <label for="officerName" class="form__label">Name:</label>
+                <input type="text" id="officerName" name="name" placeholder="Enter name" class="form__input" required>
             </div>
-            <div>
-                <label for="officerPosition">Position</label>
-                <input type="text" id="officerPosition" name="position" placeholder="Enter position" required>
+            <div class="form__field">
+                <label for="officerPosition" class="form__label">Position:</label>
+                <input type="text" id="officerPosition" name="position" placeholder="Enter position" class="form__input" required>
             </div>
-            <div>
-                <label for="officerLinkedIn">LinkedIn</label>
-                <input type="url" id="officerLinkedIn" name="linkedin" placeholder="LinkedIn URL">
+            <div class="form__field">
+                <label for="officerLinkedIn" class="form__label">LinkedIn:</label>
+                <input type="url" id="officerLinkedIn" name="linkedin" placeholder="Paste LinkedIn URL" class="form__input">
             </div>
-            <div>
-                <label for="officerImage">Profile Image</label>
+            <div class="form__field">
+                <label for="officerImage" class="form__label">Profile Image:</label>
                 <input type="file" id="officerImage" name="image" accept="image/*">
             </div>
-            <button type="submit">Add Officer</button>
+            <button type="submit" class="form__button">Add Officer</button>
         </form>
     </div>
 
