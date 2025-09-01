@@ -2,7 +2,6 @@ const home_page = document.getElementById('home__page');
 const program_page = document.getElementById('program__page');
 const officer_page = document.getElementById('officer__page');
 const join_page = document.getElementById('joinus__page');
-// const admin_page = document.getElementById('admin_page');
 const hamburger = document.getElementById('hamburger');
 const mobile_menu = document.getElementById('mobileMenu');
 const overlay = document.querySelector('.overlay')
@@ -51,11 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if(join_page) {
         
     }
-    // if(admin_page) {
-
-    // }
 })
 
+//clear workshop or events tab speififier from params
 const clearTabParam = () => {
     if (window.history.replaceState) {
         const cleanUrl = window.location.origin + window.location.pathname;
@@ -72,10 +69,10 @@ document.addEventListener('keydown', (e) => {
 //hamburger and mobile menu
 if(hamburger) {
     hamburger.addEventListener("click", () => {
-    const isActive = hamburger.classList.toggle('active');
-    mobile_menu.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', isActive);
-})
+        const isActive = hamburger.classList.toggle('active');
+        mobile_menu.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isActive);
+    })
 }
 
 //overlay and modal closing logic
