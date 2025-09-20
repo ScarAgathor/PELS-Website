@@ -805,13 +805,13 @@ footer .visually-hidden {
     grid-template-areas: "p p" "e i";
     place-items: center;
   }
-  .home .officers__container .officer__card.P {
+  .home .officers__container .officer__card.P, .home .officers__container .officers__skeleton.P {
     grid-area: p;
   }
-  .home .officers__container .officer__card.E {
+  .home .officers__container .officer__card.E, .home .officers__container .officers__skeleton.E {
     grid-area: e;
   }
-  .home .officers__container .officer__card.I {
+  .home .officers__container .officer__card.I, .home .officers__container .officers__skeleton.I {
     grid-area: i;
   }
 }
@@ -823,7 +823,7 @@ footer .visually-hidden {
     grid-template-areas: "e p i";
     align-items: end; /* so I can offset P */
   }
-  .home .officers__container .officer__card.P {
+  .home .officers__container .officer__card.P, .home .officers__container .officers__skeleton.P {
     transform: translateY(-5.625rem); /* raise center card */
   }
 }
@@ -993,12 +993,13 @@ footer .visually-hidden {
 }
 .officers .officers__error {
   color: #b71933;
-  font-size: 32px;
+  font-size: clamp(1rem, 2vw, 2rem);
   grid-column: 1/-1;
+  text-wrap: nowrap;
 }
 .officers .officers__empty {
   color: #333333;
-  font-size: 32px;
+  font-size: clamp(1rem, 2vw, 2rem);
   grid-column: 1/-1;
 }
 

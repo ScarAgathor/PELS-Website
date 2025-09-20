@@ -122,18 +122,17 @@
                 place-items: center;
 
 
-                .officer__card.P {
+                .officer__card.P, .officers__skeleton.P {
                     grid-area: p;
                 }
                 
-                .officer__card.E {
+                .officer__card.E, .officers__skeleton.E {
                     grid-area: e;
                 }
                 
-                .officer__card.I {
+                .officer__card.I, .officers__skeleton.I {
                     grid-area: i;
                 }
-
             }
 
             @media (min-width: base.$breakpoint-desktop) {
@@ -143,7 +142,7 @@
                 grid-template-areas: "e p i";
                 align-items: end; /* so I can offset P */
              
-                .officer__card.P {
+                .officer__card.P, .officers__skeleton.P {
                     transform: translateY(-5.625rem); /* raise center card */
                 }
             }

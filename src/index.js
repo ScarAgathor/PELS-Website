@@ -26,6 +26,7 @@ let programType = null;
 document.addEventListener('DOMContentLoaded', () => {
     if(home_page) {
         loadHomePrograms();
+        loadHomeOfficers();
     } 
     if(program_page) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -411,4 +412,45 @@ const createOfficerCard = (img, name, position, linkedin) => {
         </a>
     `  
     return officerCard
+}
+
+const loadHomeOfficers = async () => {
+    const container = document.getElementById('officers__container-home');
+
+    try {
+        const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-officers');
+        const data = await response.json();
+
+        //clear all skeletons
+        container.innerHTML = "";
+
+        if(data.error) {
+            container.style.marginTop = 0;
+            container.innerHTML = `
+                <p class="officers__error">Error Loading Officers!!!</p>
+            `;
+            
+        } else {
+            data.officers.forEach(officer => {
+                let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin);
+
+                if (officer.position.toLowerCase() === 'president') {
+                    card.classList.add('P');
+                    container.appendChild(card);
+                } else if (officer.position.toLowerCase().includes('vice')) {
+                    container.appendChild(card);
+                }
+            });
+        }
+
+        if(container.innerHTML == ''  ) {
+            container.style.marginTop = 0;
+            container.innerHTML = `
+                <p class="officers__empty">No Officers are currently available.</p>
+            `;
+        } 
+        
+    }catch (error) {
+        console.error('Failed to load officer data:', error);
+    }
 }
