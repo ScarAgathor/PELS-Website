@@ -119,6 +119,13 @@ const loadHomePrograms = async () => {
                 })
 
             });
+
+            if(container.innerHTML == "") {
+                container.innerHTML = `
+                    <p class="programs__empty">There are currently no upcoming ${program_type}.</p>
+                `;
+            }
+        
         } catch (error) {
             console.error(`Failed to load ${program_type}:`, error);
         }
@@ -429,7 +436,6 @@ const loadHomeOfficers = async () => {
             container.innerHTML = `
                 <p class="officers__error">Error Loading Officers!!!</p>
             `;
-            
         } else {
             data.officers.forEach(officer => {
                 let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin);

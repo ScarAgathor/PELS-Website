@@ -912,6 +912,10 @@ footer .visually-hidden {
 .program .programs__container .hidden-card {
   display: none !important;
 }
+.program .programs__empty {
+  color: #333333;
+  font-size: clamp(1rem, 2vw, 2rem);
+}
 
 .officers {
   margin: 3.75rem;

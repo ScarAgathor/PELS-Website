@@ -96,6 +96,9 @@
         }
     }
 
-    
+    .programs__empty {
+        color: base.$pels--dark;
+        font-size: clamp(1rem, 2vw, 2rem);
+    }
     
 }
