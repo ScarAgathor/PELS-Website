@@ -49,6 +49,9 @@ body {
 
 body {
   background-color: #f8f8f8;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, p {
@@ -75,6 +78,7 @@ p {
 main {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .no-scroll {
@@ -617,125 +621,61 @@ footer .visually-hidden {
   visibility: visible;
 }
 
-.login__form {
+.officers__skeleton {
   display: flex;
   justify-content: center;
-  align-items: start;
-  flex-direction: column;
-  box-shadow: 4px 5px 4px rgb(191.25, 191.25, 191.25);
-  border: 1px solid rgb(191.25, 191.25, 191.25);
-  border-radius: 0.4rem;
-  gap: 0.75rem;
-  padding: 30px clamp(1.2rem, 10vw, 1.875rem);
-}
-.login__form h3 {
-  font-size: 1.5rem;
-  font-family: poppinsRegular;
-  letter-spacing: 0.05em;
-}
-.login__form .line {
-  height: 1px;
-  width: 100%;
-  background-color: rgb(215.8369098712, 218.6566523605, 221.1630901288);
-}
-.login__form .form {
-  width: clamp(16.75rem, 30vw, 25rem);
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-}
-.login__form .form__field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-}
-.login__form .form__label {
-  font-family: poppinsRegular;
-  font-size: clamp(1rem, 2vw, 1.3rem);
-}
-.login__form .form__input {
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
-  font-family: poppinsRegular;
-  letter-spacing: 0.08em;
-  padding: 0.3125rem 0.625rem;
-  border: 1px solid rgb(188.4763948498, 193.2660944206, 197.5236051502);
-  border-radius: 5px;
-  background: none;
-  outline: none;
-}
-.login__form .form__message {
-  font-size: clamp(0.875rem, 2vw, 1rem);
-}
-.login__form .form__button {
-  color: #ffffff;
-  background-color: #b71933;
-  padding: clamp(0.5rem, 1.5vw, 0.6rem);
-  border: none;
-  border-radius: 0.9375rem;
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  font-family: poppinsSemiBold;
-  letter-spacing: 0.13em;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  white-space: nowrap;
-}
-.login__form .form__button:hover, .login__form .form__button:focus, .login__form .form__button:active {
-  background-color: #a6172e;
-}
-.login__form .logo {
-  width: clamp(3.8rem, 5.8vw, 4.875rem);
-  height: clamp(4rem, 6.1vw, 5.5rem);
-  align-self: center;
-}
-
-.addOfficerModal {
-  box-shadow: 4px 5px 4px rgb(191.25, 191.25, 191.25);
-  border: 1px solid rgb(191.25, 191.25, 191.25);
-  width: fit-content;
-  border-radius: 0.4rem;
-  padding: 30px clamp(1.2rem, 10vw, 1.875rem);
-}
-.addOfficerModal .form {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-direction: column;
-  gap: 0.625rem;
-}
-.addOfficerModal .form__field {
-  display: flex;
   align-items: center;
-  gap: 0.625rem;
+  flex-direction: column;
+  gap: clamp(0.625rem, 1.2vw, 1rem);
+  background-color: #fafafa;
+  width: 16.25rem;
+  height: 16.4375rem;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0.375rem 0.25rem 0.1875rem rgb(191.25, 191.25, 191.25);
+  border-radius: 0.75rem;
 }
-.addOfficerModal .form__label {
-  font-family: poppinsRegular;
-  font-size: clamp(1rem, 2vw, 1.3rem);
+.officers__skeleton__img, .officers__skeleton__text {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
 }
-.addOfficerModal .form__input {
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
-  font-family: poppinsRegular;
-  letter-spacing: 0.08em;
-  padding: 0.3125rem 0.625rem;
-  border: 1px solid rgb(188.4763948498, 193.2660944206, 197.5236051502);
-  border-radius: 5px;
-  background: none;
-  outline: none;
+.officers__skeleton__img {
+  width: 8.125rem;
+  height: 8.125rem;
+  border-radius: 50%;
 }
-.addOfficerModal .form__button {
-  width: 100%;
-  color: #ffffff;
-  background-color: #b71933;
-  padding: clamp(0.5rem, 1.5vw, 0.6rem);
-  border: none;
-  border-radius: 0.9375rem;
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  font-family: poppinsSemiBold;
-  letter-spacing: 0.13em;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  white-space: nowrap;
+.officers__skeleton__text--long {
+  width: 75%;
+  height: 1.625rem;
+}
+.officers__skeleton__text--short {
+  width: 60%;
+  height: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.officers__skeleton__text--link {
+  width: 32%;
+  height: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@media (min-width: 1024px) {
+  .officers__skeleton {
+    width: 18.75rem;
+    height: 19rem;
+  }
+  .officers__skeleton img {
+    width: 9.375rem;
+    height: 9.375rem;
+  }
 }
 
 .home {
@@ -1051,6 +991,16 @@ footer .visually-hidden {
     gap: 5rem;
   }
 }
+.officers .officers__error {
+  color: #b71933;
+  font-size: 32px;
+  grid-column: 1/-1;
+}
+.officers .officers__empty {
+  color: #333333;
+  font-size: 32px;
+  grid-column: 1/-1;
+}
 
 .join {
   margin: clamp(2rem, 2vw, 3.75rem);
@@ -1092,10 +1042,4 @@ footer .visually-hidden {
 }
 .join__secondary p a:active, .join__secondary p a:focus, .join__secondary p a:hover {
   color: rgb(224.8317307692, 34.1682692308, 65.5432692308);
-}
-
-.login {
-  margin: clamp(4rem, 4vw, 8rem) clamp(2rem, 2vw, 3.75rem);
-  justify-content: center;
-  align-items: center;
 }/*# sourceMappingURL=main.css.map */

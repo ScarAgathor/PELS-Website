@@ -61,4 +61,16 @@
             gap: 5rem;
         }
     }
+
+    .officers__error {
+        color: base.$pels--red;
+        font-size: 32px;
+        grid-column: 1/-1;
+    }
+
+    .officers__empty {
+        color: base.$pels--dark;
+        font-size: 32px;
+        grid-column: 1/-1;
+    }
 }

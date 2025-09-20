@@ -321,32 +321,72 @@ const switchTabs = (activePrograms) => {
 
 // //load officers
 const  loadOfficers = async () => {
+    const presidentContainer = document.getElementById('presidentCont');
+    const vicePresidentContainer = document.getElementById('viceCont');
+    const officerBoardContainer = document.getElementById('boardCont');
+    const juniorOfficerContainer = document.getElementById('juniorCont');
+    const advisorOfficerContainer = document.getElementById('advisorCont');
+
+    const containers = [presidentContainer, vicePresidentContainer, officerBoardContainer, juniorOfficerContainer, advisorOfficerContainer];
+
     try {
         const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-officers');
         const data = await response.json();
 
-        const presidentContainer = document.getElementById('presidentCont');
-        const vicePresidentContainer = document.getElementById('viceCont');
-        const officerBoardContainer = document.getElementById('boardCont');
-        const juniorOfficerContainer = document.getElementById('juniorCont');
-        const advisorOfficerContainer = document.getElementById('advisorCont');
+        //clear all skeletons
+        containers.forEach(cont => {
+            cont.innerHTML = "";
+        })
 
-        data.officers.forEach(officer => {
-            let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin);
-            
-            if (officer.position.toLowerCase() === 'president') {
-                presidentContainer.appendChild(card);
-            } else if (officer.position.toLowerCase().includes('vice')) {
-                vicePresidentContainer.appendChild(card);
-            } else if(officer.position.toLowerCase().includes('junior')) {
-                juniorOfficerContainer.appendChild(card);
-            } else if(officer.position.toLowerCase().includes('advisor')) {
-                advisorOfficerContainer.appendChild(card);
-            } else {
-                officerBoardContainer.appendChild(card);
-            }
-        });
+        if(data.error) {
+            containers[0].parentElement.style.gap = 0;
+            containers[0].innerHTML = `
+                <p class="officers__error">Error Loading Officers</p>
+            `;
+            containers[3].innerHTML = `
+                <p class="officers__error">Error Loading Officers</p>
+            `;
+            containers[4].innerHTML = `
+                <p class="officers__error">Error Loading Officers</p>
+            `;
+        } else {
+            data.officers.forEach(officer => {
+                let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin);
 
+                if (officer.position.toLowerCase() === 'president') {
+                    presidentContainer.appendChild(card);
+                 } else if (officer.position.toLowerCase().includes('vice')) {
+                    vicePresidentContainer.appendChild(card);
+                } else if(officer.position.toLowerCase().includes('junior')) {
+                    juniorOfficerContainer.appendChild(card);
+                } else if(officer.position.toLowerCase().includes('advisor')) {
+                    advisorOfficerContainer.appendChild(card);
+                } else {
+                    officerBoardContainer.appendChild(card);
+                }
+            });
+        }
+
+        //check if any officer container is empty. The code is really bad and repetitive. Improve this later
+        if(containers[0].innerHTML == '' && containers[1].innerHTML == '' && containers[2].innerHTML == '' ) {
+            containers[0].parentElement.style.gap = 0;
+            containers[0].innerHTML = `
+                <p class="officers__empty">No Officers are currently available</p>
+            `;
+        } 
+        
+        if(containers[3].innerHTML == '') {
+            containers[3].innerHTML = `
+                <p class="officers__empty">No Junior Officers are currently available</p>
+            `;
+        }
+
+        if(containers[4].innerHTML == '') {
+            containers[4].innerHTML = `
+                <p class="officers__empty">No Senior Advisors are currently available</p>
+            `;
+        }
+        
     }catch (error) {
         console.error('Failed to load officer data:', error);
     }
@@ -357,7 +397,7 @@ const createOfficerCard = (img, name, position, linkedin) => {
     let officerCard = document.createElement('div');
     officerCard.classList.add('officer__card');
     officerCard.innerHTML = `
-        <img src="${img}" alt="${position}" class="officer__image">
+        <img src="${img || 'https://res.cloudinary.com/dvcpaters/image/upload/v1756758759/profile-default-svgrepo-com_nh90vr.svg'}" alt="${position}" class="officer__image">
         <p class="officer__name">${name}</p>
         <p class="officer__position">${position}</p>
         <a class="officer__linkedin" href="${linkedin}" target="_blank">
