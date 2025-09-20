@@ -73,5 +73,6 @@
         color: base.$pels--dark;
         font-size: clamp(1rem, 2vw, 2rem);
         grid-column: 1/-1;
+        text-wrap: nowrap;
     }
 }
