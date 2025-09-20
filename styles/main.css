@@ -44,12 +44,14 @@ p, h1, h2, h3, h4, h5, h6 {
   src: url(../fonts/Poppins-Regular.ttf);
 }
 body {
-  outline: 3px solid red;
   overflow-x: hidden;
 }
 
 body {
   background-color: #f8f8f8;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, p {
@@ -76,6 +78,7 @@ p {
 main {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .no-scroll {
@@ -358,7 +361,7 @@ footer .visually-hidden {
 .program__card {
   background-color: #ffffff;
   border-radius: 0.75rem;
-  box-shadow: 4px 4px 3px #bfbfbf;
+  box-shadow: 4px 4px 3px rgb(191.25, 191.25, 191.25);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -442,7 +445,7 @@ footer .visually-hidden {
   width: 16.25rem;
   height: 16.4375rem;
   border: 1px solid #e0e0e0;
-  box-shadow: 0.375rem 0.25rem 0.1875rem #bfbfbf;
+  box-shadow: 0.375rem 0.25rem 0.1875rem rgb(191.25, 191.25, 191.25);
   border-radius: 0.75rem;
 }
 .officer__card .officer__image {
@@ -474,7 +477,7 @@ footer .visually-hidden {
   height: 1.5rem;
 }
 .officer__card .officer__linkedin:active, .officer__card .officer__linkedin:focus, .officer__card .officer__linkedin:hover {
-  color: #8a1326;
+  color: rgb(138.1298076923, 18.8701923077, 38.4951923077);
 }
 @media (min-width: 1024px) {
   .officer__card {
@@ -618,6 +621,63 @@ footer .visually-hidden {
   visibility: visible;
 }
 
+.officers__skeleton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: clamp(0.625rem, 1.2vw, 1rem);
+  background-color: #fafafa;
+  width: 16.25rem;
+  height: 16.4375rem;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0.375rem 0.25rem 0.1875rem rgb(191.25, 191.25, 191.25);
+  border-radius: 0.75rem;
+}
+.officers__skeleton__img, .officers__skeleton__text {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+.officers__skeleton__img {
+  width: 8.125rem;
+  height: 8.125rem;
+  border-radius: 50%;
+}
+.officers__skeleton__text--long {
+  width: 75%;
+  height: 1.625rem;
+}
+.officers__skeleton__text--short {
+  width: 60%;
+  height: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.officers__skeleton__text--link {
+  width: 32%;
+  height: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@media (min-width: 1024px) {
+  .officers__skeleton {
+    width: 18.75rem;
+    height: 19rem;
+  }
+  .officers__skeleton img {
+    width: 9.375rem;
+    height: 9.375rem;
+  }
+}
+
 .home {
   gap: clamp(1.875rem, 5vw, 6.25rem);
 }
@@ -745,13 +805,13 @@ footer .visually-hidden {
     grid-template-areas: "p p" "e i";
     place-items: center;
   }
-  .home .officers__container .officer__card.P {
+  .home .officers__container .officer__card.P, .home .officers__container .officers__skeleton.P {
     grid-area: p;
   }
-  .home .officers__container .officer__card.E {
+  .home .officers__container .officer__card.E, .home .officers__container .officers__skeleton.E {
     grid-area: e;
   }
-  .home .officers__container .officer__card.I {
+  .home .officers__container .officer__card.I, .home .officers__container .officers__skeleton.I {
     grid-area: i;
   }
 }
@@ -763,7 +823,7 @@ footer .visually-hidden {
     grid-template-areas: "e p i";
     align-items: end; /* so I can offset P */
   }
-  .home .officers__container .officer__card.P {
+  .home .officers__container .officer__card.P, .home .officers__container .officers__skeleton.P {
     transform: translateY(-5.625rem); /* raise center card */
   }
 }
@@ -852,6 +912,10 @@ footer .visually-hidden {
 .program .programs__container .hidden-card {
   display: none !important;
 }
+.program .programs__empty {
+  color: #333333;
+  font-size: clamp(1rem, 2vw, 2rem);
+}
 
 .officers {
   margin: 3.75rem;
@@ -931,6 +995,18 @@ footer .visually-hidden {
     gap: 5rem;
   }
 }
+.officers .officers__error {
+  color: #b71933;
+  font-size: clamp(1rem, 2vw, 2rem);
+  grid-column: 1/-1;
+  text-wrap: nowrap;
+}
+.officers .officers__empty {
+  color: #333333;
+  font-size: clamp(1rem, 2vw, 2rem);
+  grid-column: 1/-1;
+  text-wrap: nowrap;
+}
 
 .join {
   margin: clamp(2rem, 2vw, 3.75rem);
@@ -959,7 +1035,7 @@ footer .visually-hidden {
   font-size: clamp(1rem, 2vw, 1.375rem);
 }
 .join__member .member__link:active, .join__member .member__link:focus, .join__member .member__link:hover {
-  color: #8a1326;
+  color: rgb(224.8317307692, 34.1682692308, 65.5432692308);
 }
 .join__secondary p {
   font-size: clamp(1rem, 2vw, 1.375rem);
@@ -971,5 +1047,5 @@ footer .visually-hidden {
   cursor: pointer;
 }
 .join__secondary p a:active, .join__secondary p a:focus, .join__secondary p a:hover {
-  color: #8a1326;
+  color: rgb(224.8317307692, 34.1682692308, 65.5432692308);
 }/*# sourceMappingURL=main.css.map */

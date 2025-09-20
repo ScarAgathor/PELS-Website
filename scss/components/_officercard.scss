@@ -6,7 +6,7 @@
     width: 16.25rem; // 260px
     height: 16.4375rem; // 263px
     border: 1px solid #e0e0e0;
-    box-shadow: 0.375rem 0.25rem 0.1875rem lighten(#000000, 75%);
+    box-shadow: 0.375rem 0.25rem 0.1875rem base.lighten(#000000, 75%);
     border-radius: 0.75rem;
 
     .officer__image {
@@ -42,7 +42,7 @@
         }
 
         &:active, &:focus, &:hover {
-            color: darken(base.$pels--red, 10%);
+            color: base.darken(base.$pels--red, 10%);
         }
     }
 
@@ -56,95 +56,3 @@
         }
     }
 }
-
-
- // {
-    //     "name": "Jennifer Dominguez",
-    //     
-    // },
-
-    // {
-    //     "name": "Natalia Lopez",
-    //     "position": "Senior Advisor",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/natalia_l86tx5.jpg"
-    // },
-    // {
-    //     "name": "Gladvin George",
-    //     "position": "Senior Advisor",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/gladvin_s9qmoh.jpg"
-    // },
-    // {
-    //     "name": "Amilcar Sanores",
-    //     "position": "Senior Advisor",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/amilcar_db8fro.png"
-    // },
-    // {
-    //     "name": "Caleb Gamboa",
-    //     "position": "Treasurer",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/caleb_vjrvqc.webp"
-    // },
-    // {
-    //     "name": "Allan Aanonsen",
-    //     "position": "Senior Advisor",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/allan_i9szlx.webp"
-    // },
-    // {
-    //     "name": "Edidiong Ekong",
-    //     "position": "Secretary",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/edidiong_vvqrup.png"
-    // },
-    // {
-    //     "name": "Alejandro Villanueva",
-    //     "position": "Outreach Director",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/alejandro_f7vybi.webp"
-    // },
-    // {
-    //     "name": "Tyler Huling",
-    //     "position": "Senior Advisor",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/tyler_zao4hb.jpg"
-    // },
-    // {
-    //     "name": "Ethan Aguire",
-    //     "position": "Media Director",
-    //     "image": "https://res.cloudinary.com/dvcpaters/image/upload/ethan_x6n7px.jpg"
-    // },
-    // {
-    //     "name": "Emilio Valencia",
-    //     "position": "Junior Officer",
-    //     "image" : "https://res.cloudinary.com/dvcpaters/image/upload/emilio_jmn3om.png"
-    // },
-    // {
-    //     "name": "Noah Mendoza",
-    //     "position": "Junior Officer",
-    //     "image" : "https://res.cloudinary.com/dvcpaters/image/upload/noah_mxhvlk.png"
-    // },
-    // {
-    //     "name": "Kateri Parker",
-    //     "position": "Junior Officer",
-    //     "image" : "https://res.cloudinary.com/dvcpaters/image/upload/kateri_jx7jce.webp"
-    // },
-    // {
-    //     "name": "Luis Alvarado",
-    //     "position": "Junior Officer",
-    //     "image" : "https://res.cloudinary.com/dvcpaters/image/upload/luis_tcjgl6.png"
-    // },
-    // {
-    //     "name": "Kade Hoverson",
-    //     "position": "Junior Officer",
-    //     "image" : "assets/images/officers/jennnifer.jpg"
-    // },
-    // {
-    //     "name": "Aidan Tijerina",
-    //     "position": "Junior Officer",
-    //     "image" : "https://res.cloudinary.com/dvcpaters/image/upload/aiden_p2ngjr.png"
-    // },
-    // {
-    //     "name": "Roua Mohamed",
-    //     "position": "Junior Officer",
-    //     "image" : "https://res.cloudinary.com/dvcpaters/image/upload/roua_vmethj.png"
-    // },
-    // {
-    //     "name": "Sandra Sreejith",
-    //     "position": "Junior Officer",
-    //     "image" : "https://res.cloudinary.com/dvcpaters/image/upload/sandra_s9kvuu.webp"
-    // }

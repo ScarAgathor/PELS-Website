@@ -4,6 +4,13 @@
     align-items: center;
 }
 
+@mixin leftJustifyColumn() {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
 @mixin verticalGap($gap) {
     display: flex;
     justify-content: center;
