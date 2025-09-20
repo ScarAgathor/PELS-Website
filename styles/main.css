@@ -1005,6 +1005,7 @@ footer .visually-hidden {
   color: #333333;
   font-size: clamp(1rem, 2vw, 2rem);
   grid-column: 1/-1;
+  text-wrap: nowrap;
 }
 
 .join {
