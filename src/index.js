@@ -92,43 +92,40 @@ if(modal_close) {
 const loadHomePrograms = async () => {
     const program_types = ['workshops', 'events'];
 
-    for (let program_type of program_types) {
-        try {
-            const response = await fetch(`../data/${program_type}.json`);
-            const programs = await response.json();
+    try {
+        const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-programs');
+        const data = await response.json();
 
-            // Filter only upcoming and sort by date (assumes ISO date format: YYYY-MM-DD) 
-            const upcoming_programs = programs.filter(program => program.status === 'upcoming').sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 2); // Only take the first 2
-            const container = document.querySelector(`.programs__content--${program_type}`);
+        for (let type of program_types) {
+            const program_group = data.programs.filter(program => program.program_type === type.slice(0, -1));
+            const upcoming_programs = program_group.filter(program => program.status === false).sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 2); // Only take the first 2
+            const container = document.querySelector(`.programs__content--${type}`);
 
             upcoming_programs.forEach(program => {
-                const card = createProgramCard(program.status, program.img_card, program.title, program.organizer, program.date, program.location, program.time, program.description, program_type);
+                const card = createProgramCard(program.status, program.image_url, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.desc, program.program_type);
                 container.appendChild(card);
 
-                // Add click-to-open modal
                 card.addEventListener('click', () => {
-                    createProgramModal(program.status, program.img_card, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.description, program_type);
+                    createProgramModal(program.status, program.image_url, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.desc, program.program_type);
                     initializeModal();
                 });                
                 card.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault(); // Prevent scrolling if Space
-                        createProgramModal(program.status, program.img_card, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.description, program_type);
+                        createProgramModal(program.status, program.image_url, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.desc, program.program_type);
                         initializeModal();
                     }
                 })
-
             });
 
             if(container.innerHTML == "") {
                 container.innerHTML = `
-                    <p class="programs__empty">There are currently no upcoming ${program_type}.</p>
+                    <p class="programs__empty">There are currently no upcoming ${type}.</p>
                 `;
             }
-        
-        } catch (error) {
-            console.error(`Failed to load ${program_type}:`, error);
         }
+    } catch (error) {
+        console.error(`Failed to load programs:`, error);
     }
 };
 
@@ -167,10 +164,10 @@ const createProgramModal = (status, img, title, organizer, date, location, time,
     modal.setAttribute('aria-hidden', 'false');
 
     if(img !== "") {
-        modal.querySelector('#modal__image').classList.add('modal__image--active');
+        modal.querySelector('.modal__image').classList.add('modal__image--active');
         modal.querySelector('.modal__image__empty').classList.remove("modal__image__empty--active")
-        modal.querySelector('#modal__image').src = img;
-        modal.querySelector('#modal__image').alt = `${title} Image`;
+        modal.querySelector('.modal__image').src = img;
+        modal.querySelector('.modal__image').alt = `${title} Image`;
     } else {
         modal.querySelector('#modal__image').classList.remove('modal__image--active');
         modal.querySelector('.modal__image__empty').classList.add("modal__image__empty--active");
@@ -231,7 +228,7 @@ const initializeModal = () => {
 
 const loadPrograms = async (programType='workshops') => {
 
-    try {
+    try {//make a function to filter for program types
         const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-programs')
         const data = await response.json();
 
@@ -242,7 +239,6 @@ const loadPrograms = async (programType='workshops') => {
         completedContainer.innerHTML = '';
 
         data.programs.forEach(program => {
-            console.log(program)
             const card = createProgramCard(
                 program.status,
                 program.image_url,
