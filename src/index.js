@@ -107,13 +107,13 @@ const loadHomePrograms = async () => {
 
                 // Add click-to-open modal
                 card.addEventListener('click', () => {
-                    createProgramModal(program.status, program.img_card, program.title, program.organizer, formatDate(program.date), program.location, program.time, program.description, program_type);
+                    createProgramModal(program.status, program.img_card, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.description, program_type);
                     initializeModal();
                 });                
                 card.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault(); // Prevent scrolling if Space
-                        createProgramModal(program.status, program.img_card, program.title, program.organizer, formatDate(program.date), program.location, program.time, program.description, program_type);
+                        createProgramModal(program.status, program.img_card, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.description, program_type);
                         initializeModal();
                     }
                 })
@@ -137,17 +137,15 @@ const createProgramCard = (status, img, title, organizer, date, location, time, 
     programCard.classList.add('program__card',  `program__card--${program}`);
     programCard.setAttribute('tabindex', '0');
     programCard.setAttribute('role', 'button');
-    programCard.setAttribute('aria-label', `${title}, organized by ${organizer}, on ${formatDate(date)} at ${time}`);
+    programCard.setAttribute('aria-label', `${title}, organized by ${organizer}, on ${date} at ${time}`);
 
     programCard.innerHTML = `
-        <p class="card__status ${status}">${status}</p>
+        <p class="card__status ${status ? "completed" : "upcoming"}">${status ? "Completed" : "Upcoming"}</p>
         <img src="${img}" alt="Banner for ${title}" class="card__image">
         <h3 class="card__title">${title}</h3>
         <p class="card__organizer">${organizer}</p>
         <div class="card__meta">
-            <p class="card__date">
-                <time datetime="${date}">${formatDate(date)}</time>
-            </p>
+            <p class="card__date">${date}</p>
             <p class="card__location__container">
                 <svg width="19px" height="19px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="card__location__svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#000000"/>
@@ -161,37 +159,32 @@ const createProgramCard = (status, img, title, organizer, date, location, time, 
     return programCard
 }
 
-const formatDate = (raw_date) => {
-    const date = new Date(raw_date);
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-};
-
 const createProgramModal = (status, img, title, organizer, date, location, time, desc, program) => {
-   modal.classList.add('program__modal--active');
-   modal.firstElementChild.classList.add(`modal__${program}`)
-   overlay.classList.add('overlay--active')
-   modal.setAttribute('aria-hidden', 'false');
-   modal_status.textContent = status;
-   if(status === 'upcoming') {
-    modal_status.classList.add(`upcoming`)
-    modal_status.classList.remove('completed')
-   } else if(status === 'completed') {
-    modal_status.classList.add(`completed`)
-    modal_status.classList.remove('upcoming')
-   }
-   modal_img.src = img
-   modal_img.alt = `Banner for ${title}`
-   modal_title.textContent = title;
-   modal_organizer.textContent = organizer;
-   modal_date.textContent = `${date} @ ${time}`
-   modal_location.textContent = location
-   modal_desc.innerHTML = `<div class="modal__desc__scroll" tabindex="0">${desc}</div>`;
+    // let status = `${status_bool ? "Completed" : "Upcoming"}`;
+    modal.classList.add('program__modal--active');
+    modal.firstElementChild.classList.add(`modal__${program}`)
+    overlay.classList.add('overlay--active')
+    modal.setAttribute('aria-hidden', 'false');
 
-   trapFocus(modal)
+    if(img !== "") {
+        modal.querySelector('#modal__image').classList.add('modal__image--active');
+        modal.querySelector('.modal__image__empty').classList.remove("modal__image__empty--active")
+        modal.querySelector('#modal__image').src = img;
+        modal.querySelector('#modal__image').alt = `${title} Image`;
+    } else {
+        modal.querySelector('#modal__image').classList.remove('modal__image--active');
+        modal.querySelector('.modal__image__empty').classList.add("modal__image__empty--active");
+    }
+
+    modal_status.textContent = `${status ? "Completed" : "Upcoming"}`;
+    modal_status.classList.add(`${status ? "completed" : "upcoming"}`);
+    modal_title.textContent = title;
+    modal_organizer.textContent = `By ${organizer}`;
+    modal_date.textContent = `${date} @ ${time}`
+    modal_location.textContent = location
+    modal_desc.innerHTML = `<div class="modal__desc__scroll" tabindex="0">${desc}</div>`;
+
+    trapFocus(modal)
 }
 
 const trapFocus = (element) => { //focus trapping for the modal. I got it online, I don't fully understand it
@@ -237,9 +230,10 @@ const initializeModal = () => {
 }
 
 const loadPrograms = async (programType='workshops') => {
+
     try {
-        const response = await fetch(`../data/${programType}.json`);
-        const programs = await response.json();
+        const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-programs')
+        const data = await response.json();
 
         const upcomingContainer = document.getElementById(`upcoming-container`);
         const completedContainer = document.getElementById(`completed-container`);
@@ -247,16 +241,17 @@ const loadPrograms = async (programType='workshops') => {
         upcomingContainer.innerHTML = '';
         completedContainer.innerHTML = '';
 
-        programs.forEach(program => {
+        data.programs.forEach(program => {
+            console.log(program)
             const card = createProgramCard(
                 program.status,
-                program.img_card,
+                program.image_url,
                 program.title,
                 program.organizer,
-                program.date,
+                formatDateToText(program.date),
                 program.location,
-                program.time,
-                program.description,
+                formatTimeToText(program.time),
+                program.desc,
                 programType
             );
 
@@ -267,13 +262,13 @@ const loadPrograms = async (programType='workshops') => {
             const openModal = () => {
                 createProgramModal(
                     program.status,
-                    program.img_card,
+                    program.image_url,
                     program.title,
                     program.organizer,
-                    formatDate(program.date),
+                    formatDateToText(program.date),
                     program.location,
-                    program.time,
-                    program.description,
+                    formatTimeToText(program.time),
+                    program.desc,
                     programType
                 );
                 initializeModal();
@@ -288,9 +283,8 @@ const loadPrograms = async (programType='workshops') => {
                     openModal();
                 }
             });
-        });
-
-    } catch (err) {
+        });   
+    }catch (err) {
         console.error(`Failed to load ${programType}:`, err);
     }
 };
@@ -460,3 +454,26 @@ const loadHomeOfficers = async () => {
         console.error('Failed to load officer data:', error);
     }
 }
+
+const formatDateToText = (raw_date) => {
+  const [year, month, day] = raw_date.split("-");
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC'
+  });
+};
+
+const formatTimeToText = (raw_time) => {
+  const [hours, minutes, seconds] = raw_time.split(":");
+  const date = new Date(Date.UTC(1970, 0, 1, hours, minutes, seconds));
+
+  return new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZone: 'UTC'
+  }).format(date);
+};
