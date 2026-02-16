@@ -238,7 +238,9 @@ const loadPrograms = async (programType='workshops') => {
         upcomingContainer.innerHTML = '';
         completedContainer.innerHTML = '';
 
-        data.programs.forEach(program => {
+        let currentPrograms = data.programs.filter(program => program.program_type === programType.slice(0, -1));
+
+        currentPrograms.forEach(program => {
             const card = createProgramCard(
                 program.status,
                 program.image_url,
@@ -251,7 +253,7 @@ const loadPrograms = async (programType='workshops') => {
                 programType
             );
 
-            const container = program.status === 'upcoming' ? upcomingContainer : completedContainer;
+            const container = program.status === false ? upcomingContainer : completedContainer;
             container.appendChild(card);
 
             // Click to open modal
