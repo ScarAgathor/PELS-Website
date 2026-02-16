@@ -17,7 +17,7 @@
         height: 100%;
         background-color: base.$program-modal-bg;
         border-radius: 0.5rem;
-        padding: 1.5625rem clamp(2rem, 5vw, 4.8rem); 
+        padding: 1.5625rem clamp(2rem, 5vw, 3rem); 
 
         .modal__header {
             display: flex;
@@ -31,17 +31,45 @@
             }
 
             .modal__close {
+                background: none;
+                outline: none;
+                border: none;
                 cursor: pointer;
+
+                &:hover path, &:focus path{
+                    stroke: base.$button-bg--red;
+                }
             }
         }
 
         .modal__image {
             width: 100%;
-            height: clamp(9rem, 10vw, 16rem);
-            border-radius: 1.125rem;
-            object-fit: cover;
-            background-color: green;
+            height: 15.625rem;
+            border-radius: 0.5rem;
+            object-fit: fill;
             margin-bottom: 1.5625rem;
+            display: none;
+        }
+
+        .modal__image--active {
+            display: block;
+        }
+
+        .modal__image__empty {
+            width: 100%;
+            height: 15.625rem;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.625rem;
+
+            p {
+                font-size: clamp(0.8rem, 2vw, 1.2rem);
+            }
+        }
+
+        .modal__image__empty--active {
+            display: flex;
         }
 
         .modal__hero {
@@ -57,7 +85,7 @@
             }
 
             .modal__status {
-                font-size: clamp(0.8rem, 3vw, 1rem); // 16px
+                font-size: clamp(0.8rem, 3vw, 1rem); 
                 font-family: base.$poppinsRegular;
             }
 
@@ -74,11 +102,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            // gap: 3rem;
             margin-bottom: clamp(1.25rem, 2vw, 2.125rem);
 
             p {
-                font-size: clamp(0.8rem, 3vw, 1rem); // 16px
+                font-size: clamp(0.8rem, 3vw, 1rem);
                 font-family: base.$poppinsMedium;
             }
 
