@@ -50,6 +50,8 @@
     }
 
     .programs {
+        margin: 0 clamp(2rem, 2vw, 3.75rem);
+
         h2 {
             margin-bottom: 1.25rem;
         }
@@ -95,8 +97,8 @@
     }
 
     .officers {
-        margin: 0;
-        margin-bottom: clamp(1.875rem, 5vw, 6.25rem);;
+        margin: 0 clamp(2rem, 2vw, 3.75rem);
+        margin-bottom: clamp(1.875rem, 5vw, 6.25rem);
         @include base.verticalGap(0);
 
         &__title {

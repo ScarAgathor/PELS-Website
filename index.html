@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Home | IEEE PELS at UTSA</title>
     <link rel="icon" href="https://res.cloudinary.com/dvcpaters/image/upload/favicon_lco1zt.ico">
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dvcpaters/image/upload/favicon_wipcmm.png" sizes="32x32">
     <link rel="apple-touch-icon" href="https://res.cloudinary.com/dvcpaters/image/upload/favicon_wipcmm.png">
@@ -12,13 +12,14 @@
 </head>
 <body id="home__page">
     <header>
-        <img src="https://res.cloudinary.com/dvcpaters/image/upload/pels_logo_wpjejc.webp" alt="Power And Electronics Society logo" class="logo">
+        <img src="https://res.cloudinary.com/dvcpaters/image/upload/pels_logo_wpjejc.webp" alt="IEEE PELS at UTSA logo" class="logo">
         <nav class="navbar" aria-label="Main navigation">
             <ul>
                 <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="workshops&events.html">Workshops & Events</a></li>
                 <li><a href="officers.html">Officers</a></li>
                 <li><a href="joinus.html">Join us</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
             </ul>
         </nav>
 
@@ -34,6 +35,7 @@
                 <li><a href="workshops&events.html">Workshops & Events</a></li>
                 <li><a href="officers.html">Officers</a></li>
                 <li><a href="joinus.html">Join us</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
             </ul>
         </nav>
     </header>
@@ -42,7 +44,7 @@
         <section class="hero">
             <div class="hero__overlay"></div>
             <div class="hero__content">
-                <h1>IEEE Power & Electronics Society.</h1>
+                <h1>IEEE PELS at UTSA</h1>
                 <p>About us! <span>PELS is dedicated to the design, evaluation, and creation of circuits for the efficient conversion, control and conditioning of electrical power.</span></p>
                 <p>Our Mission!<span>We offer hands-on learning, collaborative projects, and networking with industry professionals, all while inspiring students about electrical and computer engineering.</span></p>
                 <a class="button button--red" href="joinus.html" target="_self">Join PELS Today</a>
@@ -71,7 +73,7 @@
 
         <section class="officers">
             <h2 class="officers__title">Meet Our Officers</h2>
-            <p class="officers__desc">Leading the way at UTSA IEEE PELS—meet our top officers, along with a dedicated team behind them.</p>
+            <p class="officers__desc">Leading the way at IEEE PELS at UTSA—meet our top officers, along with a dedicated team behind them.</p>
             <div class="officers__container" id="officers__container-home">
                 <div class="officers__skeleton P">
                     <div class="officers__skeleton__img"></div>
@@ -144,6 +146,10 @@
                 </p>
             </div>
             <p class="modal__desc" id="modal__desc"></p>
+            <div class="modal__actions">
+                <a class="modal__register button button--red" id="modal__register" href="#" target="_blank" rel="noopener noreferrer" hidden>Register Now</a>
+                <a class="modal__calendar button button--purple" id="modal__calendar" href="#" target="_blank" rel="noopener noreferrer" hidden>Add to Google Calendar</a>
+            </div>
         </article>
     </div>
 
@@ -152,8 +158,8 @@
         <h2 class="visually-hidden">Site Footer</h2>
         <div class="footerContent">
             <div class="footerContent__desc">
-                <img src="https://res.cloudinary.com/dvcpaters/image/upload/pels_logo_wpjejc.webp" alt="Power And Electronics Society logo">
-                <p>IEEE Power & Electronics Society is dedicated to innovation in power and electronics engineering.</p>
+                <img src="https://res.cloudinary.com/dvcpaters/image/upload/pels_logo_wpjejc.webp" alt="IEEE PELS at UTSA logo">
+                <p>IEEE PELS at UTSA is dedicated to innovation in power and electronics engineering.</p>
             </div>
 
             <div class="footerContent__socials">
@@ -161,6 +167,13 @@
                     <a href="https://discord.gg/FftP4S4G69" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.59 5.88997C17.36 5.31997 16.05 4.89997 14.67 4.65997C14.5 4.95997 14.3 5.36997 14.17 5.69997C12.71 5.47997 11.26 5.47997 9.83001 5.69997C9.69001 5.36997 9.49001 4.95997 9.32001 4.65997C7.94001 4.89997 6.63001 5.31997 5.40001 5.88997C2.92001 9.62997 2.25001 13.28 2.58001 16.87C4.23001 18.1 5.82001 18.84 7.39001 19.33C7.78001 18.8 8.12001 18.23 8.42001 17.64C7.85001 17.43 7.31001 17.16 6.80001 16.85C6.94001 16.75 7.07001 16.64 7.20001 16.54C10.33 18 13.72 18 16.81 16.54C16.94 16.65 17.07 16.75 17.21 16.85C16.7 17.16 16.15 17.42 15.59 17.64C15.89 18.23 16.23 18.8 16.62 19.33C18.19 18.84 19.79 18.1 21.43 16.87C21.82 12.7 20.76 9.08997 18.61 5.88997H18.59ZM8.84001 14.67C7.90001 14.67 7.13001 13.8 7.13001 12.73C7.13001 11.66 7.88001 10.79 8.84001 10.79C9.80001 10.79 10.56 11.66 10.55 12.73C10.55 13.79 9.80001 14.67 8.84001 14.67ZM15.15 14.67C14.21 14.67 13.44 13.8 13.44 12.73C13.44 11.66 14.19 10.79 15.15 10.79C16.11 10.79 16.87 11.66 16.86 12.73C16.86 13.79 16.11 14.67 15.15 14.67Z" fill="#f8f8f8"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="icon" name="rowdylink">
+                    <a href="https://rowdylink.utsa.edu/organization/powerelectronicssociety" target="_blank" rel="noopener noreferrer" aria-label="Visit our RowdyLink page">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" fill="#f8f8f8"/>
                         </svg>
                     </a>
                 </div>
@@ -201,7 +214,7 @@
             </div>
         </div>
         
-        <p class="copyright">&#0169 2026 IEEE Power & Electronics Society. All rights Reserved</p>
+        <p class="copyright">&#0169 2026 IEEE PELS at UTSA. All rights Reserved</p>
     </footer> 
 </body>
 </html>

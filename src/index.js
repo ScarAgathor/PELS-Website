@@ -2,6 +2,7 @@ const home_page = document.getElementById('home__page');
 const program_page = document.getElementById('program__page');
 const officer_page = document.getElementById('officer__page');
 const join_page = document.getElementById('joinus__page');
+const newsletter_page = document.getElementById('newsletter__page');
 const hamburger = document.getElementById('hamburger');
 const mobile_menu = document.getElementById('mobileMenu');
 const overlay = document.querySelector('.overlay')
@@ -13,7 +14,11 @@ const modal_organizer = modal?.querySelector('.modal__organizer')
 const modal_date = modal?.querySelector('.modal__date')
 const modal_location = modal?.querySelector('.modal__location__container').lastElementChild
 const modal_desc = modal?.querySelector('.modal__desc')
+const modal_register = document.getElementById('modal__register')
+const modal_calendar = document.getElementById('modal__calendar')
 const modal_close = document.getElementById('modal__close')
+
+const REGISTER_LINK_FALLBACK = 'https://rowdylink.utsa.edu/organization/powerelectronicssociety';
 const tabs = document.querySelector('.tabs'); 
 const workshop_tab = tabs?.querySelector('#tab-workshops');
 const event_tab = tabs?.querySelector('#tab-events');
@@ -49,6 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
         loadOfficers();
     }
     if(join_page) {
+        
+    }
+    if(newsletter_page) {
         
     }
 })
@@ -106,13 +114,13 @@ const loadHomePrograms = async () => {
                 container.appendChild(card);
 
                 card.addEventListener('click', () => {
-                    createProgramModal(program.status, program.image_url, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.desc, program.program_type);
+                    createProgramModal(program, program.program_type);
                     initializeModal();
-                });                
+                });
                 card.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault(); // Prevent scrolling if Space
-                        createProgramModal(program.status, program.image_url, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.desc, program.program_type);
+                        createProgramModal(program, program.program_type);
                         initializeModal();
                     }
                 })
@@ -136,9 +144,28 @@ const createProgramCard = (status, img, title, organizer, date, location, time, 
     programCard.setAttribute('role', 'button');
     programCard.setAttribute('aria-label', `${title}, organized by ${organizer}, on ${date} at ${time}`);
 
+    const hasImage = img && img.trim() !== '';
+
+    const imageMarkup = hasImage
+        ? `<img src="${img}" alt="Banner for ${title}" class="card__image">`
+        : `<div class="card__image card__image--empty" role="img" aria-label="No cover image available">
+                <svg fill="#000000" viewBox="0 0 512.001 512.001" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path d="M160.235,276.571l-144.5-159.983c-9.383,5.578-15.734,15.711-15.734,27.414v256.005c0,17.672,14.328,31.994,32,31.994
+                            h268.625l-58.867-65.17C196.993,360.155,162.407,322.662,160.235,276.571z"/>
+                        <path d="M480.001,112.001h-112l-23.156-46.313c-5.422-10.84-16.5-17.687-28.625-17.687H195.782
+                            c-12.125,0-23.203,6.848-28.625,17.688l-10.836,21.672L87.782,10.594C75.985-2.539,55.735-3.61,42.594,8.211
+                            c-13.141,11.828-14.203,32.063-2.375,45.196l399.992,448c6.313,7.024,15.031,10.594,23.797,10.594
+                            c7.625,0,15.281-2.711,21.391-8.211c13.141-11.828,14.203-32.067,2.375-45.2l-23.734-26.59h15.961c17.672,0,32-14.321,32-31.994
+                            V144.002C512.001,126.33,497.672,112.001,480.001,112.001z M237.196,177.94c6.086-1.219,12.359-1.938,18.805-1.938
+                            c53.016,0,96,42.981,96,96.002c0,10.223-1.758,19.996-4.727,29.227L237.196,177.94z"/>
+                    </g>
+                </svg>
+            </div>`;
+
     programCard.innerHTML = `
         <p class="card__status ${status ? "completed" : "upcoming"}">${status ? "Completed" : "Upcoming"}</p>
-        <img src="${img}" alt="Banner for ${title}" class="card__image">
+        ${imageMarkup}
         <h3 class="card__title">${title}</h3>
         <p class="card__organizer">${organizer}</p>
         <div class="card__meta">
@@ -152,14 +179,39 @@ const createProgramCard = (status, img, title, organizer, date, location, time, 
         </div>
         <p class="card__time">${time}</p>
         <p class="card__description">${desc}</p>
-    `  
+    `
+
+    if (hasImage) {
+        const cardImage = programCard.querySelector('.card__image');
+        if (cardImage.complete) {
+            cardImage.classList.add('card__image--loaded');
+        } else {
+            cardImage.addEventListener('load', () => cardImage.classList.add('card__image--loaded'));
+            cardImage.addEventListener('error', () => cardImage.classList.add('card__image--loaded'));
+        }
+    }
+
     return programCard
 }
 
-const createProgramModal = (status, img, title, organizer, date, location, time, desc, program) => {
-    // let status = `${status_bool ? "Completed" : "Upcoming"}`;
+const renderLoadingSpinner = (container, programType) => {
+    container.innerHTML = '';
+    const loading = document.createElement('div');
+    loading.classList.add('programs__loading', `programs__loading--${programType}`);
+    loading.innerHTML = `
+        <span class="programs__spinner" aria-hidden="true"></span>
+        <p>Loading ${programType}...</p>
+    `
+    container.appendChild(loading);
+}
+
+const createProgramModal = (program, programType) => {
+    const { status, image_url: img, title, organizer, location, desc } = program;
+    const date = formatDateToText(program.date);
+    const time = formatTimeToText(program.time);
+
     modal.classList.add('program__modal--active');
-    modal.firstElementChild.classList.add(`modal__${program}`)
+    modal.firstElementChild.classList.add(`modal__${programType}`)
     overlay.classList.add('overlay--active')
     modal.setAttribute('aria-hidden', 'false');
 
@@ -181,8 +233,45 @@ const createProgramModal = (status, img, title, organizer, date, location, time,
     modal_location.textContent = location
     modal_desc.innerHTML = `<div class="modal__desc__scroll" tabindex="0">${desc}</div>`;
 
+    // Register and calendar actions only make sense for upcoming programs (workshops or events)
+    if (status === false) {
+        // Register link is submitted through the admin site; fall back to the org page until it's populated per-program
+        modal_register.href = program.register_link || REGISTER_LINK_FALLBACK;
+        modal_register.hidden = false;
+
+        modal_calendar.href = buildGoogleCalendarUrl(program);
+        modal_calendar.hidden = false;
+    } else {
+        modal_register.hidden = true;
+        modal_calendar.hidden = true;
+    }
+
     trapFocus(modal)
 }
+
+const pad2 = (n) => String(n).padStart(2, '0');
+
+const formatGoogleCalendarDateTime = (date) => {
+    return `${date.getFullYear()}${pad2(date.getMonth() + 1)}${pad2(date.getDate())}T${pad2(date.getHours())}${pad2(date.getMinutes())}${pad2(date.getSeconds())}`;
+};
+
+const buildGoogleCalendarUrl = (program) => {
+    const [year, month, day] = program.date.split('-').map(Number);
+    const [hour, minute, second] = program.time.split(':').map(Number);
+    const start = new Date(year, month - 1, day, hour, minute, second || 0);
+    const end = new Date(start.getTime() + 60 * 60 * 1000); // default to a 1-hour block, no end time is stored
+
+    const params = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: program.title,
+        dates: `${formatGoogleCalendarDateTime(start)}/${formatGoogleCalendarDateTime(end)}`,
+        details: program.desc || '',
+        location: program.location || '',
+        ctz: 'America/Chicago'
+    });
+
+    return `https://calendar.google.com/calendar/render?${params.toString()}`;
+};
 
 const trapFocus = (element) => { //focus trapping for the modal. I got it online, I don't fully understand it
     const focusableSelectors = [
@@ -227,18 +316,26 @@ const initializeModal = () => {
 }
 
 const loadPrograms = async (programType='workshops') => {
+    const upcomingContainer = document.getElementById(`upcoming-container`);
+    const completedContainer = document.getElementById(`completed-container`);
+    const seeMoreUpcoming = document.getElementById('seemore--upcoming');
+    const seeMoreCompleted = document.getElementById('seemore--completed');
+
+    renderLoadingSpinner(upcomingContainer, programType);
+    renderLoadingSpinner(completedContainer, programType);
+    seeMoreUpcoming.style.display = 'none';
+    seeMoreCompleted.style.display = 'none';
 
     try {//make a function to filter for program types
         const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-programs')
         const data = await response.json();
 
-        const upcomingContainer = document.getElementById(`upcoming-container`);
-        const completedContainer = document.getElementById(`completed-container`);
-
         upcomingContainer.innerHTML = '';
         completedContainer.innerHTML = '';
 
         let currentPrograms = data.programs.filter(program => program.program_type === programType.slice(0, -1));
+
+        currentPrograms.sort((a, b) => new Date(`${b.date}T${b.time}`) - new Date(`${a.date}T${a.time}`));
 
         currentPrograms.forEach(program => {
             const card = createProgramCard(
@@ -258,17 +355,7 @@ const loadPrograms = async (programType='workshops') => {
 
             // Click to open modal
             const openModal = () => {
-                createProgramModal(
-                    program.status,
-                    program.image_url,
-                    program.title,
-                    program.organizer,
-                    formatDateToText(program.date),
-                    program.location,
-                    formatTimeToText(program.time),
-                    program.desc,
-                    programType
-                );
+                createProgramModal(program, programType);
                 initializeModal();
             };
 
@@ -281,9 +368,56 @@ const loadPrograms = async (programType='workshops') => {
                     openModal();
                 }
             });
-        });   
+        });
+
+        setupSeeMore(upcomingContainer, seeMoreUpcoming);
+        setupSeeMore(completedContainer, seeMoreCompleted);
+
+        if (upcomingContainer.innerHTML === '') {
+            upcomingContainer.innerHTML = `<p class="programs__empty">There are currently no upcoming ${programType}.</p>`;
+        }
+        if (completedContainer.innerHTML === '') {
+            completedContainer.innerHTML = `<p class="programs__empty">There are currently no completed ${programType}.</p>`;
+        }
     }catch (err) {
         console.error(`Failed to load ${programType}:`, err);
+        upcomingContainer.innerHTML = `<p class="programs__empty">Failed to load ${programType}. Please try again later.</p>`;
+        completedContainer.innerHTML = '';
+    }
+};
+
+// hides cards beyond the first 4 and wires up the See More/See Less toggle
+const setupSeeMore = (container, button) => {
+    const cards = Array.from(container.children);
+
+    // clone to strip listeners from previous loadPrograms() calls before re-binding
+    const buttonId = button.id;
+    button.replaceWith(button.cloneNode(true));
+    button = document.getElementById(buttonId);
+
+    if (cards.length > 4) {
+        cards.slice(4).forEach(card => card.classList.add('hidden-card'));
+        button.style.display = 'flex';
+        button.setAttribute('aria-expanded', 'false');
+        button.querySelector('span').textContent = 'See More';
+
+        button.addEventListener('click', () => toggleSeeMore(container, button));
+    } else {
+        button.style.display = 'none';
+    }
+};
+
+const toggleSeeMore = (container, button) => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+
+    if (expanded) {
+        Array.from(container.children).slice(4).forEach(card => card.classList.add('hidden-card'));
+        button.setAttribute('aria-expanded', 'false');
+        button.querySelector('span').textContent = 'See More';
+    } else {
+        container.querySelectorAll('.hidden-card').forEach(card => card.classList.remove('hidden-card'));
+        button.setAttribute('aria-expanded', 'true');
+        button.querySelector('span').textContent = 'See Less';
     }
 };
 
@@ -306,34 +440,52 @@ if (workshop_tab && event_tab) {
 
 //switch program tabs
 const switchTabs = (activePrograms) => {
+    const seeMoreButtons = document.querySelectorAll('.seemorebutton');
+
     if(activePrograms === 'workshops') {
         workshop_tab.classList.add('tabs__workshops--active');
         event_tab.classList.remove('tabs__events--active');
         upcomingTitle.textContent = `Upcoming Workshops`
         completedTitle.textContent = `Completed Workshops`
+        seeMoreButtons.forEach(button => {
+            button.classList.add('seemorebutton--workshops');
+            button.classList.remove('seemorebutton--events');
+        });
     } else if(activePrograms === 'events') {
         event_tab.classList.add('tabs__events--active');
         workshop_tab.classList.remove('tabs__workshops--active');
         upcomingTitle.textContent = `Upcoming Events`
         completedTitle.textContent = `Completed Events`
+        seeMoreButtons.forEach(button => {
+            button.classList.add('seemorebutton--events');
+            button.classList.remove('seemorebutton--workshops');
+        });
     }
 }
 
 // //load officers
 const  loadOfficers = async () => {
+    const officersLoading = document.getElementById('officersLoading');
+    const officersContent = document.getElementById('officersContent');
     const presidentContainer = document.getElementById('presidentCont');
     const vicePresidentContainer = document.getElementById('viceCont');
     const officerBoardContainer = document.getElementById('boardCont');
     const juniorOfficerContainer = document.getElementById('juniorCont');
     const advisorOfficerContainer = document.getElementById('advisorCont');
+    const pastOfficerContainer = document.getElementById('pastCont');
 
-    const containers = [presidentContainer, vicePresidentContainer, officerBoardContainer, juniorOfficerContainer, advisorOfficerContainer];
+    const containers = [presidentContainer, vicePresidentContainer, officerBoardContainer, juniorOfficerContainer, advisorOfficerContainer, pastOfficerContainer];
+
+    // reveal the fully-populated page in one go instead of section-by-section, so nothing resizes mid-load
+    const revealContent = () => {
+        officersLoading.hidden = true;
+        officersContent.hidden = false;
+    };
 
     try {
         const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-officers');
         const data = await response.json();
 
-        //clear all skeletons
         containers.forEach(cont => {
             cont.innerHTML = "";
         })
@@ -347,6 +499,9 @@ const  loadOfficers = async () => {
                 <p class="officers__error">Error Loading Officers</p>
             `;
             containers[4].innerHTML = `
+                <p class="officers__error">Error Loading Officers</p>
+            `;
+            containers[5].innerHTML = `
                 <p class="officers__error">Error Loading Officers</p>
             `;
         } else {
@@ -373,8 +528,8 @@ const  loadOfficers = async () => {
             containers[0].innerHTML = `
                 <p class="officers__empty">No Officers are currently available</p>
             `;
-        } 
-        
+        }
+
         if(containers[3].innerHTML == '') {
             containers[3].innerHTML = `
                 <p class="officers__empty">No Junior Officers are currently available</p>
@@ -386,9 +541,21 @@ const  loadOfficers = async () => {
                 <p class="officers__empty">No Senior Advisors are currently available</p>
             `;
         }
-        
+
+        if(containers[5].innerHTML == '') {
+            containers[5].innerHTML = `
+                <p class="officers__empty">No Past Officers are currently available</p>
+            `;
+        }
+
+        revealContent();
     }catch (error) {
         console.error('Failed to load officer data:', error);
+        containers[0].parentElement.style.gap = 0;
+        containers[0].innerHTML = `
+            <p class="officers__error">Error Loading Officers</p>
+        `;
+        revealContent();
     }
 }
 

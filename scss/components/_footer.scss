@@ -61,7 +61,7 @@ footer {
             outline-offset: 2px;
           }
 
-            &:hover path, &:focus path{
+            &:hover path, &:focus path, &:hover rect, &:focus rect {
                 fill: base.$pels--red;
             }
 
