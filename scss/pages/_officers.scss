@@ -6,9 +6,50 @@
     gap: $gap;
 }
 
+@keyframes officers-spin {
+    to { transform: rotate(360deg); }
+}
+
 .officers {
     margin: 3.75rem;
-    gap: 6.25rem;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 6.25rem;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    &__loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        min-height: 50vh;
+        color: base.$pels--red;
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: base.$p--dark;
+        }
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    &__spinner {
+        width: 4rem;
+        height: 4rem;
+        border: 0.3rem solid #e0e0e0;
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: officers-spin 0.8s linear infinite;
+    }
 
     &__section {
         @include vertical-gap(5rem);

@@ -1,0 +1,26 @@
+@use "../base/" as base;
+
+.newsletter {
+    margin: clamp(2rem, 2vw, 3.75rem);
+    flex: 1;
+    @include base.centerDiv();
+
+    &__hero {
+        @include base.verticalGap(1.25rem);
+        max-width: 43.75rem;
+        margin: clamp(2rem, 6vw, 5rem) 0;
+
+        h1 {
+            margin-bottom: 0.625rem;
+        }
+
+        p {
+            color: base.$p--dark;
+        }
+    }
+
+    &__subtext {
+        font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+        color: base.$pels--gray;
+    }
+}

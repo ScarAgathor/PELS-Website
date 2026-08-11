@@ -1,5 +1,9 @@
 @use '../base/' as base;
 
+@keyframes card-image-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
 
 .program__card {
     background-color: base.$program-card-bg;
@@ -32,8 +36,33 @@
         height: 7.5rem;
         border-radius: 0.625rem;
         object-fit: cover;
-        background-color: green;
         margin-bottom: 1.875rem;
+        background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+        background-size: 200% 100%;
+        animation: card-image-shimmer 1.5s infinite;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+
+        &.card__image--loaded {
+            opacity: 1;
+            animation: none;
+            background: none;
+        }
+
+        &.card__image--empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            animation: none;
+            background: base.lighten(#000000, 90%);
+
+            svg {
+                width: 2.75rem;
+                height: 2.75rem;
+                opacity: 0.4;
+            }
+        }
     }
 
     .card__title {
@@ -55,16 +84,21 @@
         gap: 1.25rem;
         align-items: center;
         margin-bottom: 1rem;
-        
+
         p {
             font-size: 1rem;
             font-family: base.$poppinsRegular;
+            white-space: nowrap;
         }
 
         .card__location__container {
             display: flex;
             align-items: center;
             gap: 0.3125rem;
+
+            .card__location__text {
+                white-space: nowrap;
+            }
 
             path {
                 fill: #000000;
