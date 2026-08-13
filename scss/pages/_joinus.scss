@@ -15,27 +15,8 @@
         p {
             font-size: clamp(1rem, 3vw, 1.5rem);
             padding: 0.5rem;
-            text-align: left;
-            align-self: flex-start;
-            color: base.$p--dark;
-        }
-
-        .join__intro {
             text-align: center;
-            align-self: center;
-        }
-
-        .member__link {
-            color: base.$pels--red;
-            text-decoration: none;
-            font-family: base.$poppinsSemiBold;
-            font-size: clamp(1rem, 2vw, 1.375rem);
-
-            &:active,
-            &:focus,
-            &:hover {
-                color: base.lighten(base.$pels--red, 10%);
-            }
+            color: base.$p--dark;
         }
     }
 

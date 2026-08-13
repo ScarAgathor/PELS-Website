@@ -17,7 +17,8 @@
         height: 100%;
         background-color: base.$program-modal-bg;
         border-radius: 0.5rem;
-        padding: 1.5625rem clamp(2rem, 5vw, 3rem); 
+        border-left: 0.125rem solid base.$pels--red;
+        padding: 1.5625rem clamp(2rem, 5vw, 3rem);
 
         .modal__header {
             display: flex;
@@ -75,8 +76,9 @@
 
         .modal__hero {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
             margin-bottom: clamp(1.25rem, 2vw, 2.125rem);
 
             .modal__title {
@@ -86,8 +88,9 @@
             }
 
             .modal__status {
-                font-size: clamp(0.8rem, 3vw, 1rem); 
+                font-size: clamp(0.8rem, 3vw, 1rem);
                 font-family: base.$poppinsRegular;
+                white-space: nowrap;
             }
 
             .upcoming {
@@ -97,23 +100,37 @@
             .completed {
                 color: base.$pels--gray;
             }
+
+            @media (min-width: base.$breakpoint-tablet) {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
 
         .modal__meta {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
             margin-bottom: clamp(1.25rem, 2vw, 2.125rem);
 
             p {
                 font-size: clamp(0.8rem, 3vw, 1rem);
                 font-family: base.$poppinsMedium;
+                white-space: nowrap;
             }
 
             .modal__location__container {
                 display: flex;
                 align-items: center;
                 gap: 0.2785rem;
+            }
+
+            @media (min-width: base.$breakpoint-tablet) {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
             }
         }
 
@@ -160,14 +177,6 @@
                 flex: 1 1 auto;
             }
         }
-    }
-
-    .modal__workshops {
-        border-left: 0.125rem solid base.$pels--red; 
-    }
-
-    .modal__events {
-        border-left: 0.125rem solid base.$pels--purple;
     }
 }
 

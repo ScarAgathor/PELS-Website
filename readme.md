@@ -1,7 +1,7 @@
 # PELS @ UTSA Website
 
 This is the official website for the IEEE Power and Energy Society (PELS) student chapter at UTSA.
-The site showcases our workshops, events, officers, and opportunities to get involved.
+The site showcases our events, officers, newsletters, and opportunities to get involved.
 
 ---
 
@@ -19,10 +19,12 @@ The site showcases our workshops, events, officers, and opportunities to get inv
 
 ## 📂 Features
 
-- 🌟 Dynamic loading of workshops, events, and officers from Supabase
-- 📝 Register Now and Add to Google Calendar actions on upcoming programs
-- ♿ Keyboard-accessible program cards and modal popups
-- 📱 Responsive design with grid layouts for mobile/tablet/desktop
+- 🌟 Dynamic loading of events, officers, and newsletters from Supabase
+- 📝 Register Now and Add to Google Calendar actions on upcoming events
+- 🧑‍💼 Officers grouped by status (Officer, Junior Officer, Senior Advisor, Past Officer) with term dates
+- 📰 Newsletter archive with a searchable table and inline preview of the most recent issue
+- ♿ Keyboard-accessible event cards and modal popups
+- 📱 Responsive layouts for mobile/tablet/desktop, with event cards centered as a group regardless of count
 - 🌐 Cloudinary-hosted images for performance optimization
 - 🎨 Modular SCSS structure compiled into a single `main.css`
 
@@ -32,7 +34,7 @@ The site showcases our workshops, events, officers, and opportunities to get inv
 
 - HTML5 & CSS3 (SCSS)
 - JavaScript (ES6)
-- [Supabase](https://supabase.com) – Edge functions and database backing the programs/officers content
+- [Supabase](https://supabase.com) – Edge functions and database backing the events/officers/newsletters content
 - [Cloudinary](https://cloudinary.com) – Image hosting
 - [Netlify](https://www.netlify.com) – Deployment platform
 
@@ -63,9 +65,9 @@ The site showcases our workshops, events, officers, and opportunities to get inv
    ```
    Commit both `styles/main.css` and `styles/main.css.map` along with your `.scss` changes.
 
-5. Edit content (workshops, events, officers)
+5. Edit content (events, officers, newsletters)
 
-   Workshop, event, and officer data no longer lives in this repo — it's pulled at runtime from Supabase edge functions (`get-programs`, `get-officers`) and managed through the private admin site. To update that content, use the admin site rather than editing files here.
+   Event, officer, and newsletter data doesn't live in this repo — it's pulled at runtime from Supabase edge functions (`get-programs`, `get-officers`, `get-newsletters`) and managed through the private admin site. To update that content, use the admin site rather than editing files here.
 
 6. Commit and push changes
    ```bash
@@ -79,11 +81,11 @@ The site showcases our workshops, events, officers, and opportunities to get inv
 pels-utsa-website/
 │
 ├── index.html
-├── workshops&events.html
+├── workshops&events.html   # single "Events" listing page — filename is legacy, the workshop/event distinction was removed
 ├── officers.html
 ├── joinus.html
 ├── newsletter.html
-├── admin/              # private admin site for managing workshop/event/officer content
+├── admin/              # private admin site for managing event/officer/newsletter content
 ├── fonts/
 ├── scss/
 │   ├── base/
@@ -105,7 +107,7 @@ UTSA Computer Engineering Student
 
 
 ## 🪶 How to Edit Content
-Workshop, event, and officer listings are managed through the private admin site, not by editing files in this repository. Log into the admin site to add, update, or remove programs and officers — changes there are picked up by the public site on its next data fetch, no deploy needed.
+Event, officer, and newsletter listings are managed through the private admin site, not by editing files in this repository. Log into the admin site to add, update, or remove events, officers, or newsletters — changes there are picked up by the public site on its next data fetch, no deploy needed.
 
 Code and design changes (HTML/SCSS/JS) still go through this repo as normal commits.
 
