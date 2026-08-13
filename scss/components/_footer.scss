@@ -61,7 +61,9 @@ footer {
             outline-offset: 2px;
           }
 
-            &:hover path, &:focus path, &:hover rect, &:focus rect {
+            &:hover path, &:focus path, &:active path,
+            &:hover rect, &:focus rect, &:active rect,
+            &:hover polygon, &:focus polygon, &:active polygon {
                 fill: base.$pels--red;
             }
 
@@ -73,7 +75,17 @@ footer {
             &#groupme:hover path:nth-child(2),
             &#groupme:hover path:nth-child(3),
             &#groupme:focus path:nth-child(2),
-            &#groupme:focus path:nth-child(3) {
+            &#groupme:focus path:nth-child(3),
+            &#groupme:active path:nth-child(2),
+            &#groupme:active path:nth-child(3) {
+              fill: #1e1e1e;
+            }
+
+            // the rowdylink logo's dark line-art (.cls-2, #1e1e1e) must stay put —
+            // only its #fff parts (.cls-1/.cls-3) should pick up the hover/active red
+            &#rowdylink:hover .cls-2,
+            &#rowdylink:focus .cls-2,
+            &#rowdylink:active .cls-2 {
               fill: #1e1e1e;
             }
           }   

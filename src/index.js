@@ -19,55 +19,27 @@ const modal_calendar = document.getElementById('modal__calendar')
 const modal_close = document.getElementById('modal__close')
 
 const REGISTER_LINK_FALLBACK = 'https://rowdylink.utsa.edu/organization/powerelectronicssociety';
-const tabs = document.querySelector('.tabs'); 
-const workshop_tab = tabs?.querySelector('#tab-workshops');
-const event_tab = tabs?.querySelector('#tab-events');
-const upcomingTitle = document.getElementById('upcoming__title');
-const completedTitle = document.getElementById('completed__title');
 
 let lastFocusedElement = null;
-let programType = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     if(home_page) {
         loadHomePrograms();
         loadHomeOfficers();
-    } 
+    }
     if(program_page) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const tabParam = urlParams.get('tab');
-        const storedTab = localStorage.getItem('selectedTab');
-        const isValidTab = (tab) => tab === 'events' || tab === 'workshops';
-
-        if (isValidTab(tabParam)) {
-            programType = tabParam;
-            clearTabParam();
-        } else if (storedTab === 'events' || storedTab === 'workshops') {
-            programType = storedTab;
-        } else {
-            programType = 'workshops';
-        }
-        switchTabs(programType);
-        loadPrograms(programType);
-    }  
+        loadPrograms();
+    }
     if(officer_page) {
         loadOfficers();
     }
     if(join_page) {
-        
+
     }
     if(newsletter_page) {
-        
+        loadNewsletters();
     }
 })
-
-//clear workshop or events tab speififier from params
-const clearTabParam = () => {
-    if (window.history.replaceState) {
-        const cleanUrl = window.location.origin + window.location.pathname;
-        window.history.replaceState({}, document.title, cleanUrl);
-    }
-}
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('program__modal--active')) {
@@ -98,48 +70,51 @@ if(modal_close) {
 }
 
 const loadHomePrograms = async () => {
-    const program_types = ['workshops', 'events'];
+    const container = document.querySelector('.programs__content');
 
     try {
         const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-programs');
         const data = await response.json();
 
-        for (let type of program_types) {
-            const program_group = data.programs.filter(program => program.program_type === type.slice(0, -1));
-            const upcoming_programs = program_group.filter(program => program.status === false).sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 2); // Only take the first 2
-            const container = document.querySelector(`.programs__content--${type}`);
+        const upcoming_programs = data.programs
+            .filter(program => program.status === false)
+            .sort((a, b) => new Date(`${b.date}T${b.time}`) - new Date(`${a.date}T${a.time}`))
+            .slice(0, 4); // one row of 4
 
-            upcoming_programs.forEach(program => {
-                const card = createProgramCard(program.status, program.image_url, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.desc, program.program_type);
-                container.appendChild(card);
+        upcoming_programs.forEach(program => {
+            const card = createProgramCard(program.status, program.image_url, program.title, program.organizer, formatDateToText(program.date), program.location, formatTimeToText(program.time), program.desc);
+            container.appendChild(card);
 
-                card.addEventListener('click', () => {
-                    createProgramModal(program, program.program_type);
-                    initializeModal();
-                });
-                card.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault(); // Prevent scrolling if Space
-                        createProgramModal(program, program.program_type);
-                        initializeModal();
-                    }
-                })
-            });
+            const openModal = () => {
+                createProgramModal(program);
+                initializeModal();
+            };
 
-            if(container.innerHTML == "") {
-                container.innerHTML = `
-                    <p class="programs__empty">There are currently no upcoming ${type}.</p>
-                `;
-            }
+            card.addEventListener('click', openModal);
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault(); // Prevent scrolling if Space
+                    openModal();
+                }
+            })
+        });
+
+        if(container.innerHTML == "") {
+            container.innerHTML = `
+                <p class="programs__empty">There are currently no upcoming events.</p>
+            `;
         }
     } catch (error) {
         console.error(`Failed to load programs:`, error);
+        container.innerHTML = `
+            <p class="programs__empty">Failed to load events. Please try again later.</p>
+        `;
     }
 };
 
-const createProgramCard = (status, img, title, organizer, date, location, time, desc, program) => {
+const createProgramCard = (status, img, title, organizer, date, location, time, desc) => {
     let programCard = document.createElement('article');
-    programCard.classList.add('program__card',  `program__card--${program}`);
+    programCard.classList.add('program__card');
     programCard.setAttribute('tabindex', '0');
     programCard.setAttribute('role', 'button');
     programCard.setAttribute('aria-label', `${title}, organized by ${organizer}, on ${date} at ${time}`);
@@ -194,24 +169,23 @@ const createProgramCard = (status, img, title, organizer, date, location, time, 
     return programCard
 }
 
-const renderLoadingSpinner = (container, programType) => {
+const renderLoadingSpinner = (container) => {
     container.innerHTML = '';
     const loading = document.createElement('div');
-    loading.classList.add('programs__loading', `programs__loading--${programType}`);
+    loading.classList.add('programs__loading');
     loading.innerHTML = `
         <span class="programs__spinner" aria-hidden="true"></span>
-        <p>Loading ${programType}...</p>
+        <p>Loading events...</p>
     `
     container.appendChild(loading);
 }
 
-const createProgramModal = (program, programType) => {
+const createProgramModal = (program) => {
     const { status, image_url: img, title, organizer, location, desc } = program;
     const date = formatDateToText(program.date);
     const time = formatTimeToText(program.time);
 
     modal.classList.add('program__modal--active');
-    modal.firstElementChild.classList.add(`modal__${programType}`)
     overlay.classList.add('overlay--active')
     modal.setAttribute('aria-hidden', 'false');
 
@@ -233,7 +207,7 @@ const createProgramModal = (program, programType) => {
     modal_location.textContent = location
     modal_desc.innerHTML = `<div class="modal__desc__scroll" tabindex="0">${desc}</div>`;
 
-    // Register and calendar actions only make sense for upcoming programs (workshops or events)
+    // Register and calendar actions only make sense for upcoming events
     if (status === false) {
         // Register link is submitted through the admin site; fall back to the org page until it's populated per-program
         modal_register.href = program.register_link || REGISTER_LINK_FALLBACK;
@@ -305,8 +279,6 @@ const resetModal = () => {
     document.body.classList.remove('no-scroll');
     modal.setAttribute('aria-hidden', 'true');
     if (lastFocusedElement) lastFocusedElement.focus();
-    modal.firstElementChild.classList.remove('modal__workshops', 'modal__events')
-    if (lastFocusedElement) lastFocusedElement.focus();
 }
 
 const initializeModal = () => {
@@ -315,25 +287,25 @@ const initializeModal = () => {
     lastFocusedElement = document.activeElement;
 }
 
-const loadPrograms = async (programType='workshops') => {
+const loadPrograms = async () => {
     const upcomingContainer = document.getElementById(`upcoming-container`);
     const completedContainer = document.getElementById(`completed-container`);
     const seeMoreUpcoming = document.getElementById('seemore--upcoming');
     const seeMoreCompleted = document.getElementById('seemore--completed');
 
-    renderLoadingSpinner(upcomingContainer, programType);
-    renderLoadingSpinner(completedContainer, programType);
+    renderLoadingSpinner(upcomingContainer);
+    renderLoadingSpinner(completedContainer);
     seeMoreUpcoming.style.display = 'none';
     seeMoreCompleted.style.display = 'none';
 
-    try {//make a function to filter for program types
+    try {
         const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-programs')
         const data = await response.json();
 
         upcomingContainer.innerHTML = '';
         completedContainer.innerHTML = '';
 
-        let currentPrograms = data.programs.filter(program => program.program_type === programType.slice(0, -1));
+        let currentPrograms = [...data.programs];
 
         currentPrograms.sort((a, b) => new Date(`${b.date}T${b.time}`) - new Date(`${a.date}T${a.time}`));
 
@@ -346,8 +318,7 @@ const loadPrograms = async (programType='workshops') => {
                 formatDateToText(program.date),
                 program.location,
                 formatTimeToText(program.time),
-                program.desc,
-                programType
+                program.desc
             );
 
             const container = program.status === false ? upcomingContainer : completedContainer;
@@ -355,7 +326,7 @@ const loadPrograms = async (programType='workshops') => {
 
             // Click to open modal
             const openModal = () => {
-                createProgramModal(program, programType);
+                createProgramModal(program);
                 initializeModal();
             };
 
@@ -374,14 +345,14 @@ const loadPrograms = async (programType='workshops') => {
         setupSeeMore(completedContainer, seeMoreCompleted);
 
         if (upcomingContainer.innerHTML === '') {
-            upcomingContainer.innerHTML = `<p class="programs__empty">There are currently no upcoming ${programType}.</p>`;
+            upcomingContainer.innerHTML = `<p class="programs__empty">There are currently no upcoming events.</p>`;
         }
         if (completedContainer.innerHTML === '') {
-            completedContainer.innerHTML = `<p class="programs__empty">There are currently no completed ${programType}.</p>`;
+            completedContainer.innerHTML = `<p class="programs__empty">There are currently no completed events.</p>`;
         }
     }catch (err) {
-        console.error(`Failed to load ${programType}:`, err);
-        upcomingContainer.innerHTML = `<p class="programs__empty">Failed to load ${programType}. Please try again later.</p>`;
+        console.error(`Failed to load events:`, err);
+        upcomingContainer.innerHTML = `<p class="programs__empty">Failed to load events. Please try again later.</p>`;
         completedContainer.innerHTML = '';
     }
 };
@@ -421,47 +392,6 @@ const toggleSeeMore = (container, button) => {
     }
 };
 
-
-if (workshop_tab && event_tab) {
-    workshop_tab.addEventListener("click", () => {
-        programType = 'workshops';
-        localStorage.setItem('selectedTab', programType);
-        switchTabs(programType);
-        loadPrograms(programType);
-    });
-
-    event_tab.addEventListener("click", () => {
-        programType = 'events';
-        localStorage.setItem('selectedTab', programType);
-        switchTabs(programType);
-        loadPrograms(programType);
-    });
-}
-
-//switch program tabs
-const switchTabs = (activePrograms) => {
-    const seeMoreButtons = document.querySelectorAll('.seemorebutton');
-
-    if(activePrograms === 'workshops') {
-        workshop_tab.classList.add('tabs__workshops--active');
-        event_tab.classList.remove('tabs__events--active');
-        upcomingTitle.textContent = `Upcoming Workshops`
-        completedTitle.textContent = `Completed Workshops`
-        seeMoreButtons.forEach(button => {
-            button.classList.add('seemorebutton--workshops');
-            button.classList.remove('seemorebutton--events');
-        });
-    } else if(activePrograms === 'events') {
-        event_tab.classList.add('tabs__events--active');
-        workshop_tab.classList.remove('tabs__workshops--active');
-        upcomingTitle.textContent = `Upcoming Events`
-        completedTitle.textContent = `Completed Events`
-        seeMoreButtons.forEach(button => {
-            button.classList.add('seemorebutton--events');
-            button.classList.remove('seemorebutton--workshops');
-        });
-    }
-}
 
 // //load officers
 const  loadOfficers = async () => {
@@ -506,16 +436,21 @@ const  loadOfficers = async () => {
             `;
         } else {
             data.officers.forEach(officer => {
-                let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin);
+                let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin, officer.term);
 
-                if (officer.position.toLowerCase() === 'president') {
-                    presidentContainer.appendChild(card);
-                 } else if (officer.position.toLowerCase().includes('vice')) {
-                    vicePresidentContainer.appendChild(card);
-                } else if(officer.position.toLowerCase().includes('junior')) {
+                const officerStatus = (officer.officer_status || 'Officer').toLowerCase();
+                const position = (officer.position || '').toLowerCase();
+
+                if (officerStatus === 'past officer') {
+                    pastOfficerContainer.appendChild(card);
+                } else if (officerStatus === 'junior officer') {
                     juniorOfficerContainer.appendChild(card);
-                } else if(officer.position.toLowerCase().includes('advisor')) {
+                } else if (officerStatus === 'senior advisor') {
                     advisorOfficerContainer.appendChild(card);
+                } else if (position === 'president') {
+                    presidentContainer.appendChild(card);
+                } else if (position.includes('vice')) {
+                    vicePresidentContainer.appendChild(card);
                 } else {
                     officerBoardContainer.appendChild(card);
                 }
@@ -560,13 +495,14 @@ const  loadOfficers = async () => {
 }
 
 //officer card
-const createOfficerCard = (img, name, position, linkedin) => {
+const createOfficerCard = (img, name, position, linkedin, term) => {
     let officerCard = document.createElement('div');
     officerCard.classList.add('officer__card');
     officerCard.innerHTML = `
         <img src="${img || 'https://res.cloudinary.com/dvcpaters/image/upload/v1756758759/profile-default-svgrepo-com_nh90vr.svg'}" alt="${position}" class="officer__image">
         <p class="officer__name">${name}</p>
         <p class="officer__position">${position}</p>
+        <p class="officer__term">${term || 'TBA'}</p>
         <a class="officer__linkedin" href="${linkedin}" target="_blank">
             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z" fill="#b71933"/>
@@ -597,7 +533,7 @@ const loadHomeOfficers = async () => {
             `;
         } else {
             data.officers.forEach(officer => {
-                let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin);
+                let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin, officer.term);
 
                 if (officer.position.toLowerCase() === 'president') {
                     card.classList.add('P');
@@ -641,4 +577,128 @@ const formatTimeToText = (raw_time) => {
     hour12: true,
     timeZone: 'UTC'
   }).format(date);
+};
+
+const formatDateToMMDDYYYY = (raw_date) => {
+    const [year, month, day] = raw_date.split('-');
+    return `${month}/${day}/${year}`;
+};
+
+let allNewsletters = [];
+
+const loadNewsletters = async () => {
+    const loading = document.getElementById('newsletterLoading');
+    const content = document.getElementById('newsletterContent');
+    const searchInput = document.getElementById('newsletterSearch');
+
+    const revealContent = () => {
+        loading.hidden = true;
+        content.hidden = false;
+    };
+
+    try {
+        const response = await fetch('https://qhebafqzladdoxxiojry.supabase.co/functions/v1/get-newsletters');
+        const data = await response.json();
+
+        if (data.error) {
+            loading.innerHTML = `<p class="newsletter__error">Error Loading Newsletters</p>`;
+            return;
+        }
+
+        allNewsletters = (data.newsletters || []).slice().sort((a, b) => {
+            if (!a.issue_date) return 1;
+            if (!b.issue_date) return -1;
+            return new Date(b.issue_date) - new Date(a.issue_date);
+        });
+
+        renderNewsletterTable(allNewsletters);
+
+        if (allNewsletters.length > 0) {
+            openNewsletterPreview(allNewsletters[0].id);
+        }
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim().toLowerCase();
+            const filtered = allNewsletters.filter(newsletter => {
+                const titleMatch = newsletter.title.toLowerCase().includes(query);
+                const dateMatch = newsletter.issue_date && formatDateToMMDDYYYY(newsletter.issue_date).includes(query);
+                return titleMatch || dateMatch;
+            });
+            renderNewsletterTable(filtered);
+        });
+
+        revealContent();
+    } catch (error) {
+        console.error('Failed to load newsletters:', error);
+        loading.innerHTML = `<p class="newsletter__error">Failed to load newsletters. Please try again later.</p>`;
+    }
+};
+
+const renderNewsletterTable = (list) => {
+    const tbody = document.getElementById('newsletterTableBody');
+    tbody.innerHTML = '';
+
+    if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="2" class="newsletter__empty">No newsletters found.</td></tr>`;
+        return;
+    }
+
+    list.forEach(newsletter => {
+        const row = document.createElement('tr');
+        row.classList.add('newsletter__row');
+        row.tabIndex = 0;
+        row.setAttribute('role', 'button');
+        row.setAttribute('aria-expanded', 'false');
+        row.dataset.id = newsletter.id;
+        row.innerHTML = `
+            <td>${newsletter.title}</td>
+            <td>${newsletter.issue_date ? formatDateToText(newsletter.issue_date) : 'TBA'}</td>
+        `;
+
+        const previewRow = document.createElement('tr');
+        previewRow.classList.add('newsletter__preview-row');
+        previewRow.hidden = true;
+        previewRow.innerHTML = `
+            <td colspan="2">
+                <div class="newsletter__preview">
+                    ${newsletter.image_url
+                        ? `<img src="${newsletter.image_url}" alt="${newsletter.title} newsletter preview">`
+                        : `<p class="newsletter__preview-empty">No preview image available.</p>`}
+                </div>
+            </td>
+        `;
+
+        const toggle = () => togglePreviewRow(row, previewRow);
+        row.addEventListener('click', toggle);
+        row.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle();
+            }
+        });
+
+        tbody.appendChild(row);
+        tbody.appendChild(previewRow);
+    });
+};
+
+const togglePreviewRow = (row, previewRow) => {
+    const isOpen = !previewRow.hidden;
+
+    // only one preview open at a time
+    document.querySelectorAll('.newsletter__preview-row').forEach(r => { r.hidden = true; });
+    document.querySelectorAll('.newsletter__row').forEach(r => r.setAttribute('aria-expanded', 'false'));
+
+    if (!isOpen) {
+        previewRow.hidden = false;
+        row.setAttribute('aria-expanded', 'true');
+    }
+};
+
+const openNewsletterPreview = (id) => {
+    const row = document.querySelector(`.newsletter__row[data-id="${id}"]`);
+    const previewRow = row?.nextElementSibling;
+    if (row && previewRow) {
+        togglePreviewRow(row, previewRow);
+    }
 };

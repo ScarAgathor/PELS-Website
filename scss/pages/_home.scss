@@ -55,43 +55,46 @@
         h2 {
             margin-bottom: 1.25rem;
         }
-        &__topdiv {
-            margin-top: clamp(1.875rem, 2.5vw, 3.75rem);
-            @include base.verticalGap(clamp(1.875rem, 2.5vw, 6.25rem));
-
-            @media (min-width: base.$breakpoint-desktop) {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
 
         &__container {
             @include base.verticalGap(2.5rem);
-        }
-        
-        &__title {
-            font-size: clamp(2rem, 2vw, 4rem);
-            font-family: base.$poppinsBold;
-        }
-
-        &__title--workshops {
-            color: base.$pels--red
-        }
-
-        &__title--events {
-            color: base.$pels--purple
+            margin-top: clamp(1.875rem, 2.5vw, 3.75rem);
         }
 
         &__content {
-            display: grid;
-            grid-template-columns: 1fr;
-            justify-items: center;
-            gap: 2.5rem;
-        
+            $gap-base: clamp(1.875rem, 5vw, 4.375rem);
+            $gap-desktop: clamp(1.875rem, 3vw, 4.375rem);
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: $gap-base;
+            width: 100%;
+
+            // percentage-based basis (capped at the usual 330px card size) guarantees
+            // up to N cards actually fit per row instead of wrapping unevenly, while
+            // flex-wrap + justify-content:center still centers however many there are
             @media (min-width: base.$breakpoint-tablet) {
-                display: flex;
-                justify-content: center;
+                .program__card {
+                    flex-basis: min(330px, calc(50% - #{$gap-base} / 2));
+                    max-width: min(330px, calc(50% - #{$gap-base} / 2));
+                }
             }
+
+            @media (min-width: base.$breakpoint-desktop) {
+                gap: $gap-desktop;
+
+                .program__card {
+                    flex-basis: min(330px, calc(25% - #{$gap-desktop} * 3 / 4));
+                    max-width: min(330px, calc(25% - #{$gap-desktop} * 3 / 4));
+                }
+            }
+        }
+
+        &__empty {
+            text-align: center;
+            color: base.$pels--dark;
+            font-size: clamp(1rem, 2vw, 2rem);
         }
 
     }

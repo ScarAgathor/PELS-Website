@@ -1,14 +1,18 @@
 @use "../base/" as base;
 
+@keyframes newsletter-spin {
+    to { transform: rotate(360deg); }
+}
+
 .newsletter {
     margin: clamp(2rem, 2vw, 3.75rem);
     flex: 1;
-    @include base.centerDiv();
+    @include base.verticalGap(clamp(1.875rem, 3vw, 3.125rem));
 
     &__hero {
-        @include base.verticalGap(1.25rem);
+        @include base.verticalGap(0.625rem);
         max-width: 43.75rem;
-        margin: clamp(2rem, 6vw, 5rem) 0;
+        margin: clamp(1.5rem, 4vw, 3rem) 0;
 
         h1 {
             margin-bottom: 0.625rem;
@@ -19,8 +23,143 @@
         }
     }
 
-    &__subtext {
-        font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+    &__list-section {
+        width: 100%;
+        max-width: 56.25rem; // 900px
+    }
+
+    &__loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        min-height: 20rem;
+        color: base.$pels--red;
+        width: 100%;
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: base.$p--dark;
+        }
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    &__spinner {
+        width: 3rem;
+        height: 3rem;
+        border: 0.25rem solid #e0e0e0;
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: newsletter-spin 0.8s linear infinite;
+    }
+
+    &__content {
+        width: 100%;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    &__toolbar {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1.25rem;
+        width: 100%;
+    }
+
+    &__search {
+        padding: 0.625rem 1.125rem;
+        border: 1px solid #d9d9d9;
+        border-radius: 999px;
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        font-family: base.$poppinsRegular;
+        width: clamp(15rem, 25vw, 20rem);
+
+        &:focus,
+        &:focus-visible {
+            outline: 2px solid base.$pels--red;
+            outline-offset: 2px;
+        }
+    }
+
+    &__table-wrap {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th, td {
+            text-align: left;
+            padding: 0.875rem 1rem;
+            font-family: base.$poppinsRegular;
+        }
+
+        thead th {
+            font-family: base.$poppinsSemiBold;
+            border-bottom: 2px solid base.$pels--red;
+            color: base.$pels--dark;
+            white-space: nowrap;
+        }
+
+        .newsletter__row {
+            cursor: pointer;
+            border-bottom: 1px solid #e0e0e0;
+
+            td:first-child {
+                font-family: base.$poppinsSemiBold;
+                color: base.$pels--dark;
+            }
+
+            td:last-child {
+                white-space: nowrap;
+                color: base.$pels--gray;
+            }
+
+            &:hover, &:focus-visible {
+                background-color: rgba(183, 25, 51, 0.05);
+            }
+
+            &[aria-expanded="true"] {
+                background-color: rgba(183, 25, 51, 0.08);
+            }
+        }
+
+        .newsletter__preview-row td {
+            padding: 1.5rem 1rem;
+            background-color: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+    }
+
+    &__preview {
+        display: flex;
+        justify-content: center;
+
+        img {
+            max-width: 100%;
+            max-height: 37.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 4px 4px 3px base.lighten(#000000, 75%);
+        }
+    }
+
+    &__preview-empty {
+        text-align: center;
         color: base.$pels--gray;
+        padding: 2rem 0;
+    }
+
+    &__empty {
+        text-align: center;
+        padding: 2rem 0;
+        color: base.$pels--dark;
     }
 }

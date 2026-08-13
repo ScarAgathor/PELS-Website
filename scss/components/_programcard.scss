@@ -8,12 +8,14 @@
 .program__card {
     background-color: base.$program-card-bg;
     border-radius: 0.75rem;
+    border-left: 1px solid base.$pels--red;
     box-shadow: 4px 4px 3px base.lighten(#000000, 75%);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1.875rem clamp(2rem, 1.2vw, 2.5rem);
     max-width: 330px;
+    flex: 0 1 330px; // keeps a consistent card size in flex layouts (e.g. home page); no-op as a grid item
     cursor: pointer;
 
     .card__status {
@@ -115,12 +117,4 @@
     .card__description {
         display: none;
     }
-}
-
-.program__card--workshops {
-    border-left: 1px solid base.$pels--red;
-}
-
-.program__card--events {
-    border-left: 1px solid base.$pels--purple;
 }

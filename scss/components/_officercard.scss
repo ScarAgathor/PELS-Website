@@ -4,7 +4,7 @@
     @include base.verticalGap(clamp(0.625rem, 1.2vw, 1rem));
     background-color: base.$officer-card-bg;
     width: 16.25rem; // 260px
-    height: 16.4375rem; // 263px
+    height: 18.5rem;
     border: 1px solid #e0e0e0;
     box-shadow: 0.375rem 0.25rem 0.1875rem base.lighten(#000000, 75%);
     border-radius: 0.75rem;
@@ -24,8 +24,14 @@
 
     .officer__position {
         color: base.$pels--dark;
-        font-size: clamp(0.875rem, 1.1vw, 1rem); 
+        font-size: clamp(0.875rem, 1.1vw, 1rem);
         font-family: base.$poppinsMedium;
+    }
+
+    .officer__term {
+        color: base.$pels--gray;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-family: base.$poppinsRegular;
     }
 
     .officer__linkedin {
@@ -47,8 +53,8 @@
     }
 
     @media (min-width: base.$breakpoint-desktop) {
-        width: 18.75rem; 
-        height: 19rem; 
+        width: 18.75rem;
+        height: 21rem;
 
         img {
             width: 9.375rem;

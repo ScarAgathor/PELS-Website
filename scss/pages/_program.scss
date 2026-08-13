@@ -7,45 +7,24 @@
 
     .tabs {
         width: 100%;
-        border-bottom: 0.125rem solid #d9d9d9; 
-        margin-bottom: clamp(3rem, 4.5vw, 4.688rem); 
+        border-bottom: 0.125rem solid #d9d9d9;
+        margin-bottom: clamp(3rem, 4.5vw, 4.688rem);
         display: flex;
         justify-content: center;
-        gap: 0.625rem; 
-    
-        &__button {
+
+        &__heading {
             width: clamp(18.75rem, 30vw, 37.5rem);
             padding: clamp(2rem, 3vw, 6.875rem) 0;
-            background: none;
-            border: none;
-            color: base.$pels--gray;
-            font-size: clamp(1.2rem, 3vw, 2.75rem); 
+            color: base.$pels--red;
+            font-size: clamp(1.2rem, 3vw, 2.75rem);
             font-family: base.$poppinsBold;
             letter-spacing: 0.16em;
-            cursor: pointer;
-        }
-    
-        &__workshops:hover {
+            text-align: center;
             border-bottom: 0.25rem solid base.$pels--red;
-            color: base.$pels--red;
-        }
-    
-        &__events:hover {
-            border-bottom: 0.25rem solid base.$pels--purple;
-            color: base.$pels--purple;
-        }
-    
-        &__workshops--active {
-            border-bottom: 0.25rem solid base.$pels--red;
-            color: base.$pels--red;
-        }
-    
-        &__events--active {
-            border-bottom: 0.25rem solid base.$pels--purple;
-            color: base.$pels--purple;
+            margin-bottom: -0.125rem;
         }
     }
-    
+
 
     .programs__container {
         @include base.verticalGap(clamp(3rem, 3vw, 4rem));
@@ -104,14 +83,8 @@
             &[aria-expanded="true"] svg {
                 transform: rotate(180deg);
             }
-        }
 
-        .seemorebutton--workshops {
             color: base.$pels--red;
-        }
-
-        .seemorebutton--events {
-            color: base.$pels--purple;
         }
 
         .hidden-card {
@@ -133,6 +106,7 @@
         align-items: center;
         gap: 1rem;
         padding: 3rem 0;
+        color: base.$pels--red;
 
         p {
             font-size: clamp(1rem, 2vw, 1.25rem);
@@ -146,14 +120,6 @@
         border-top-color: currentColor;
         border-radius: 50%;
         animation: programs-spin 0.8s linear infinite;
-    }
-
-    .programs__loading--workshops {
-        color: base.$pels--red;
-    }
-
-    .programs__loading--events {
-        color: base.$pels--purple;
     }
 
     @keyframes programs-spin {
