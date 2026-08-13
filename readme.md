@@ -21,7 +21,7 @@ The site showcases our events, officers, newsletters, and opportunities to get i
 
 - 🌟 Dynamic loading of events, officers, and newsletters from Supabase
 - 📝 Register Now and Add to Google Calendar actions on upcoming events
-- 🧑‍💼 Officers grouped by status (Officer, Junior Officer, Senior Advisor, Past Officer) with term dates
+- 🧑‍💼 Officers grouped by status (Officer, Junior Officer, Senior Advisor, Past Officer) with term dates — the home page preview only shows the current President and Vice President(s) (`officer_status: "Officer"`), never past/junior/advisor officers
 - 📰 Newsletter archive with a searchable table and inline preview of the most recent issue
 - ♿ Keyboard-accessible event cards and modal popups
 - 📱 Responsive layouts for mobile/tablet/desktop, with event cards centered as a group regardless of count

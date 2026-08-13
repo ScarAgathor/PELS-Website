@@ -533,6 +533,10 @@ const loadHomeOfficers = async () => {
             `;
         } else {
             data.officers.forEach(officer => {
+                // home page preview only shows current officers (president/vices) — no past officers, junior officers, or advisors here
+                const officerStatus = (officer.officer_status || 'Officer').toLowerCase();
+                if (officerStatus !== 'officer') return;
+
                 let card = createOfficerCard(officer.image_url, officer.name, officer.position, officer.linkedin, officer.term);
 
                 if (officer.position.toLowerCase() === 'president') {
@@ -549,7 +553,7 @@ const loadHomeOfficers = async () => {
             container.innerHTML = `
                 <p class="officers__empty">No Officers are currently available.</p>
             `;
-        } 
+        }
         
     }catch (error) {
         console.error('Failed to load officer data:', error);
