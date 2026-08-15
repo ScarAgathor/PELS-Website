@@ -67,7 +67,7 @@ The site showcases our events, officers, newsletters, and opportunities to get i
 
 5. Edit content (events, officers, newsletters)
 
-   Event, officer, and newsletter data doesn't live in this repo — it's pulled at runtime from Supabase edge functions (`get-programs`, `get-officers`, `get-newsletters`) and managed through the private admin site. To update that content, use the admin site rather than editing files here.
+   Event, officer, and newsletter data doesn't live in this repo — it's pulled at runtime from Supabase edge functions (`get-programs`, `get-officers`, `get-newsletters`) and managed through the private admin site. 
 
 6. Commit and push changes
    ```bash
@@ -107,7 +107,7 @@ UTSA Computer Engineering Student
 
 
 ## 🪶 How to Edit Content
-Event, officer, and newsletter listings are managed through the private admin site, not by editing files in this repository. Log into the admin site to add, update, or remove events, officers, or newsletters — changes there are picked up by the public site on its next data fetch, no deploy needed.
+Event, officer, and newsletter listings are managed through the private admin site, not by editing files in this repository. 
 
 Code and design changes (HTML/SCSS/JS) still go through this repo as normal commits.
 
