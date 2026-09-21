@@ -26,25 +26,36 @@
     }
 
 
+    // Mobile: title, cards, then See More stacked in DOM order (button ends up below the list).
+    // Tablet+: See More sits on the title row, cards span the full width underneath.
     .programs__container {
-        @include base.verticalGap(clamp(3rem, 3vw, 4rem));
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        row-gap: clamp(3rem, 3vw, 4rem);
         margin-bottom: 4.875rem;
+
+        @media (min-width: base.$breakpoint-tablet) {
+            grid-template-columns: minmax(0, 1fr) auto;
+
+            h2 {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .seemorebutton {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .programs__content {
+                grid-column: 1 / -1;
+                grid-row: 2;
+            }
+        }
 
         h2 {
             font-size: clamp(2rem, 4vw, 3rem);
-        }
-
-        .programs__header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
-            padding-right: clamp(0.75rem, 2vw, 1.5rem);
-
-            h2 {
-                flex: 1;
-            }
         }
 
         .programs__content {
@@ -64,20 +75,36 @@
         }
 
         .seemorebutton {
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-size: 1rem;
             font-family: base.$poppinsSemiBold;
-            letter-spacing: 0.13em; // 13%
+            letter-spacing: 0.1em;
             background: none;
             border: none;
             cursor: pointer;
             // display: flex; //this is set in index.js
             align-items: center;
-            gap: 0.5rem;
-            flex: 0 0 auto;
+            gap: 0.375rem;
+            padding: 0.625rem 1rem; // keeps a comfortable tap target now that the text is smaller
             white-space: nowrap;
 
             svg {
+                width: 1.5rem;
+                height: 1.5rem;
                 transition: transform 0.2s ease;
+            }
+
+            @media (min-width: base.$breakpoint-tablet) {
+                font-size: clamp(1.25rem, 3vw, 1.5rem);
+                letter-spacing: 0.13em; // 13%
+                gap: 0.5rem;
+                padding: 0;
+                margin-left: 1rem;
+                margin-right: clamp(0.75rem, 2vw, 1.5rem);
+
+                svg {
+                    width: 2rem;
+                    height: 2rem;
+                }
             }
 
             &[aria-expanded="true"] svg {
