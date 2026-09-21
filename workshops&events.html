@@ -51,8 +51,13 @@
         </section>
 
         <section class="programs__container" aria-labelledby="upcoming__title">
-            <div class="programs__header">
             <h2 id="upcoming__title" class="programs__upcoming__title">Upcoming Events</h2>
+            <div class="programs__content" id="upcoming-container" role="region" aria-labelledby="upcoming-title">
+                <div class="programs__loading">
+                    <span class="programs__spinner" aria-hidden="true"></span>
+                    <p>Loading events...</p>
+                </div>
+            </div>
             <button class="seemorebutton" id="seemore--upcoming" style="display: none;" aria-expanded="false" aria-controls="upcoming-container">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_429_11148)">
@@ -67,18 +72,16 @@
                 </svg>
                 <span>See More</span>
             </button>
-            </div>
-            <div class="programs__content" id="upcoming-container" role="region" aria-labelledby="upcoming-title">
+        </section>
+
+        <section class="programs__container" aria-labelledby="completed__title">
+            <h2 id="completed__title" class="programs__completed__title">Completed Events</h2>
+            <div class="programs__content" id="completed-container" role="region" aria-labelledby="upcoming-title">
                 <div class="programs__loading">
                     <span class="programs__spinner" aria-hidden="true"></span>
                     <p>Loading events...</p>
                 </div>
             </div>
-        </section>
-
-        <section class="programs__container" aria-labelledby="completed__title">
-            <div class="programs__header">
-            <h2 id="completed__title" class="programs__completed__title">Completed Events</h2>
             <button class="seemorebutton" id="seemore--completed" style="display: none;" aria-expanded="false" aria-controls="completed-container">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_429_11148)">
@@ -93,13 +96,6 @@
                 </svg>
                 <span>See More</span>
             </button>
-            </div>
-            <div class="programs__content" id="completed-container" role="region" aria-labelledby="upcoming-title">
-                <div class="programs__loading">
-                    <span class="programs__spinner" aria-hidden="true"></span>
-                    <p>Loading events...</p>
-                </div>
-            </div>
         </section>
     </main>
 
